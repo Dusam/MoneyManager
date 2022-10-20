@@ -10,6 +10,7 @@ target 'MoneyManager' do
   pod 'IQKeyboardManagerSwift'
   pod 'Introspect'
   pod 'SwifterSwift'
+  pod 'Alamofire'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|

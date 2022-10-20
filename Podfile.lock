@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.6.2)
   - Introspect (0.1.4)
   - IQKeyboardManagerSwift (6.5.10)
   - Realm (10.32.0):
@@ -33,6 +34,7 @@ PODS:
   - SwifterSwift/UIKit (5.2.0)
 
 DEPENDENCIES:
+  - Alamofire
   - Introspect
   - IQKeyboardManagerSwift
   - RealmSwift
@@ -40,6 +42,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Introspect
     - IQKeyboardManagerSwift
     - Realm
@@ -47,12 +50,13 @@ SPEC REPOS:
     - SwifterSwift
 
 SPEC CHECKSUMS:
+  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   Introspect: b62c4dd2063072327c21d618ef2bedc3c87bc366
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   Realm: a00e93347b8d26d372c7a82f6c0b08d6536a21c8
   RealmSwift: fe09c29ca409f8f905fe4086f2a52936193f2e3d
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
 
-PODFILE CHECKSUM: 38531971d6c1525caac65627ce124e36b732c6b7
+PODFILE CHECKSUM: fe373dd1e7cf80613644466e4f66468fa9efb767
 
 COCOAPODS: 1.11.3
