@@ -21,9 +21,44 @@
 		22FB19F0283E10C8005DB4F9 /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19EF283E10C8005DB4F9 /* DetailHeaderView.swift */; };
 		22FB19F3283E13AD005DB4F9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19F2283E13AD005DB4F9 /* DetailViewModel.swift */; };
 		22FB19F5283F0578005DB4F9 /* DetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19F4283F0578005DB4F9 /* DetailCellView.swift */; };
-		22FB19F7283F10E3005DB4F9 /* DetailTotalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19F6283F10E3005DB4F9 /* DetailTotalView.swift */; };
 		22FB19F9283F7345005DB4F9 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19F8283F7345005DB4F9 /* DetailModel.swift */; };
 		22FB19FE2846F51B005DB4F9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19FD2846F51B005DB4F9 /* UserInfo.swift */; };
+		68F19D06290661D00056819A /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D05290661D00056819A /* UserDefaultsExtension.swift */; };
+		68F19D09290665C50056819A /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D08290665C50056819A /* AccountType.swift */; };
+		68F19D0B290666270056819A /* ExpensesGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D0A290666270056819A /* ExpensesGroup.swift */; };
+		68F19D0D29067DBB0056819A /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D0C29067DBB0056819A /* AccountModel.swift */; };
+		68F19D0F29067F9D0056819A /* ExpensesGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D0E29067F9D0056819A /* ExpensesGroupModel.swift */; };
+		68F19D112906808B0056819A /* ExpensesTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D102906808B0056819A /* ExpensesTypeModel.swift */; };
+		68F19D13290680C50056819A /* IncomeGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D12290680C50056819A /* IncomeGroupModel.swift */; };
+		68F19D15290680ED0056819A /* IncomeTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D14290680ED0056819A /* IncomeTypeModel.swift */; };
+		68F19D17290681470056819A /* TransferGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D16290681470056819A /* TransferGroupModel.swift */; };
+		68F19D19290681760056819A /* TransferTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D18290681760056819A /* TransferTypeModel.swift */; };
+		68F19D1C29068C130056819A /* PresetUserDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D1B29068C130056819A /* PresetUserDB.swift */; };
+		68F19D1F290775B10056819A /* ExpensesFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D1E290775B10056819A /* ExpensesFood.swift */; };
+		68F19D21290776B70056819A /* ExpensesClothing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D20290776B70056819A /* ExpensesClothing.swift */; };
+		68F19D2429077CAE0056819A /* ExpensesLife.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D2329077CAE0056819A /* ExpensesLife.swift */; };
+		68F19D2629077E350056819A /* ExpensesTraffic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D2529077E350056819A /* ExpensesTraffic.swift */; };
+		68F19D2829077FAC0056819A /* ExpensesEducate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D2729077FAC0056819A /* ExpensesEducate.swift */; };
+		68F19D2A29078C170056819A /* ExpensesEntertainment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D2929078C170056819A /* ExpensesEntertainment.swift */; };
+		68F19D2C29078E210056819A /* ExpensesElectronicProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D2B29078E210056819A /* ExpensesElectronicProduct.swift */; };
+		68F19D2E29078FEF0056819A /* ExpensesBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D2D29078FEF0056819A /* ExpensesBook.swift */; };
+		68F19D302907916A0056819A /* ExpensesMotor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D2F2907916A0056819A /* ExpensesMotor.swift */; };
+		68F19D32290793D50056819A /* ExpensesMedical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D31290793D50056819A /* ExpensesMedical.swift */; };
+		68F19D34290795400056819A /* ExpensesPersonalCommunication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D33290795400056819A /* ExpensesPersonalCommunication.swift */; };
+		68F19D36290796E80056819A /* ExpensesInvest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D35290796E80056819A /* ExpensesInvest.swift */; };
+		68F19D382907ACF10056819A /* ExpensesOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D372907ACF10056819A /* ExpensesOther.swift */; };
+		68F19D3A2907AD900056819A /* ExpensesFee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D392907AD900056819A /* ExpensesFee.swift */; };
+		68F19D3E2907B5340056819A /* IncomeGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D3D2907B5340056819A /* IncomeGeneral.swift */; };
+		68F19D402907B66B0056819A /* IncomeInvestment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D3F2907B66B0056819A /* IncomeInvestment.swift */; };
+		68F19D422907B74F0056819A /* IncomeGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D412907B74F0056819A /* IncomeGroup.swift */; };
+		68F19D452907B9690056819A /* TransferGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D442907B9690056819A /* TransferGroup.swift */; };
+		68F19D472907B9CA0056819A /* TransferGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D462907B9CA0056819A /* TransferGeneral.swift */; };
+		68F19D4B2908C2F70056819A /* AddDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D4A2908C2F70056819A /* AddDetailView.swift */; };
+		68F19D4D2908C39C0056819A /* AddDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D4C2908C39C0056819A /* AddDetailHeaderView.swift */; };
+		68F19D502908C3CB0056819A /* AddDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D4F2908C3CB0056819A /* AddDetailViewModel.swift */; };
+		68F19D532908C6670056819A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68F19D552908C6670056819A /* Localizable.strings */; };
+		68F19D582908C9640056819A /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D572908C9640056819A /* CalculatorView.swift */; };
+		68F19D5A290907E40056819A /* BillingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D59290907E40056819A /* BillingType.swift */; };
 		B14F5FF5B972ABC3BF7876E0 /* Pods_MoneyManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4D613585326609F83DA2DE /* Pods_MoneyManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,9 +78,45 @@
 		22FB19EF283E10C8005DB4F9 /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		22FB19F2283E13AD005DB4F9 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		22FB19F4283F0578005DB4F9 /* DetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellView.swift; sourceTree = "<group>"; };
-		22FB19F6283F10E3005DB4F9 /* DetailTotalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTotalView.swift; sourceTree = "<group>"; };
 		22FB19F8283F7345005DB4F9 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		22FB19FD2846F51B005DB4F9 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		68F19D05290661D00056819A /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		68F19D08290665C50056819A /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
+		68F19D0A290666270056819A /* ExpensesGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesGroup.swift; sourceTree = "<group>"; };
+		68F19D0C29067DBB0056819A /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		68F19D0E29067F9D0056819A /* ExpensesGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesGroupModel.swift; sourceTree = "<group>"; };
+		68F19D102906808B0056819A /* ExpensesTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesTypeModel.swift; sourceTree = "<group>"; };
+		68F19D12290680C50056819A /* IncomeGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeGroupModel.swift; sourceTree = "<group>"; };
+		68F19D14290680ED0056819A /* IncomeTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeTypeModel.swift; sourceTree = "<group>"; };
+		68F19D16290681470056819A /* TransferGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferGroupModel.swift; sourceTree = "<group>"; };
+		68F19D18290681760056819A /* TransferTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferTypeModel.swift; sourceTree = "<group>"; };
+		68F19D1B29068C130056819A /* PresetUserDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetUserDB.swift; sourceTree = "<group>"; };
+		68F19D1E290775B10056819A /* ExpensesFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesFood.swift; sourceTree = "<group>"; };
+		68F19D20290776B70056819A /* ExpensesClothing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesClothing.swift; sourceTree = "<group>"; };
+		68F19D2329077CAE0056819A /* ExpensesLife.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesLife.swift; sourceTree = "<group>"; };
+		68F19D2529077E350056819A /* ExpensesTraffic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesTraffic.swift; sourceTree = "<group>"; };
+		68F19D2729077FAC0056819A /* ExpensesEducate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesEducate.swift; sourceTree = "<group>"; };
+		68F19D2929078C170056819A /* ExpensesEntertainment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesEntertainment.swift; sourceTree = "<group>"; };
+		68F19D2B29078E210056819A /* ExpensesElectronicProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesElectronicProduct.swift; sourceTree = "<group>"; };
+		68F19D2D29078FEF0056819A /* ExpensesBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesBook.swift; sourceTree = "<group>"; };
+		68F19D2F2907916A0056819A /* ExpensesMotor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesMotor.swift; sourceTree = "<group>"; };
+		68F19D31290793D50056819A /* ExpensesMedical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesMedical.swift; sourceTree = "<group>"; };
+		68F19D33290795400056819A /* ExpensesPersonalCommunication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesPersonalCommunication.swift; sourceTree = "<group>"; };
+		68F19D35290796E80056819A /* ExpensesInvest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesInvest.swift; sourceTree = "<group>"; };
+		68F19D372907ACF10056819A /* ExpensesOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesOther.swift; sourceTree = "<group>"; };
+		68F19D392907AD900056819A /* ExpensesFee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesFee.swift; sourceTree = "<group>"; };
+		68F19D3D2907B5340056819A /* IncomeGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeGeneral.swift; sourceTree = "<group>"; };
+		68F19D3F2907B66B0056819A /* IncomeInvestment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeInvestment.swift; sourceTree = "<group>"; };
+		68F19D412907B74F0056819A /* IncomeGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeGroup.swift; sourceTree = "<group>"; };
+		68F19D442907B9690056819A /* TransferGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferGroup.swift; sourceTree = "<group>"; };
+		68F19D462907B9CA0056819A /* TransferGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferGeneral.swift; sourceTree = "<group>"; };
+		68F19D4A2908C2F70056819A /* AddDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailView.swift; sourceTree = "<group>"; };
+		68F19D4C2908C39C0056819A /* AddDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailHeaderView.swift; sourceTree = "<group>"; };
+		68F19D4F2908C3CB0056819A /* AddDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailViewModel.swift; sourceTree = "<group>"; };
+		68F19D542908C6670056819A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		68F19D562908C6900056819A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		68F19D572908C9640056819A /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
+		68F19D59290907E40056819A /* BillingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingType.swift; sourceTree = "<group>"; };
 		8C7B1E61025EDD6CB4BCF84F /* Pods-MoneyManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyManager.release.xcconfig"; path = "Target Support Files/Pods-MoneyManager/Pods-MoneyManager.release.xcconfig"; sourceTree = "<group>"; };
 		919F3AB81F390DB800363282 /* Pods-MoneyManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyManager.debug.xcconfig"; path = "Target Support Files/Pods-MoneyManager/Pods-MoneyManager.debug.xcconfig"; sourceTree = "<group>"; };
 		AD4D613585326609F83DA2DE /* Pods_MoneyManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,9 +157,11 @@
 			children = (
 				22A2C6132836179D0066AF0D /* MoneyManagerApp.swift */,
 				22A2C62128361CB30066AF0D /* User */,
-				22FB19EC283DFE84005DB4F9 /* DetailView */,
+				68F19D492908C24C0056819A /* Detail */,
 				22A2C62D28362F130066AF0D /* DB */,
 				22A2C62A28362E240066AF0D /* Object */,
+				68F19D04290661850056819A /* Extension */,
+				68F19D552908C6670056819A /* Localizable.strings */,
 				22A2C6172836179F0066AF0D /* Assets.xcassets */,
 				22A2C6192836179F0066AF0D /* Preview Content */,
 			);
@@ -126,6 +199,7 @@
 		22A2C62D28362F130066AF0D /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				68F19D1A29068BBF0056819A /* Preset */,
 				22A2C630283630B60066AF0D /* Model */,
 				22A2C62E28362FB10066AF0D /* RealmManager.swift */,
 			);
@@ -137,6 +211,13 @@
 			children = (
 				22A2C624283624F30066AF0D /* UserModel.swift */,
 				22FB19F8283F7345005DB4F9 /* DetailModel.swift */,
+				68F19D0C29067DBB0056819A /* AccountModel.swift */,
+				68F19D0E29067F9D0056819A /* ExpensesGroupModel.swift */,
+				68F19D102906808B0056819A /* ExpensesTypeModel.swift */,
+				68F19D12290680C50056819A /* IncomeGroupModel.swift */,
+				68F19D14290680ED0056819A /* IncomeTypeModel.swift */,
+				68F19D16290681470056819A /* TransferGroupModel.swift */,
+				68F19D18290681760056819A /* TransferTypeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,7 +237,6 @@
 				22FB19ED283DFEB0005DB4F9 /* DetailView.swift */,
 				22FB19EF283E10C8005DB4F9 /* DetailHeaderView.swift */,
 				22FB19F4283F0578005DB4F9 /* DetailCellView.swift */,
-				22FB19F6283F10E3005DB4F9 /* DetailTotalView.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -175,6 +255,104 @@
 				AD4D613585326609F83DA2DE /* Pods_MoneyManager.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		68F19D04290661850056819A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				68F19D05290661D00056819A /* UserDefaultsExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		68F19D07290665AD0056819A /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				68F19D432907B94B0056819A /* Transfer */,
+				68F19D3B2907B4740056819A /* Income */,
+				68F19D22290777AC0056819A /* Expenses */,
+				68F19D59290907E40056819A /* BillingType.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		68F19D1A29068BBF0056819A /* Preset */ = {
+			isa = PBXGroup;
+			children = (
+				68F19D07290665AD0056819A /* Enum */,
+				68F19D08290665C50056819A /* AccountType.swift */,
+				68F19D1B29068C130056819A /* PresetUserDB.swift */,
+			);
+			path = Preset;
+			sourceTree = "<group>";
+		};
+		68F19D22290777AC0056819A /* Expenses */ = {
+			isa = PBXGroup;
+			children = (
+				68F19D0A290666270056819A /* ExpensesGroup.swift */,
+				68F19D1E290775B10056819A /* ExpensesFood.swift */,
+				68F19D20290776B70056819A /* ExpensesClothing.swift */,
+				68F19D2329077CAE0056819A /* ExpensesLife.swift */,
+				68F19D2529077E350056819A /* ExpensesTraffic.swift */,
+				68F19D2729077FAC0056819A /* ExpensesEducate.swift */,
+				68F19D2929078C170056819A /* ExpensesEntertainment.swift */,
+				68F19D2B29078E210056819A /* ExpensesElectronicProduct.swift */,
+				68F19D2D29078FEF0056819A /* ExpensesBook.swift */,
+				68F19D2F2907916A0056819A /* ExpensesMotor.swift */,
+				68F19D31290793D50056819A /* ExpensesMedical.swift */,
+				68F19D33290795400056819A /* ExpensesPersonalCommunication.swift */,
+				68F19D35290796E80056819A /* ExpensesInvest.swift */,
+				68F19D372907ACF10056819A /* ExpensesOther.swift */,
+				68F19D392907AD900056819A /* ExpensesFee.swift */,
+			);
+			path = Expenses;
+			sourceTree = "<group>";
+		};
+		68F19D3B2907B4740056819A /* Income */ = {
+			isa = PBXGroup;
+			children = (
+				68F19D412907B74F0056819A /* IncomeGroup.swift */,
+				68F19D3D2907B5340056819A /* IncomeGeneral.swift */,
+				68F19D3F2907B66B0056819A /* IncomeInvestment.swift */,
+			);
+			path = Income;
+			sourceTree = "<group>";
+		};
+		68F19D432907B94B0056819A /* Transfer */ = {
+			isa = PBXGroup;
+			children = (
+				68F19D442907B9690056819A /* TransferGroup.swift */,
+				68F19D462907B9CA0056819A /* TransferGeneral.swift */,
+			);
+			path = Transfer;
+			sourceTree = "<group>";
+		};
+		68F19D482908C22E0056819A /* AddDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				68F19D4E2908C3B80056819A /* ViewModel */,
+				68F19D4A2908C2F70056819A /* AddDetailView.swift */,
+				68F19D4C2908C39C0056819A /* AddDetailHeaderView.swift */,
+				68F19D572908C9640056819A /* CalculatorView.swift */,
+			);
+			path = AddDetailView;
+			sourceTree = "<group>";
+		};
+		68F19D492908C24C0056819A /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				22FB19EC283DFE84005DB4F9 /* DetailView */,
+				68F19D482908C22E0056819A /* AddDetailView */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		68F19D4E2908C3B80056819A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				68F19D4F2908C3CB0056819A /* AddDetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		8EBF6CBE719E5EE3794A8083 /* Pods */ = {
@@ -230,6 +408,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 22A2C6072836179D0066AF0D;
 			productRefGroup = 22A2C6112836179D0066AF0D /* Products */;
@@ -247,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22A2C61B2836179F0066AF0D /* Preview Assets.xcassets in Resources */,
+				68F19D532908C6670056819A /* Localizable.strings in Resources */,
 				22A2C6182836179F0066AF0D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,31 +480,78 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68F19D19290681760056819A /* TransferTypeModel.swift in Sources */,
+				68F19D0D29067DBB0056819A /* AccountModel.swift in Sources */,
+				68F19D4B2908C2F70056819A /* AddDetailView.swift in Sources */,
 				22A2C6162836179D0066AF0D /* UserListView.swift in Sources */,
+				68F19D582908C9640056819A /* CalculatorView.swift in Sources */,
+				68F19D0F29067F9D0056819A /* ExpensesGroupModel.swift in Sources */,
+				68F19D382907ACF10056819A /* ExpensesOther.swift in Sources */,
 				22FB19EE283DFEB0005DB4F9 /* DetailView.swift in Sources */,
 				22FB19F9283F7345005DB4F9 /* DetailModel.swift in Sources */,
+				68F19D3A2907AD900056819A /* ExpensesFee.swift in Sources */,
+				68F19D502908C3CB0056819A /* AddDetailViewModel.swift in Sources */,
+				68F19D32290793D50056819A /* ExpensesMedical.swift in Sources */,
+				68F19D4D2908C39C0056819A /* AddDetailHeaderView.swift in Sources */,
 				22A2C62328361CD00066AF0D /* UserCellView.swift in Sources */,
 				22A2C62F28362FB10066AF0D /* RealmManager.swift in Sources */,
 				22FB19F0283E10C8005DB4F9 /* DetailHeaderView.swift in Sources */,
+				68F19D2E29078FEF0056819A /* ExpensesBook.swift in Sources */,
 				22A2C625283624F30066AF0D /* UserModel.swift in Sources */,
+				68F19D422907B74F0056819A /* IncomeGroup.swift in Sources */,
+				68F19D2629077E350056819A /* ExpensesTraffic.swift in Sources */,
+				68F19D5A290907E40056819A /* BillingType.swift in Sources */,
+				68F19D452907B9690056819A /* TransferGroup.swift in Sources */,
+				68F19D36290796E80056819A /* ExpensesInvest.swift in Sources */,
+				68F19D112906808B0056819A /* ExpensesTypeModel.swift in Sources */,
 				22A2C627283625560066AF0D /* UserViewModel.swift in Sources */,
-				22FB19F7283F10E3005DB4F9 /* DetailTotalView.swift in Sources */,
+				68F19D34290795400056819A /* ExpensesPersonalCommunication.swift in Sources */,
+				68F19D0B290666270056819A /* ExpensesGroup.swift in Sources */,
+				68F19D2C29078E210056819A /* ExpensesElectronicProduct.swift in Sources */,
+				68F19D1C29068C130056819A /* PresetUserDB.swift in Sources */,
+				68F19D2829077FAC0056819A /* ExpensesEducate.swift in Sources */,
 				22A2C62928362D7E0066AF0D /* AddButtonView.swift in Sources */,
+				68F19D17290681470056819A /* TransferGroupModel.swift in Sources */,
+				68F19D06290661D00056819A /* UserDefaultsExtension.swift in Sources */,
+				68F19D402907B66B0056819A /* IncomeInvestment.swift in Sources */,
+				68F19D15290680ED0056819A /* IncomeTypeModel.swift in Sources */,
+				68F19D2429077CAE0056819A /* ExpensesLife.swift in Sources */,
 				22A2C6142836179D0066AF0D /* MoneyManagerApp.swift in Sources */,
+				68F19D21290776B70056819A /* ExpensesClothing.swift in Sources */,
 				22FB19F5283F0578005DB4F9 /* DetailCellView.swift in Sources */,
+				68F19D09290665C50056819A /* AccountType.swift in Sources */,
+				68F19D13290680C50056819A /* IncomeGroupModel.swift in Sources */,
 				22FB19F3283E13AD005DB4F9 /* DetailViewModel.swift in Sources */,
+				68F19D3E2907B5340056819A /* IncomeGeneral.swift in Sources */,
+				68F19D302907916A0056819A /* ExpensesMotor.swift in Sources */,
 				22FB19FE2846F51B005DB4F9 /* UserInfo.swift in Sources */,
+				68F19D1F290775B10056819A /* ExpensesFood.swift in Sources */,
 				22A2C633283631000066AF0D /* AddUserView.swift in Sources */,
+				68F19D472907B9CA0056819A /* TransferGeneral.swift in Sources */,
+				68F19D2A29078C170056819A /* ExpensesEntertainment.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		68F19D552908C6670056819A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				68F19D542908C6670056819A /* en */,
+				68F19D562908C6900056819A /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		22A2C61C2836179F0066AF0D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -385,6 +612,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -452,7 +680,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -483,7 +711,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

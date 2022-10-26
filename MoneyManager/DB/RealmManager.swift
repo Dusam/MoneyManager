@@ -68,6 +68,8 @@ extension RealmManager {
             realm.beginWrite()
             realm.add(user)
             
+//            self.setUpPresetOptions(realm: realm, user.id)
+            
             try! realm.commitWrite()
         }
     }

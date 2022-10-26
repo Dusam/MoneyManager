@@ -7,8 +7,6 @@
 
 import SwiftUI
 import RealmSwift
-import Introspect
-
 struct UserListView: View {
     
     @ObservedObject private var userVM: UserViewModel = UserViewModel()
@@ -41,10 +39,7 @@ struct UserListView: View {
                             
                         }
                 }
-                .introspectTableView { tableView in
-                    tableView.separatorStyle = .none
-                    tableView.backgroundColor = .white
-                }
+                .scrollContentBackground(.hidden)
                 .alert(isPresented: $isShowAlert) {
                     Alert(title: Text("刪除"),
                           message: Text("確定要刪除 \(deleteUser.name) ?"),
