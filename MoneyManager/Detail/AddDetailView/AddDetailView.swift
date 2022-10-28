@@ -34,13 +34,12 @@ struct AddDetailView: View {
                     .frame(width: 100)
                 
                 Text(addDetailVM.valueString)
-                    .font(.system(size: 32))
+                    .font(.system(size: 36))
                     .foregroundColor(segmentationSelection.forgroundColor)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                     .overlay(
                         VStack {
-                            Divider()
-                                .offset(x: 0, y: 15)
+                            Divider().offset(x: 0, y: 15)
                         }
                     )
             }
@@ -62,7 +61,7 @@ struct AddDetailView: View {
             .animation(.easeOut(duration: 0.3), value: addDetailVM.isHiddenCalculator)
         }
         .toolbar {
-            ToolbarItem(placement: .navigation) {
+            ToolbarItem(placement: .principal) {
                 Picker("", selection: $segmentationSelection) {
                     ForEach(BillingType.allCases, id: \.self) { type in
                         Text(type.name)
@@ -70,8 +69,17 @@ struct AddDetailView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding()
-                
             }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                } label: {
+                    Text("    ")
+                        .font(.system(.body))
+                }
+
+            }
+
         }
         
         .environmentObject(addDetailVM)

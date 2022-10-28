@@ -59,6 +59,8 @@
 		68F19D532908C6670056819A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68F19D552908C6670056819A /* Localizable.strings */; };
 		68F19D582908C9640056819A /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D572908C9640056819A /* CalculatorView.swift */; };
 		68F19D5A290907E40056819A /* BillingType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D59290907E40056819A /* BillingType.swift */; };
+		68F19D5C290B60170056819A /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D5B290B60170056819A /* DoubleExtension.swift */; };
+		68F19D5E290BAB020056819A /* CalculatorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D5D290BAB020056819A /* CalculatorButtonView.swift */; };
 		B14F5FF5B972ABC3BF7876E0 /* Pods_MoneyManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD4D613585326609F83DA2DE /* Pods_MoneyManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +119,8 @@
 		68F19D562908C6900056819A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		68F19D572908C9640056819A /* CalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
 		68F19D59290907E40056819A /* BillingType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingType.swift; sourceTree = "<group>"; };
+		68F19D5B290B60170056819A /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		68F19D5D290BAB020056819A /* CalculatorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButtonView.swift; sourceTree = "<group>"; };
 		8C7B1E61025EDD6CB4BCF84F /* Pods-MoneyManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyManager.release.xcconfig"; path = "Target Support Files/Pods-MoneyManager/Pods-MoneyManager.release.xcconfig"; sourceTree = "<group>"; };
 		919F3AB81F390DB800363282 /* Pods-MoneyManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyManager.debug.xcconfig"; path = "Target Support Files/Pods-MoneyManager/Pods-MoneyManager.debug.xcconfig"; sourceTree = "<group>"; };
 		AD4D613585326609F83DA2DE /* Pods_MoneyManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -261,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				68F19D05290661D00056819A /* UserDefaultsExtension.swift */,
+				68F19D5B290B60170056819A /* DoubleExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -334,6 +339,7 @@
 				68F19D4A2908C2F70056819A /* AddDetailView.swift */,
 				68F19D4C2908C39C0056819A /* AddDetailHeaderView.swift */,
 				68F19D572908C9640056819A /* CalculatorView.swift */,
+				68F19D5D290BAB020056819A /* CalculatorButtonView.swift */,
 			);
 			path = AddDetailView;
 			sourceTree = "<group>";
@@ -484,6 +490,7 @@
 				68F19D0D29067DBB0056819A /* AccountModel.swift in Sources */,
 				68F19D4B2908C2F70056819A /* AddDetailView.swift in Sources */,
 				22A2C6162836179D0066AF0D /* UserListView.swift in Sources */,
+				68F19D5E290BAB020056819A /* CalculatorButtonView.swift in Sources */,
 				68F19D582908C9640056819A /* CalculatorView.swift in Sources */,
 				68F19D0F29067F9D0056819A /* ExpensesGroupModel.swift in Sources */,
 				68F19D382907ACF10056819A /* ExpensesOther.swift in Sources */,
@@ -510,6 +517,7 @@
 				68F19D2C29078E210056819A /* ExpensesElectronicProduct.swift in Sources */,
 				68F19D1C29068C130056819A /* PresetUserDB.swift in Sources */,
 				68F19D2829077FAC0056819A /* ExpensesEducate.swift in Sources */,
+				68F19D5C290B60170056819A /* DoubleExtension.swift in Sources */,
 				22A2C62928362D7E0066AF0D /* AddButtonView.swift in Sources */,
 				68F19D17290681470056819A /* TransferGroupModel.swift in Sources */,
 				68F19D06290661D00056819A /* UserDefaultsExtension.swift in Sources */,
