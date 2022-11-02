@@ -13,9 +13,9 @@ extension RealmManager {
     // MARK: 建立預設選項
     internal func setUpPresetOptions(realm: Realm, _ userId: ObjectId) {
         self.presetAccount(realm, userId)
-        self.presetExpensesGroup(realm, userId)
-        self.presetIncomeGroup(realm, userId)
-        self.presetTransferGroup(realm, userId)
+//        self.presetExpensesGroup(realm, userId)
+//        self.presetIncomeGroup(realm, userId)
+//        self.presetTransferGroup(realm, userId)
     }
     
     private func presetAccount(_ realm: Realm, _ userId: ObjectId) {
@@ -82,7 +82,6 @@ extension RealmManager {
         for food in foods {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = food.name
             
             realm.add(model)
@@ -95,7 +94,6 @@ extension RealmManager {
         for clothing in clothings {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = clothing.name
             
             realm.add(model)
@@ -108,7 +106,6 @@ extension RealmManager {
         for life in lifes {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = life.name
             
             realm.add(model)
@@ -121,7 +118,6 @@ extension RealmManager {
         for traffic in traffics {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = traffic.name
             
             realm.add(model)
@@ -134,7 +130,6 @@ extension RealmManager {
         for educate in educates {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = educate.name
             
             realm.add(model)
@@ -147,7 +142,6 @@ extension RealmManager {
         for entertainment in entertainments {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = entertainment.name
             
             realm.add(model)
@@ -160,7 +154,6 @@ extension RealmManager {
         for electronicProduct in electronicProducts {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = electronicProduct.name
             
             realm.add(model)
@@ -173,7 +166,6 @@ extension RealmManager {
         for book in books {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = book.name
             
             realm.add(model)
@@ -186,7 +178,6 @@ extension RealmManager {
         for motor in motors {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = motor.name
             
             realm.add(model)
@@ -199,7 +190,6 @@ extension RealmManager {
         for medical in medicals {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = medical.name
             
             realm.add(model)
@@ -212,7 +202,6 @@ extension RealmManager {
         for personalCommunication in personalCommunications {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = personalCommunication.name
             
             realm.add(model)
@@ -225,7 +214,6 @@ extension RealmManager {
         for invest in invests {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = invest.name
             
             realm.add(model)
@@ -238,7 +226,6 @@ extension RealmManager {
         for other in others {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = other.name
             
             realm.add(model)
@@ -251,7 +238,6 @@ extension RealmManager {
         for fee in fees {
             let model = ExpensesTypeModel()
             model.userId = userId
-            model.expensesGroup = groupId.stringValue
             model.name = fee.name
             
             realm.add(model)
@@ -288,7 +274,6 @@ extension RealmManager {
         for general in generals {
             let model = IncomeTypeModel()
             model.userId = userId
-            model.incomeGroup = groupId.stringValue
             model.name = general.name
             
             realm.add(model)
@@ -301,7 +286,6 @@ extension RealmManager {
         for investment in investments {
             let model = IncomeTypeModel()
             model.userId = userId
-            model.incomeGroup = groupId.stringValue
             model.name = investment.name
             
             realm.add(model)
@@ -335,7 +319,6 @@ extension RealmManager {
         for general in generals {
             let model = TransferTypeModel()
             model.userId = userId
-            model.transferGroup = groupId
             model.name = general.name
             
             realm.add(model)

@@ -31,7 +31,7 @@ struct CalculatorButtonView: View {
     
     private func buttonHeight(item: CalcButton) -> CGFloat {
         if item == .ok {
-            return ((UIScreen.main.bounds.width * 0.8) - (5 * 12)) / 2
+            return (((UIScreen.main.bounds.width * 0.8) - (4 * 12)) / 4) * 2.1
         }
         return ((UIScreen.main.bounds.width * 0.8) - (5 * 12)) / 4
     }

@@ -68,7 +68,7 @@ extension RealmManager {
             realm.beginWrite()
             realm.add(user)
             
-//            self.setUpPresetOptions(realm: realm, user.id)
+            self.setUpPresetOptions(realm: realm, user.id)
             
             try! realm.commitWrite()
         }
@@ -99,8 +99,9 @@ extension RealmManager {
 
 // MARK: Detail Method
 extension RealmManager {
-    func createDetail(_ detailModel: DetailModel) {
+    func addOrUpdateDetail(_ detailModel: DetailModel) {
         if let realm = realm {
+            realm.beginWrite()
             realm.add(detailModel, update: .modified)
             try! realm.commitWrite()
         }
@@ -122,5 +123,98 @@ extension RealmManager {
             realm.delete(delete)
             try! realm.commitWrite()
         }
+    }
+}
+
+// MARK: 使用者自訂的帳戶、群組及類型
+extension RealmManager {
+    func getAccount(_ id: String = "", userId: ObjectId) -> [AccountModel] {
+        if let realm = realm {
+            
+            if id.isEmpty {
+                return Array(realm.objects(AccountModel.self).filter("userId == %@", userId))
+            } else if let id = try? ObjectId(string: id) {
+                return Array(realm.objects(AccountModel.self).filter("id == %@ AND userId == %@", id, userId))
+            }
+        }
+        return []
+    }
+    
+    func getExpensesGroup(_ groupId: String = "") -> [ExpensesGroupModel] {
+        if let realm = realm {
+            
+            if groupId.isEmpty {
+                return Array(realm.objects(ExpensesGroupModel.self))
+            } else if let id = try? ObjectId(string: groupId) {
+                return Array(realm.objects(ExpensesGroupModel.self).filter("id == %@", id))
+            }
+            
+        }
+        return []
+    }
+    
+    func getExpensesType(_ typeId: String = "") -> [ExpensesTypeModel] {
+        if let realm = realm {
+            
+            if typeId.isEmpty {
+                return Array(realm.objects(ExpensesTypeModel.self))
+            } else if let id = try? ObjectId(string: typeId) {
+                return Array(realm.objects(ExpensesTypeModel.self).filter("id == %@", id))
+            }
+            
+        }
+        return []
+    }
+    
+    func getIncomeGroup(_ groupId: String = "") -> [IncomeGroupModel] {
+        if let realm = realm {
+            
+            if groupId.isEmpty {
+                return Array(realm.objects(IncomeGroupModel.self))
+            } else if let id = try? ObjectId(string: groupId) {
+                return Array(realm.objects(IncomeGroupModel.self).filter("id == %@", id))
+            }
+            
+        }
+        return []
+    }
+    
+    func getIncomeType(_ typeId: String = "") -> [IncomeTypeModel] {
+        if let realm = realm {
+            
+            if typeId.isEmpty {
+                return Array(realm.objects(IncomeTypeModel.self))
+            } else if let id = try? ObjectId(string: typeId) {
+                return Array(realm.objects(IncomeTypeModel.self).filter("id == %@", id))
+            }
+            
+        }
+        return []
+    }
+    
+    func getTransferGroup(_ groupId: String = "") -> [TransferGroupModel] {
+        if let realm = realm {
+            
+            if groupId.isEmpty {
+                return Array(realm.objects(TransferGroupModel.self))
+            } else if let id = try? ObjectId(string: groupId) {
+                return Array(realm.objects(TransferGroupModel.self).filter("id == %@", id))
+            }
+            
+        }
+        return []
+    }
+    
+    func getTransferType(_ typeId: String = "") -> [TransferTypeModel] {
+        if let realm = realm {
+            
+            if typeId.isEmpty {
+                return Array(realm.objects(TransferTypeModel.self))
+            } else if let id = try? ObjectId(string: typeId) {
+                return Array(realm.objects(TransferTypeModel.self).filter("id == %@", id))
+            }
+            
+        }
+        return []
     }
 }

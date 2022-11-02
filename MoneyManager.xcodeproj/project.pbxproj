@@ -23,6 +23,11 @@
 		22FB19F5283F0578005DB4F9 /* DetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19F4283F0578005DB4F9 /* DetailCellView.swift */; };
 		22FB19F9283F7345005DB4F9 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19F8283F7345005DB4F9 /* DetailModel.swift */; };
 		22FB19FE2846F51B005DB4F9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19FD2846F51B005DB4F9 /* UserInfo.swift */; };
+		68B2C8112911163300F9C37F /* ExpensesIncomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B2C8102911163300F9C37F /* ExpensesIncomeListView.swift */; };
+		68B2C817291239E300F9C37F /* TransferListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B2C816291239E300F9C37F /* TransferListView.swift */; };
+		68EE3148290FC49600C3702F /* AddDetailNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EE3147290FC49600C3702F /* AddDetailNumberView.swift */; };
+		68EE314B2910C82700C3702F /* CalcButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EE314A2910C82700C3702F /* CalcButton.swift */; };
+		68EE314D2910C83C00C3702F /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EE314C2910C83C00C3702F /* Operation.swift */; };
 		68F19D06290661D00056819A /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D05290661D00056819A /* UserDefaultsExtension.swift */; };
 		68F19D09290665C50056819A /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D08290665C50056819A /* AccountType.swift */; };
 		68F19D0B290666270056819A /* ExpensesGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F19D0A290666270056819A /* ExpensesGroup.swift */; };
@@ -82,6 +87,11 @@
 		22FB19F4283F0578005DB4F9 /* DetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellView.swift; sourceTree = "<group>"; };
 		22FB19F8283F7345005DB4F9 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		22FB19FD2846F51B005DB4F9 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		68B2C8102911163300F9C37F /* ExpensesIncomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesIncomeListView.swift; sourceTree = "<group>"; };
+		68B2C816291239E300F9C37F /* TransferListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListView.swift; sourceTree = "<group>"; };
+		68EE3147290FC49600C3702F /* AddDetailNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailNumberView.swift; sourceTree = "<group>"; };
+		68EE314A2910C82700C3702F /* CalcButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcButton.swift; sourceTree = "<group>"; };
+		68EE314C2910C83C00C3702F /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
 		68F19D05290661D00056819A /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		68F19D08290665C50056819A /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
 		68F19D0A290666270056819A /* ExpensesGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesGroup.swift; sourceTree = "<group>"; };
@@ -261,6 +271,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		68B2C80F2911161C00F9C37F /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				68B2C8102911163300F9C37F /* ExpensesIncomeListView.swift */,
+				68B2C816291239E300F9C37F /* TransferListView.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		68EE31492910C81900C3702F /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				68EE314A2910C82700C3702F /* CalcButton.swift */,
+				68EE314C2910C83C00C3702F /* Operation.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
 		68F19D04290661850056819A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,9 +363,12 @@
 		68F19D482908C22E0056819A /* AddDetailView */ = {
 			isa = PBXGroup;
 			children = (
+				68B2C80F2911161C00F9C37F /* ListView */,
+				68EE31492910C81900C3702F /* Enum */,
 				68F19D4E2908C3B80056819A /* ViewModel */,
 				68F19D4A2908C2F70056819A /* AddDetailView.swift */,
 				68F19D4C2908C39C0056819A /* AddDetailHeaderView.swift */,
+				68EE3147290FC49600C3702F /* AddDetailNumberView.swift */,
 				68F19D572908C9640056819A /* CalculatorView.swift */,
 				68F19D5D290BAB020056819A /* CalculatorButtonView.swift */,
 			);
@@ -486,10 +517,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68EE314B2910C82700C3702F /* CalcButton.swift in Sources */,
 				68F19D19290681760056819A /* TransferTypeModel.swift in Sources */,
 				68F19D0D29067DBB0056819A /* AccountModel.swift in Sources */,
 				68F19D4B2908C2F70056819A /* AddDetailView.swift in Sources */,
 				22A2C6162836179D0066AF0D /* UserListView.swift in Sources */,
+				68EE314D2910C83C00C3702F /* Operation.swift in Sources */,
 				68F19D5E290BAB020056819A /* CalculatorButtonView.swift in Sources */,
 				68F19D582908C9640056819A /* CalculatorView.swift in Sources */,
 				68F19D0F29067F9D0056819A /* ExpensesGroupModel.swift in Sources */,
@@ -513,6 +546,7 @@
 				68F19D112906808B0056819A /* ExpensesTypeModel.swift in Sources */,
 				22A2C627283625560066AF0D /* UserViewModel.swift in Sources */,
 				68F19D34290795400056819A /* ExpensesPersonalCommunication.swift in Sources */,
+				68B2C817291239E300F9C37F /* TransferListView.swift in Sources */,
 				68F19D0B290666270056819A /* ExpensesGroup.swift in Sources */,
 				68F19D2C29078E210056819A /* ExpensesElectronicProduct.swift in Sources */,
 				68F19D1C29068C130056819A /* PresetUserDB.swift in Sources */,
@@ -528,8 +562,10 @@
 				68F19D21290776B70056819A /* ExpensesClothing.swift in Sources */,
 				22FB19F5283F0578005DB4F9 /* DetailCellView.swift in Sources */,
 				68F19D09290665C50056819A /* AccountType.swift in Sources */,
+				68B2C8112911163300F9C37F /* ExpensesIncomeListView.swift in Sources */,
 				68F19D13290680C50056819A /* IncomeGroupModel.swift in Sources */,
 				22FB19F3283E13AD005DB4F9 /* DetailViewModel.swift in Sources */,
+				68EE3148290FC49600C3702F /* AddDetailNumberView.swift in Sources */,
 				68F19D3E2907B5340056819A /* IncomeGeneral.swift in Sources */,
 				68F19D302907916A0056819A /* ExpensesMotor.swift in Sources */,
 				22FB19FE2846F51B005DB4F9 /* UserInfo.swift in Sources */,
@@ -688,6 +724,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -719,6 +756,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

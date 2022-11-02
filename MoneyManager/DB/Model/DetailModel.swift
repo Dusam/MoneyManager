@@ -16,8 +16,8 @@ class DetailModel: Object, ObjectKeyIdentifiable {
     @Persisted var accountName: String
     @Persisted var toAccountType: ObjectId
     @Persisted var toAccountName: String
-    @Persisted var detailType: ObjectId
-    @Persisted var detailName: String
+    @Persisted var detailGroup: String = "0"
+    @Persisted var detailType: String = "0"
     @Persisted var amount: Int = 0
     @Persisted var memo: String = ""
     @Persisted var date: String = ""
