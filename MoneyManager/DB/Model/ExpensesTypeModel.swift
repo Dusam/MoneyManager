@@ -11,5 +11,6 @@ import RealmSwift
 class ExpensesTypeModel: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id = ObjectId.generate()
     @Persisted var userId: ObjectId
+    @Persisted var expensesGroup: String = ""
     @Persisted var name: String = ""
 }

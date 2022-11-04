@@ -11,5 +11,6 @@ import RealmSwift
 class TransferTypeModel: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id = ObjectId.generate()
     @Persisted var userId: ObjectId
+    @Persisted var transferGroup: String = ""
     @Persisted var name: String = ""
 }

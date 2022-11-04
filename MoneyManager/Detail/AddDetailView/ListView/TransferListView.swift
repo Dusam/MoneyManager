@@ -55,7 +55,7 @@ struct TransferListView: View {
             .padding(.bottom, 10)
             .listRowSeparator(.hidden)
             
-            NavigationLink(destination: Text("轉帳類型"))   {
+            NavigationLink(destination: ChooseTypeView().environmentObject(addDetailVM))   {
                 HStack {
                     Text("類別:")
                         .font(.system(size: 18))

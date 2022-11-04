@@ -185,79 +185,95 @@ struct CalculatorView: View {
         switch currentOperation {
         case .add:
             if addDetailVM.isEditingTransferFee {
-                let array = addDetailVM.transferFee.components(separatedBy: CalcButton.add.rawValue)
+                let array = addDetailVM.transferFee.split(separator: CalcButton.add.rawValue)
                 
                 if array.count == 2 {
                     let value1 = Double(array[0]) ?? 0.0
                     let value2 = Double(array[1]) ?? 0.0
                     addDetailVM.transferFee = (value1 + value2).clearZero
+                } else {
+                    addDetailVM.transferFee = removeOperation(addDetailVM.transferFee, .add)
                 }
                 
             } else {
-                let array = addDetailVM.valueString.components(separatedBy: CalcButton.add.rawValue)
+                let array = addDetailVM.valueString.split(separator: CalcButton.add.rawValue)
                 
                 if array.count == 2 {
                     let value1 = Double(array[0]) ?? 0.0
                     let value2 = Double(array[1]) ?? 0.0
                     addDetailVM.valueString = (value1 + value2).clearZero
+                } else {
+                    addDetailVM.valueString = removeOperation(addDetailVM.valueString, .add)
                 }
             }
             
             
         case .subtract:
             if addDetailVM.isEditingTransferFee {
-                let array = addDetailVM.transferFee.components(separatedBy: CalcButton.subtract.rawValue)
+                let array = addDetailVM.transferFee.split(separator: CalcButton.subtract.rawValue)
                 
                 if array.count == 2 {
                     let value1 = Double(array[0]) ?? 0.0
                     let value2 = Double(array[1]) ?? 0.0
                     addDetailVM.transferFee = (value1 - value2).clearZero
+                } else {
+                    addDetailVM.transferFee = removeOperation(addDetailVM.transferFee, .subtract)
                 }
             } else {
-                let array = addDetailVM.valueString.components(separatedBy: CalcButton.subtract.rawValue)
+                let array = addDetailVM.valueString.split(separator: CalcButton.subtract.rawValue)
                 
                 if array.count == 2 {
                     let value1 = Double(array[0]) ?? 0.0
                     let value2 = Double(array[1]) ?? 0.0
                     addDetailVM.valueString = (value1 - value2).clearZero
+                } else {
+                    addDetailVM.valueString = removeOperation(addDetailVM.valueString, .subtract)
                 }
             }
             
         case .multiply:
             if addDetailVM.isEditingTransferFee {
-                let array = addDetailVM.transferFee.components(separatedBy: CalcButton.multiply.rawValue)
+                let array = addDetailVM.transferFee.split(separator: CalcButton.multiply.rawValue)
                 
                 if array.count == 2 {
                     let value1 = Double(array[0]) ?? 0.0
                     let value2 = Double(array[1]) ?? 0.0
                     addDetailVM.transferFee = (value1 * value2).clearZero
+                } else {
+                    addDetailVM.transferFee = removeOperation(addDetailVM.transferFee, .multiply)
                 }
             } else {
-                let array = addDetailVM.valueString.components(separatedBy: CalcButton.multiply.rawValue)
+                let array = addDetailVM.valueString.split(separator: CalcButton.multiply.rawValue)
                 
                 if array.count == 2 {
                     let value1 = Double(array[0]) ?? 0.0
                     let value2 = Double(array[1]) ?? 0.0
                     addDetailVM.valueString = (value1 * value2).clearZero
+                } else {
+                    addDetailVM.valueString = removeOperation(addDetailVM.valueString, .multiply)
                 }
             }
             
         case .divide:
             if addDetailVM.isEditingTransferFee {
-                let array = addDetailVM.transferFee.components(separatedBy: CalcButton.divide.rawValue)
+                let array = addDetailVM.transferFee.split(separator: CalcButton.divide.rawValue)
                 
                 if array.count == 2 {
                     let value1 = Double(array[0]) ?? 0.0
                     let value2 = Double(array[1]) ?? 0.0
                     addDetailVM.transferFee = (value1 / value2).clearZero
+                } else {
+                    addDetailVM.transferFee = removeOperation(addDetailVM.transferFee, .divide)
                 }
             } else {
-                let array = addDetailVM.valueString.components(separatedBy: CalcButton.divide.rawValue)
+                let array = addDetailVM.valueString.split(separator: CalcButton.divide.rawValue)
                 
                 if array.count == 2 {
                     let value1 = Double(array[0]) ?? 0.0
                     let value2 = Double(array[1]) ?? 0.0
                     addDetailVM.valueString = (value1 / value2).clearZero
+                } else {
+                    addDetailVM.valueString = removeOperation(addDetailVM.valueString, .divide)
                 }
             }
             
@@ -265,6 +281,10 @@ struct CalculatorView: View {
             break
         }
         
+    }
+    
+    private func removeOperation(_ value: String, _ calcuBtn: CalcButton) -> String {
+        return value.replacingOccurrences(of: calcuBtn.rawValue, with: "")
     }
     
 }

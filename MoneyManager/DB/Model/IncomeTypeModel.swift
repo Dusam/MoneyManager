@@ -11,5 +11,6 @@ import RealmSwift
 class IncomeTypeModel: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id = ObjectId.generate()
     @Persisted var userId: ObjectId
+    @Persisted var incomeGroup: String = ""
     @Persisted var name: String = ""
 }

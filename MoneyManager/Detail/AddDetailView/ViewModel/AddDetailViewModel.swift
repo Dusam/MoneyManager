@@ -24,7 +24,9 @@ class AddDetailViewModel: ObservableObject {
     @Published var currentDateString = Date().string(withFormat: "yyyy-MM-dd(EE)")
     @Published var billingTypeSelection: BillingType = .expenses {
         didSet {
-            detailTypeToString()
+            // TODO: 之後要更改為使用者最後一次選擇的選項
+            detailGroupId = "0"
+            detailTypeId = "0"
         }
     }
     

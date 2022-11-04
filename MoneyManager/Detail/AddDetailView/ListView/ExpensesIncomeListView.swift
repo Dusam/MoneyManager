@@ -12,7 +12,7 @@ struct ExpensesIncomeListView: View {
     
     var body: some View {
         List {
-            NavigationLink(destination: addDetailVM.billingTypeSelection == .expenses ? Text("支出") : Text("收入"))   {
+            NavigationLink(destination: ChooseTypeView().environmentObject(addDetailVM))   {
                 HStack {
                     Text("類別:")
                         .font(.system(size: 18))
