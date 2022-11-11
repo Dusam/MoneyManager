@@ -13,7 +13,7 @@ class AccountModel: Object, ObjectKeyIdentifiable {
     @Persisted var userId: ObjectId
     @Persisted var type: Int = 0
     @Persisted var name: String = ""
-    @Persisted var includTotal: Bool = false
+    @Persisted var includTotal: Bool = true
     @Persisted var initMoney: Int = 0
     @Persisted var money: Int = 0
 }

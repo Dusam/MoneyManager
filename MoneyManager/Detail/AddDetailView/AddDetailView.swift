@@ -53,6 +53,19 @@ struct AddDetailView: View {
             navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
         })
         .environmentObject(addDetailVM)
+        .onAppear {
+            switch addDetailVM.billingTypeSelection {
+            case .expenses:
+                addDetailVM.detailGroupId = UserInfo.share.expensesGroupId
+                addDetailVM.detailTypeId = UserInfo.share.expensesTypeId
+            case .income:
+                addDetailVM.detailGroupId = UserInfo.share.incomeGroupId
+                addDetailVM.detailTypeId = UserInfo.share.incomeTypeId
+            case .transfer:
+                addDetailVM.detailGroupId = UserInfo.share.transferGroupId
+                addDetailVM.detailTypeId = UserInfo.share.trnasferTypeId
+            }
+        }
     }
 }
 

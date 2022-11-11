@@ -25,8 +25,19 @@ class AddDetailViewModel: ObservableObject {
     @Published var billingTypeSelection: BillingType = .expenses {
         didSet {
             // TODO: 之後要更改為使用者最後一次選擇的選項
-            detailGroupId = "0"
-            detailTypeId = "0"
+//            detailGroupId = "0"
+//            detailTypeId = "0"
+            switch billingTypeSelection {
+            case .expenses:
+                detailGroupId = UserInfo.share.expensesGroupId
+                detailTypeId = UserInfo.share.expensesTypeId
+            case .income:
+                detailGroupId = UserInfo.share.incomeGroupId
+                detailTypeId = UserInfo.share.incomeTypeId
+            case .transfer:
+                detailGroupId = UserInfo.share.transferGroupId
+                detailTypeId = UserInfo.share.trnasferTypeId
+            }
         }
     }
     
@@ -46,6 +57,7 @@ class AddDetailViewModel: ObservableObject {
     @Published var detailTypeId: String = "0" {
         didSet {
             detailTypeToString()
+            storeSelectedType()
         }
     }
     
@@ -64,6 +76,20 @@ class AddDetailViewModel: ObservableObject {
     }
     @Published var memo: String = ""
     private var detailModel: DetailModel = DetailModel()
+    
+    private func storeSelectedType() {
+        switch billingTypeSelection {
+        case .expenses:
+            UserInfo.share.expensesGroupId = detailGroupId
+            UserInfo.share.expensesTypeId = detailTypeId
+        case .income:
+            UserInfo.share.incomeGroupId = detailGroupId
+            UserInfo.share.incomeTypeId = detailTypeId
+        case .transfer:
+            UserInfo.share.transferGroupId = detailGroupId
+            UserInfo.share.trnasferTypeId = detailTypeId
+        }
+    }
 }
 
 extension AddDetailViewModel {
@@ -195,7 +221,7 @@ extension AddDetailViewModel {
 // MARK: DB Method
 extension AddDetailViewModel {
     func createDetail(_ detailModel: DetailModel) {
-        RealmManager.share.addOrUpdateDetail(detailModel)
+        RealmManager.share.saveDetail(detailModel)
     }
     
 }

@@ -12,7 +12,7 @@ struct TransferListView: View {
     
     var body: some View {
         List {
-            NavigationLink(destination: Text("轉出帳戶"))   {
+            NavigationLink(destination: AccountListView())   {
                 HStack {
                     Text("從:")
                         .font(.system(size: 18))
@@ -25,7 +25,7 @@ struct TransferListView: View {
             .padding(.bottom, 10)
             .listRowSeparator(.hidden)
             
-            NavigationLink(destination: Text("轉入帳戶"))   {
+            NavigationLink(destination: AccountListView(mode: .transfer))   {
                 HStack {
                     Text("到:")
                         .font(.system(size: 18))

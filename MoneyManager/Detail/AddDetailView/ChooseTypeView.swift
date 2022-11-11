@@ -28,6 +28,7 @@ struct ChooseTypeView: View {
             getTypeList()
         }
         .environmentObject(addDetailVM)
+        .navigationTitle("選擇類型")
         .onAppear {
             switch addDetailVM.billingTypeSelection {
             case .expenses:

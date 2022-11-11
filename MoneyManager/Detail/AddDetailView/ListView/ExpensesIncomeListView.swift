@@ -25,7 +25,7 @@ struct ExpensesIncomeListView: View {
             .padding(.bottom, 10)
             .listRowSeparator(.hidden)
             
-            NavigationLink(destination: Text("帳戶"))   {
+            NavigationLink(destination: AccountListView().environmentObject(addDetailVM))   {
                 HStack {
                     Text("帳戶:")
                         .font(.system(size: 18))
@@ -38,7 +38,7 @@ struct ExpensesIncomeListView: View {
             .padding(.bottom, 10)
             .listRowSeparator(.hidden)
             
-            NavigationLink(destination: Text("備註"))   {
+            NavigationLink(destination: EmptyView())   {
                 HStack {
                     Text("備註:")
                         .font(.system(size: 18))

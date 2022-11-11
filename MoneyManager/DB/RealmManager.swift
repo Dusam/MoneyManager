@@ -99,7 +99,7 @@ extension RealmManager {
 
 // MARK: Detail Method
 extension RealmManager {
-    func addOrUpdateDetail(_ detailModel: DetailModel) {
+    func saveDetail(_ detailModel: DetailModel) {
         if let realm = realm {
             realm.beginWrite()
             realm.add(detailModel, update: .modified)
@@ -121,6 +121,17 @@ extension RealmManager {
             
             realm.beginWrite()
             realm.delete(delete)
+            try! realm.commitWrite()
+        }
+    }
+}
+
+// MARK: Account Method
+extension RealmManager {
+    func saveAccount(_ accountlModel: AccountModel) {
+        if let realm = realm {
+            realm.beginWrite()
+            realm.add(accountlModel, update: .modified)
             try! realm.commitWrite()
         }
     }

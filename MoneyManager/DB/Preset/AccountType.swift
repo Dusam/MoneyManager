@@ -6,15 +6,16 @@
 //
 
 import Foundation
+import UIKit
 
 enum AccountType: Int, CaseIterable {
-    case money = 0
+    case cash = 0
     case card
     case bank
     
     var typeInt: Int {
         switch self {
-        case .money:
+        case .cash:
             return 0
         case .card:
             return 1
@@ -25,12 +26,23 @@ enum AccountType: Int, CaseIterable {
     
     var typeName: String {
         switch self {
-        case .money:
+        case .cash:
             return "現金"
         case .card:
             return "信用卡"
         case .bank:
             return "銀行"
+        }
+    }
+    
+    var image: UIImage {
+        switch self {
+        case .cash:
+            return UIImage(systemName: "creditcard.fill")!
+        case .card:
+            return UIImage(systemName: "creditcard.fill")!
+        case .bank:
+            return UIImage(systemName: "creditcard.fill")!
         }
     }
 }
