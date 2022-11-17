@@ -14,7 +14,7 @@ struct DetailView: View {
     @ObservedObject var detailVM = DetailViewModel()
   
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             DetailHeaderView()
                 .padding(.top, 20)
             
@@ -27,8 +27,7 @@ struct DetailView: View {
                             AddDetailView()
                         }.opacity(0)
 
-                        
-                        Text("新增一筆")
+                        Text("新增一筆...")
                             .foregroundColor(.gray)
                     }
                 }

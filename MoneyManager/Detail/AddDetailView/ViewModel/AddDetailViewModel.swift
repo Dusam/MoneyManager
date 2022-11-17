@@ -7,12 +7,19 @@
 
 import Foundation
 import SwiftUI
+import RealmSwift
 
 class AddDetailViewModel: ObservableObject {
     
     init() {
         detailTypeToString()
         getAccountName()
+        
+        detailGroupId = UserInfo.share.expensesGroupId
+        detailTypeId = UserInfo.share.expensesTypeId
+        
+        accountId = UserInfo.share.accountId
+        transferToAccountId = UserInfo.share.transferToAccountId
     }
     
     private var currentDate = Date() {
@@ -24,9 +31,6 @@ class AddDetailViewModel: ObservableObject {
     @Published var currentDateString = Date().string(withFormat: "yyyy-MM-dd(EE)")
     @Published var billingTypeSelection: BillingType = .expenses {
         didSet {
-            // TODO: 之後要更改為使用者最後一次選擇的選項
-//            detailGroupId = "0"
-//            detailTypeId = "0"
             switch billingTypeSelection {
             case .expenses:
                 detailGroupId = UserInfo.share.expensesGroupId
@@ -75,6 +79,8 @@ class AddDetailViewModel: ObservableObject {
         }
     }
     @Published var memo: String = ""
+    @Published var commonMemos: [MemoModel] = []
+    
     private var detailModel: DetailModel = DetailModel()
     
     private func storeSelectedType() {
@@ -220,8 +226,68 @@ extension AddDetailViewModel {
 
 // MARK: DB Method
 extension AddDetailViewModel {
-    func createDetail(_ detailModel: DetailModel) {
-        RealmManager.share.saveDetail(detailModel)
+    func createDetail() {
+        let date = Date().string(withFormat: "yyyy-MM-dd")
+        
+        // 金額大於0才儲存
+        if let amount = valueString.int, amount > 0 {
+            self.detailModel = DetailModel()
+            self.detailModel.userId = UserInfo.share.selectedUserId
+            self.detailModel.billingType = self.billingTypeSelection.rawValue
+            self.detailModel.accountType = try! ObjectId(string: accountId)
+            self.detailModel.accountName = accountName
+            self.detailModel.detailGroup = detailGroupId
+            self.detailModel.detailType = detailTypeId
+            self.detailModel.amount = amount
+            self.detailModel.memo = memo
+            self.detailModel.date = date
+            self.detailModel.modifyDateTime = date
+            
+            if self.billingTypeSelection == .transfer {
+                self.detailModel.toAccountType = try! ObjectId(string: transferToAccountId)
+                self.detailModel.toAccountName = transferToAccountName
+            }
+        }
+        
+        RealmManager.share.saveDetail(self.detailModel)
+        
+        // 手續費金額大於0才儲存
+        if let transferFee = transferFee.int, transferFee > 0 {
+            // 儲存手續費
+            let transferFeeModel = DetailModel()
+            transferFeeModel.userId = UserInfo.share.selectedUserId
+            transferFeeModel.billingType = self.billingTypeSelection.rawValue
+            transferFeeModel.accountType = try! ObjectId(string: accountId)
+            transferFeeModel.accountName = accountName
+            transferFeeModel.detailGroup = ExpensesGroup.fee.rawValue.string
+            transferFeeModel.detailType = ExpensesFee.transfer.name
+            transferFeeModel.amount = transferFee
+            transferFeeModel.memo = "轉帳手續費"
+            transferFeeModel.date = date
+            transferFeeModel.modifyDateTime = date
+        }
+        
+        // 新增 Memo
+        if !memo.isEmpty {
+            getCommonMemos()
+            if commonMemos.count > 0, let model = commonMemos.first {
+                // 更新次數
+                model.count += 1
+                RealmManager.share.saveCommonMemo(memoModel: model)
+            } else {
+                let model = MemoModel()
+                model.userId = UserInfo.share.selectedUserId
+                model.detailGroup = detailGroupId
+                model.detailType = detailTypeId
+                model.memo = memo
+                model.count = 1
+                RealmManager.share.saveCommonMemo(memoModel: model)
+            }
+           
+        }
     }
     
+    func getCommonMemos() {
+        commonMemos = RealmManager.share.getCommonMemos(UserInfo.share.selectedUserId, groupId: detailGroupId, typeId: detailTypeId, memo: memo)
+    }
 }

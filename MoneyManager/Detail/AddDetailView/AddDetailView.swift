@@ -11,6 +11,7 @@ import Introspect
 struct AddDetailView: View {
     
     @ObservedObject var addDetailVM = AddDetailViewModel()
+    @Environment(\.dismiss) var dismiss
         
     var body: some View {
         
@@ -19,18 +20,31 @@ struct AddDetailView: View {
             AddDetailHeaderView()
                 .padding([.top, .bottom], 10)
             
-            ZStack {
-                switch addDetailVM.billingTypeSelection {
-                case .expenses, .income:
-                    ExpensesIncomeListView()
-                case .transfer:
-                    TransferListView()
+            switch addDetailVM.billingTypeSelection {
+            case .expenses, .income:
+                ExpensesIncomeListView()
+            case .transfer:
+                TransferListView()
+            }
+            
+            ZStack(alignment: .bottom) {
+                Button {
+                    addDetailVM.createDetail()
+                    dismiss()
+                } label: {
+                    VStack {
+                        Image(systemName: "checkmark.circle")
+                        Text("儲存")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(.white)
                 }
-                                
+                
                 CalculatorView()
                     .offset(y: addDetailVM.isHiddenCalculator ? 500 : 0)
                     .animation(.easeOut(duration: 0.3), value: addDetailVM.isHiddenCalculator)
             }
+            
         }
         .toolbar {
             ToolbarItem(placement: .principal) {

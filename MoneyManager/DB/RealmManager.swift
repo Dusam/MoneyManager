@@ -13,7 +13,7 @@ import RealmSwift
 class RealmManager {
     static let share = RealmManager()
     
-    private(set) var realm: Realm?
+    private(set) var realm: Realm!
         
     private init() {
         openRealm()
@@ -61,7 +61,7 @@ class RealmManager {
 // MARK: User Method
 extension RealmManager {
     func createUser(_ userName: String) {
-        if let realm = realm {
+//        if let realm = realm {
             let user = UserModel()
             user.name = userName
             
@@ -71,11 +71,11 @@ extension RealmManager {
             self.setUpPresetOptions(realm: realm, user.id)
             
             try! realm.commitWrite()
-        }
+//        }
     }
     
     func readUsers(_ searchText: String = "") -> [UserModel] {
-        if let realm = realm {
+//        if let realm = realm {
             var results: Results<UserModel>
             
             if searchText.isEmpty {
@@ -84,75 +84,87 @@ extension RealmManager {
                 results = realm.objects(UserModel.self).filter("name CONTAINS '\(searchText)'")
             }
             return Array(results)
-        }
-        return []
+//        }
+//        return []
     }
     
     func deleteUser(_ deleteUser: UserModel) {
-        if let realm = realm {
+//        if let realm = realm {
             realm.beginWrite()
             realm.delete(deleteUser)
             try! realm.commitWrite()
-        }
+//        }
     }
 }
 
 // MARK: Detail Method
 extension RealmManager {
     func saveDetail(_ detailModel: DetailModel) {
-        if let realm = realm {
+//        if let realm = realm {
             realm.beginWrite()
             realm.add(detailModel, update: .modified)
             try! realm.commitWrite()
-        }
+//        }
     }
     
     func readDetail(_ date: String, userID: ObjectId) -> [DetailModel] {
-        if let realm = realm {
+//        if let realm = realm {
             return Array(realm.objects(DetailModel.self).filter("date == %@ AND userId == %@", date, userID))
 //            return Array(realm.objects(DetailModel.self).filter("date == '\(date)'").filter("userId == %@", userID))
-        }
-        return []
+//        }
+//        return []
     }
     
     func deleteDetail(_ userId: ObjectId) {
-        if let realm = realm {
+//        if let realm = realm {
             let delete = realm.objects(DetailModel.self).filter("userId == %@", userId)
             
             realm.beginWrite()
             realm.delete(delete)
             try! realm.commitWrite()
-        }
+//        }
+    }
+    
+    func saveCommonMemo(memoModel: MemoModel) {
+        realm.beginWrite()
+        realm.add(memoModel, update: .modified)
+        try! realm.commitWrite()
+    }
+    
+    func getCommonMemos(_ userId: ObjectId, groupId: String, typeId: String, memo: String) -> [MemoModel] {
+        return Array(realm.objects(MemoModel.self)
+            .filter("userId == %@ AND detailGroup == %@ AND detailType == %@ AND memo == %@", userId, groupId, typeId, memo))
+            .sorted{ $0.count > $1.count}
     }
 }
 
 // MARK: Account Method
 extension RealmManager {
     func saveAccount(_ accountlModel: AccountModel) {
-        if let realm = realm {
+//        if let realm = realm {
             realm.beginWrite()
             realm.add(accountlModel, update: .modified)
             try! realm.commitWrite()
-        }
+//        }
     }
 }
 
 // MARK: 使用者自訂的帳戶、群組及類型
 extension RealmManager {
     func getAccount(_ id: String = "", userId: ObjectId) -> [AccountModel] {
-        if let realm = realm {
+//        if let realm = realm {
             
             if id.isEmpty {
                 return Array(realm.objects(AccountModel.self).filter("userId == %@", userId))
             } else if let id = try? ObjectId(string: id) {
                 return Array(realm.objects(AccountModel.self).filter("id == %@ AND userId == %@", id, userId))
             }
-        }
+//        }
         return []
     }
     
     func getExpensesGroup(_ groupId: String = "") -> [ExpensesGroupModel] {
-        if let realm = realm {
+//        if let realm = realm {
             
             if groupId.isEmpty {
                 return Array(realm.objects(ExpensesGroupModel.self))
@@ -160,12 +172,12 @@ extension RealmManager {
                 return Array(realm.objects(ExpensesGroupModel.self).filter("id == %@", id))
             }
             
-        }
+//        }
         return []
     }
     
     func getExpensesType(_ typeId: String = "") -> [ExpensesTypeModel] {
-        if let realm = realm {
+//        if let realm = realm {
             
             if typeId.isEmpty {
                 return Array(realm.objects(ExpensesTypeModel.self))
@@ -173,12 +185,12 @@ extension RealmManager {
                 return Array(realm.objects(ExpensesTypeModel.self).filter("id == %@", id))
             }
             
-        }
+//        }
         return []
     }
     
     func getIncomeGroup(_ groupId: String = "") -> [IncomeGroupModel] {
-        if let realm = realm {
+//        if let realm = realm {
             
             if groupId.isEmpty {
                 return Array(realm.objects(IncomeGroupModel.self))
@@ -186,12 +198,12 @@ extension RealmManager {
                 return Array(realm.objects(IncomeGroupModel.self).filter("id == %@", id))
             }
             
-        }
+//        }
         return []
     }
     
     func getIncomeType(_ typeId: String = "") -> [IncomeTypeModel] {
-        if let realm = realm {
+//        if let realm = realm {
             
             if typeId.isEmpty {
                 return Array(realm.objects(IncomeTypeModel.self))
@@ -199,12 +211,12 @@ extension RealmManager {
                 return Array(realm.objects(IncomeTypeModel.self).filter("id == %@", id))
             }
             
-        }
+//        }
         return []
     }
     
     func getTransferGroup(_ groupId: String = "") -> [TransferGroupModel] {
-        if let realm = realm {
+//        if let realm = realm {
             
             if groupId.isEmpty {
                 return Array(realm.objects(TransferGroupModel.self))
@@ -212,12 +224,12 @@ extension RealmManager {
                 return Array(realm.objects(TransferGroupModel.self).filter("id == %@", id))
             }
             
-        }
+//        }
         return []
     }
     
     func getTransferType(_ typeId: String = "") -> [TransferTypeModel] {
-        if let realm = realm {
+//        if let realm = realm {
             
             if typeId.isEmpty {
                 return Array(realm.objects(TransferTypeModel.self))
@@ -225,7 +237,7 @@ extension RealmManager {
                 return Array(realm.objects(TransferTypeModel.self).filter("id == %@", id))
             }
             
-        }
+//        }
         return []
     }
 }

@@ -8,16 +8,23 @@
 import SwiftUI
 
 struct DetailCellView: View {
+    @EnvironmentObject var detailVM: DetailViewModel
     
-    var detail: DetailModel!    
+    private var billingType: BillingType = .expenses
+    private var detail: DetailModel!
+    
+    init(detail: DetailModel) {
+        self.detail = detail
+        billingType = BillingType(rawValue: detail.billingType) ?? .expenses
+    }
     
     var body: some View {
         HStack{
             VStack(alignment: .leading) {
-                Text("轉帳 - 一般轉帳")
+                Text(detailVM.detailTypeToString(detailModel: detail))
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.black)
-                Text("雙蛋蛋餅")
+                Text(detail.memo)
                     .multilineTextAlignment(.leading)
                     .padding(.bottom, 5)
                     .foregroundColor(.gray)
@@ -27,8 +34,8 @@ struct DetailCellView: View {
             VStack(alignment: .trailing) {
                 Text("TW$ \(detail.amount)")
                     .multilineTextAlignment(.trailing)
-                    .foregroundColor(BillingType(rawValue: detail.billingType)?.forgroundColor)
-                Text("現金")
+                    .foregroundColor(billingType.forgroundColor)
+                Text(billingType == .transfer ? "\(detail.accountName) -> \(detail.toAccountName)" : detail.accountName)
                     .multilineTextAlignment(.leading)
                     .padding(.bottom, 5)
                     .foregroundColor(.brown)
@@ -42,6 +49,6 @@ struct DetailCellView: View {
 
 struct DetailCellView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailCellView(detail: DetailModel())
+        DetailCellView(detail: DetailModel()).environmentObject(DetailViewModel())
     }
 }

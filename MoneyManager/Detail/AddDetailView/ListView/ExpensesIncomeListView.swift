@@ -51,7 +51,7 @@ struct ExpensesIncomeListView: View {
             .padding(.bottom, 10)
             .listRowSeparator(.hidden)
         }
-        .listStyle(PlainListStyle())
+        .listStyle(.plain)
         .scrollContentBackground(.hidden)
     }
 }

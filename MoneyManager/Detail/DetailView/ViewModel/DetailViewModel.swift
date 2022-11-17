@@ -55,7 +55,7 @@ extension DetailViewModel {
 // MARK: DB Method
 extension DetailViewModel {
     func getDetail() {
-        detailModels = RealmManager.share.readDetail(currentDateString, userID: UserInfo.share.selectedUserId)
+        detailModels = RealmManager.share.readDetail(currentDate.string(withFormat: "yyyy-MM-dd"), userID: UserInfo.share.selectedUserId)
         
         let addCell = DetailModel()
         addCell.billingType = 3

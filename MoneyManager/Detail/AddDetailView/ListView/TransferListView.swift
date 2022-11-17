@@ -12,7 +12,7 @@ struct TransferListView: View {
     
     var body: some View {
         List {
-            NavigationLink(destination: AccountListView())   {
+            NavigationLink(destination: AccountListView().environmentObject(addDetailVM))   {
                 HStack {
                     Text("從:")
                         .font(.system(size: 18))
@@ -25,7 +25,8 @@ struct TransferListView: View {
             .padding(.bottom, 10)
             .listRowSeparator(.hidden)
             
-            NavigationLink(destination: AccountListView(mode: .transfer))   {
+            NavigationLink(destination:
+                            AccountListView(mode: .transfer).environmentObject(addDetailVM))   {
                 HStack {
                     Text("到:")
                         .font(.system(size: 18))
@@ -81,7 +82,7 @@ struct TransferListView: View {
             .padding(.bottom, 10)
             .listRowSeparator(.hidden)
         }
-        .listStyle(PlainListStyle())
+        .listStyle(.plain)
         .scrollContentBackground(.hidden)
     }
 }

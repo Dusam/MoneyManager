@@ -73,4 +73,34 @@ class UserInfo {
             return ud.string(forKey: "trnasferTypeId") ?? "0"
         }
     }
+    
+    var accountId: String {
+        set {
+            ud.set(newValue, forKey: "accountId")
+        }
+        get {
+            if let id = ud.string(forKey: "accountId") {
+                return id
+            } else if let dbId = RealmManager.share.getAccount(userId: UserInfo.share.selectedUserId).first?.id.stringValue {
+                return dbId
+            } else {
+                return ""
+            }
+        }
+    }
+    
+    var transferToAccountId: String {
+        set {
+            ud.set(newValue, forKey: "transferToAccountId")
+        }
+        get {
+            if let id = ud.string(forKey: "transferToAccountId") {
+                return id
+            } else if let dbId = RealmManager.share.getAccount(userId: UserInfo.share.selectedUserId).first?.id.stringValue {
+                return dbId
+            } else {
+                return ""
+            }
+        }
+    }
 }
