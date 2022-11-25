@@ -19,7 +19,7 @@ struct AddDetailNumberView: View {
             
             Text(addDetailVM.valueString)
                 .font(.system(size: 36))
-                .foregroundColor(addDetailVM.billingTypeSelection.forgroundColor)
+                .foregroundColor(addDetailVM.billingType.forgroundColor)
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .padding(.trailing, 5)
                 .overlay(

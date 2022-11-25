@@ -14,7 +14,7 @@ class DetailModel: Object, ObjectKeyIdentifiable {
     @Persisted var billingType: Int = 0
     @Persisted var accountType: ObjectId
     @Persisted var accountName: String
-    @Persisted var toAccountType: ObjectId
+    @Persisted var toAccountType: ObjectId?
     @Persisted var toAccountName: String
     @Persisted var detailGroup: String = "0"
     @Persisted var detailType: String = "0"

@@ -23,6 +23,8 @@
 		22FB19F5283F0578005DB4F9 /* DetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19F4283F0578005DB4F9 /* DetailCellView.swift */; };
 		22FB19F9283F7345005DB4F9 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19F8283F7345005DB4F9 /* DetailModel.swift */; };
 		22FB19FE2846F51B005DB4F9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19FD2846F51B005DB4F9 /* UserInfo.swift */; };
+		68329ABE29309F9A002B7905 /* AccountCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68329ABD29309F9A002B7905 /* AccountCellView.swift */; };
+		68329AC02930A0F9002B7905 /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68329ABF2930A0F9002B7905 /* AccountHeaderView.swift */; };
 		684F22DD2924BD1300550E72 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F22DC2924BD1300550E72 /* MemoView.swift */; };
 		684F22DF2925B8D600550E72 /* MemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F22DE2925B8D600550E72 /* MemoModel.swift */; };
 		6857476929135A1F00026B7C /* ExpensesGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6857476829135A1F00026B7C /* ExpensesGroupView.swift */; };
@@ -51,11 +53,13 @@
 		6899CB6C2914DC780070681F /* TransferGeneralList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6899CB6B2914DC780070681F /* TransferGeneralList.swift */; };
 		68B2C8112911163300F9C37F /* ExpensesIncomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B2C8102911163300F9C37F /* ExpensesIncomeListView.swift */; };
 		68B2C817291239E300F9C37F /* TransferListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B2C816291239E300F9C37F /* TransferListView.swift */; };
-		68D7FD242919FD5900E3F4DF /* AccountListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7FD232919FD5900E3F4DF /* AccountListView.swift */; };
+		68D7FD242919FD5900E3F4DF /* ChooseAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7FD232919FD5900E3F4DF /* ChooseAccountView.swift */; };
 		68D7FD27291A251900E3F4DF /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7FD26291A251900E3F4DF /* AddAccountView.swift */; };
 		68D7FD29291B38DE00E3F4DF /* InitMoneyCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7FD28291B38DE00E3F4DF /* InitMoneyCalculatorView.swift */; };
 		68D7FD2B291B3B8B00E3F4DF /* InitMoneyCalculatorButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7FD2A291B3B8B00E3F4DF /* InitMoneyCalculatorButtonView.swift */; };
 		68D7FD2E291B45AA00E3F4DF /* AddAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D7FD2D291B45AA00E3F4DF /* AddAccountViewModel.swift */; };
+		68DD493F29308BA90064F3CB /* AccountDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DD493E29308BA90064F3CB /* AccountDetailView.swift */; };
+		68DD494229308C300064F3CB /* AccountDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DD494129308C300064F3CB /* AccountDetailViewModel.swift */; };
 		68EE3148290FC49600C3702F /* AddDetailNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EE3147290FC49600C3702F /* AddDetailNumberView.swift */; };
 		68EE314B2910C82700C3702F /* CalcButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EE314A2910C82700C3702F /* CalcButton.swift */; };
 		68EE314D2910C83C00C3702F /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EE314C2910C83C00C3702F /* Operation.swift */; };
@@ -118,6 +122,8 @@
 		22FB19F4283F0578005DB4F9 /* DetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellView.swift; sourceTree = "<group>"; };
 		22FB19F8283F7345005DB4F9 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		22FB19FD2846F51B005DB4F9 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		68329ABD29309F9A002B7905 /* AccountCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCellView.swift; sourceTree = "<group>"; };
+		68329ABF2930A0F9002B7905 /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
 		684F22DC2924BD1300550E72 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		684F22DE2925B8D600550E72 /* MemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoModel.swift; sourceTree = "<group>"; };
 		6857476829135A1F00026B7C /* ExpensesGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesGroupView.swift; sourceTree = "<group>"; };
@@ -146,11 +152,13 @@
 		6899CB6B2914DC780070681F /* TransferGeneralList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferGeneralList.swift; sourceTree = "<group>"; };
 		68B2C8102911163300F9C37F /* ExpensesIncomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesIncomeListView.swift; sourceTree = "<group>"; };
 		68B2C816291239E300F9C37F /* TransferListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferListView.swift; sourceTree = "<group>"; };
-		68D7FD232919FD5900E3F4DF /* AccountListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListView.swift; sourceTree = "<group>"; };
+		68D7FD232919FD5900E3F4DF /* ChooseAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAccountView.swift; sourceTree = "<group>"; };
 		68D7FD26291A251900E3F4DF /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
 		68D7FD28291B38DE00E3F4DF /* InitMoneyCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitMoneyCalculatorView.swift; sourceTree = "<group>"; };
 		68D7FD2A291B3B8B00E3F4DF /* InitMoneyCalculatorButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitMoneyCalculatorButtonView.swift; sourceTree = "<group>"; };
 		68D7FD2D291B45AA00E3F4DF /* AddAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModel.swift; sourceTree = "<group>"; };
+		68DD493E29308BA90064F3CB /* AccountDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailView.swift; sourceTree = "<group>"; };
+		68DD494129308C300064F3CB /* AccountDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewModel.swift; sourceTree = "<group>"; };
 		68EE3147290FC49600C3702F /* AddDetailNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailNumberView.swift; sourceTree = "<group>"; };
 		68EE314A2910C82700C3702F /* CalcButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcButton.swift; sourceTree = "<group>"; };
 		68EE314C2910C83C00C3702F /* Operation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
@@ -236,6 +244,7 @@
 				22A2C62128361CB30066AF0D /* User */,
 				68F19D492908C24C0056819A /* Detail */,
 				68D7FD25291A249A00E3F4DF /* Account */,
+				68DD493D29308B490064F3CB /* AccountDetail */,
 				22A2C62D28362F130066AF0D /* DB */,
 				22A2C62A28362E240066AF0D /* Object */,
 				68F19D04290661850056819A /* Extension */,
@@ -391,7 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				68574767291359CB00026B7C /* GroupView */,
-				68D7FD232919FD5900E3F4DF /* AccountListView.swift */,
+				68D7FD232919FD5900E3F4DF /* ChooseAccountView.swift */,
 				68B2C8102911163300F9C37F /* ExpensesIncomeListView.swift */,
 				68B2C816291239E300F9C37F /* TransferListView.swift */,
 			);
@@ -414,6 +423,25 @@
 			isa = PBXGroup;
 			children = (
 				68D7FD2D291B45AA00E3F4DF /* AddAccountViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		68DD493D29308B490064F3CB /* AccountDetail */ = {
+			isa = PBXGroup;
+			children = (
+				68DD494029308C150064F3CB /* ViewModel */,
+				68DD493E29308BA90064F3CB /* AccountDetailView.swift */,
+				68329ABD29309F9A002B7905 /* AccountCellView.swift */,
+				68329ABF2930A0F9002B7905 /* AccountHeaderView.swift */,
+			);
+			path = AccountDetail;
+			sourceTree = "<group>";
+		};
+		68DD494029308C150064F3CB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				68DD494129308C300064F3CB /* AccountDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -682,9 +710,11 @@
 				68574772291391F600026B7C /* ExpensesLifeList.swift in Sources */,
 				68EE314B2910C82700C3702F /* CalcButton.swift in Sources */,
 				68574782291393C200026B7C /* ExpensesPersonalCommunicationList.swift in Sources */,
-				68D7FD242919FD5900E3F4DF /* AccountListView.swift in Sources */,
+				68D7FD242919FD5900E3F4DF /* ChooseAccountView.swift in Sources */,
+				68DD493F29308BA90064F3CB /* AccountDetailView.swift in Sources */,
 				68574770291391A600026B7C /* ExpensesClothingList.swift in Sources */,
 				68F19D19290681760056819A /* TransferTypeModel.swift in Sources */,
+				68DD494229308C300064F3CB /* AccountDetailViewModel.swift in Sources */,
 				68F19D0D29067DBB0056819A /* AccountModel.swift in Sources */,
 				68F19D4B2908C2F70056819A /* AddDetailView.swift in Sources */,
 				6857477C2913935B00026B7C /* ExpensesBookList.swift in Sources */,
@@ -696,10 +726,12 @@
 				68F19D582908C9640056819A /* CalculatorView.swift in Sources */,
 				68F19D0F29067F9D0056819A /* ExpensesGroupModel.swift in Sources */,
 				68F19D382907ACF10056819A /* ExpensesOther.swift in Sources */,
+				68329ABE29309F9A002B7905 /* AccountCellView.swift in Sources */,
 				22FB19EE283DFEB0005DB4F9 /* DetailView.swift in Sources */,
 				22FB19F9283F7345005DB4F9 /* DetailModel.swift in Sources */,
 				68F19D3A2907AD900056819A /* ExpensesFee.swift in Sources */,
 				6857479C2914BB8C00026B7C /* IncomeInvestmentList.swift in Sources */,
+				68329AC02930A0F9002B7905 /* AccountHeaderView.swift in Sources */,
 				68F19D502908C3CB0056819A /* AddDetailViewModel.swift in Sources */,
 				68F19D32290793D50056819A /* ExpensesMedical.swift in Sources */,
 				68F19D4D2908C39C0056819A /* AddDetailHeaderView.swift in Sources */,

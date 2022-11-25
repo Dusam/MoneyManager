@@ -12,13 +12,13 @@ struct TransferListView: View {
     
     var body: some View {
         List {
-            NavigationLink(destination: AccountListView().environmentObject(addDetailVM))   {
+            NavigationLink(destination: ChooseAccountView().environmentObject(addDetailVM))   {
                 HStack {
                     Text("從:")
                         .font(.system(size: 18))
                     Text(addDetailVM.accountName)
                         .font(.system(size: 18))
-                        .foregroundColor(addDetailVM.billingTypeSelection.forgroundColor)
+                        .foregroundColor(addDetailVM.billingType.forgroundColor)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
@@ -26,13 +26,13 @@ struct TransferListView: View {
             .listRowSeparator(.hidden)
             
             NavigationLink(destination:
-                            AccountListView(mode: .transfer).environmentObject(addDetailVM))   {
+                            ChooseAccountView(mode: .transfer).environmentObject(addDetailVM))   {
                 HStack {
                     Text("到:")
                         .font(.system(size: 18))
                     Text(addDetailVM.transferToAccountName)
                         .font(.system(size: 18))
-                        .foregroundColor(addDetailVM.billingTypeSelection.forgroundColor)
+                        .foregroundColor(addDetailVM.billingType.forgroundColor)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
@@ -62,20 +62,20 @@ struct TransferListView: View {
                         .font(.system(size: 18))
                     Text(addDetailVM.typeName)
                         .font(.system(size: 18))
-                        .foregroundColor(addDetailVM.billingTypeSelection.forgroundColor)
+                        .foregroundColor(addDetailVM.billingType.forgroundColor)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
             .padding(.bottom, 10)
             .listRowSeparator(.hidden)
             
-            NavigationLink(destination: Text("備註"))   {
+            NavigationLink(destination: MemoView().environmentObject(addDetailVM))   {
                 HStack {
                     Text("備註:")
                         .font(.system(size: 18))
                     Text(addDetailVM.memo)
                         .font(.system(size: 18))
-                        .foregroundColor(addDetailVM.billingTypeSelection.forgroundColor)
+                        .foregroundColor(addDetailVM.billingType.forgroundColor)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }

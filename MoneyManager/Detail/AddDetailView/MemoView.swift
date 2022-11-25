@@ -9,16 +9,15 @@ import SwiftUI
 
 struct MemoView: View {
     @EnvironmentObject var addDetailVM: AddDetailViewModel
-    @FocusState private var isFocused: Bool
+    @Environment(\.dismiss) var dismiss
     
-    init() {
-        isFocused = true
-    }
+    @State private var memo: String = ""
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack(spacing: 15) {
             VStack {
-                TextEditor(text: $addDetailVM.memo)
+                TextEditor(text: $memo)
                     .focused($isFocused)
                     .padding(10)
                     .overlay(
@@ -30,14 +29,41 @@ struct MemoView: View {
            
             // 常用備註
             List(addDetailVM.commonMemos, id: \.self) { memoModel in
-                Text(memoModel.memo)
-                    .listRowSeparator(.hidden)
-                    .listRowBackground(Color(uiColor: R.color.cellBackgroundColor()!))
-                    
+                HStack {
+                    Text(memoModel.memo)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .contentShape(Rectangle())
+                .alignmentGuide(
+                    .listRowSeparatorTrailing
+                ) { dimensions in
+                    dimensions[.trailing]
+                }
+                .onTapGesture {
+                    self.memo = memoModel.memo
+                }
+                
             }
             .listStyle(.plain)
         }
         .padding(0)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    addDetailVM.memo = memo
+                    dismiss()
+                } label: {
+                    Text("完成")
+                }
+
+            }
+        }
+        .navigationTitle("備註")
+        .onAppear {
+            isFocused = true
+            self.memo = addDetailVM.memo
+            addDetailVM.getCommonMemos()
+        }
     }
 }
 

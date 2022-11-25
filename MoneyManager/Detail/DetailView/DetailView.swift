@@ -31,11 +31,31 @@ struct DetailView: View {
                             .foregroundColor(.gray)
                     }
                 }
-                
             }
             .scrollContentBackground(.hidden)
+            
+            NavigationLink(destination: AccountDetailView()) {
+                VStack {
+                    Image(systemName: "house.fill")
+                    Text("帳戶")
+                }
+                .frame(maxWidth: .infinity)
+                .background(.white)
+            }
+            
         }
-        .navigationTitle("明細")
+        .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .local)
+            .onEnded({ value in
+                if value.translation.width < 0 {
+                    detailVM.toNextDate()
+                }
+                
+                if value.translation.width > 0 {
+                    detailVM.toPreviousDate()
+                }
+            })
+        )
+        .navigationTitle("\(userModel.name)")
         .introspectNavigationController(customize: { navigation in
             navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
         })

@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.6.2)
+  - Alamofire (5.6.4)
   - Introspect (0.1.4)
   - IQKeyboardManagerSwift (6.5.10)
   - R.swift (6.1.0):
@@ -56,7 +56,7 @@ SPEC REPOS:
     - SwifterSwift
 
 SPEC CHECKSUMS:
-  Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
+  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   Introspect: b62c4dd2063072327c21d618ef2bedc3c87bc366
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c

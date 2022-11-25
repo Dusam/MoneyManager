@@ -22,21 +22,30 @@ struct DetailCellView: View {
         HStack{
             VStack(alignment: .leading) {
                 Text(detailVM.detailTypeToString(detailModel: detail))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.3)
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.black)
                 Text(detail.memo)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
                     .multilineTextAlignment(.leading)
                     .padding(.bottom, 5)
                     .foregroundColor(.gray)
             }
             
             Spacer()
+            
             VStack(alignment: .trailing) {
                 Text("TW$ \(detail.amount)")
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.3)
                     .multilineTextAlignment(.trailing)
                     .foregroundColor(billingType.forgroundColor)
                 Text(billingType == .transfer ? "\(detail.accountName) -> \(detail.toAccountName)" : detail.accountName)
-                    .multilineTextAlignment(.leading)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.3)
+                    .multilineTextAlignment(.trailing)
                     .padding(.bottom, 5)
                     .foregroundColor(.brown)
                 

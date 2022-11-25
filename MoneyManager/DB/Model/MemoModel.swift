@@ -11,8 +11,8 @@ import RealmSwift
 class MemoModel: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id = ObjectId.generate()
     @Persisted var userId: ObjectId
+    @Persisted var billingType: Int = 0
     @Persisted var detailGroup: String = "0"
-    @Persisted var detailType: String = "0"
     @Persisted var memo: String = ""
     @Persisted var count: Int = 0
 }

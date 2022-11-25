@@ -29,9 +29,9 @@ class AddDetailViewModel: ObservableObject {
     }
         
     @Published var currentDateString = Date().string(withFormat: "yyyy-MM-dd(EE)")
-    @Published var billingTypeSelection: BillingType = .expenses {
+    @Published var billingType: BillingType = .expenses {
         didSet {
-            switch billingTypeSelection {
+            switch billingType {
             case .expenses:
                 detailGroupId = UserInfo.share.expensesGroupId
                 detailTypeId = UserInfo.share.expensesTypeId
@@ -84,7 +84,7 @@ class AddDetailViewModel: ObservableObject {
     private var detailModel: DetailModel = DetailModel()
     
     private func storeSelectedType() {
-        switch billingTypeSelection {
+        switch billingType {
         case .expenses:
             UserInfo.share.expensesGroupId = detailGroupId
             UserInfo.share.expensesTypeId = detailTypeId
@@ -133,7 +133,7 @@ extension AddDetailViewModel {
         
         if let group = detailGroupId.int, let type = detailTypeId.int {
             // 預設內容
-            switch billingTypeSelection {
+            switch billingType {
             case .expenses:
                 if let group = ExpensesGroup(rawValue: group) {
                     typeName += group.name
@@ -209,7 +209,7 @@ extension AddDetailViewModel {
             }
             
         } else {
-            switch billingTypeSelection {
+            switch billingType {
             case .expenses:
                 typeName += RealmManager.share.getExpensesGroup(detailGroupId).first?.name ?? ""
                 typeName += " - \(RealmManager.share.getExpensesType(detailTypeId).first?.name ?? "")"
@@ -230,11 +230,11 @@ extension AddDetailViewModel {
         let date = Date().string(withFormat: "yyyy-MM-dd")
         
         // 金額大於0才儲存
-        if let amount = valueString.int, amount > 0 {
+        if let amount = valueString.int, amount > 0, let accountId = try? ObjectId(string: accountId) {
             self.detailModel = DetailModel()
             self.detailModel.userId = UserInfo.share.selectedUserId
-            self.detailModel.billingType = self.billingTypeSelection.rawValue
-            self.detailModel.accountType = try! ObjectId(string: accountId)
+            self.detailModel.billingType = self.billingType.rawValue
+            self.detailModel.accountType = accountId
             self.detailModel.accountName = accountName
             self.detailModel.detailGroup = detailGroupId
             self.detailModel.detailType = detailTypeId
@@ -243,28 +243,36 @@ extension AddDetailViewModel {
             self.detailModel.date = date
             self.detailModel.modifyDateTime = date
             
-            if self.billingTypeSelection == .transfer {
-                self.detailModel.toAccountType = try! ObjectId(string: transferToAccountId)
+            if self.billingType == .transfer, let toAccountId = try? ObjectId(string: transferToAccountId) {
+                self.detailModel.toAccountType = toAccountId
                 self.detailModel.toAccountName = transferToAccountName
+                
+                RealmManager.share.updateAccountMoney(billingType: self.billingType, amount: amount, accountId: accountId, toAccountId: toAccountId)
+            } else {
+                RealmManager.share.updateAccountMoney(billingType: self.billingType, amount: amount, accountId: accountId)
             }
+            
+            RealmManager.share.saveDetail(self.detailModel)
         }
         
-        RealmManager.share.saveDetail(self.detailModel)
         
         // 手續費金額大於0才儲存
-        if let transferFee = transferFee.int, transferFee > 0 {
+        if let transferFee = transferFee.int, transferFee > 0, let accountId = try? ObjectId(string: accountId) {
             // 儲存手續費
             let transferFeeModel = DetailModel()
             transferFeeModel.userId = UserInfo.share.selectedUserId
-            transferFeeModel.billingType = self.billingTypeSelection.rawValue
-            transferFeeModel.accountType = try! ObjectId(string: accountId)
+            transferFeeModel.billingType = 0
+            transferFeeModel.accountType = accountId
             transferFeeModel.accountName = accountName
             transferFeeModel.detailGroup = ExpensesGroup.fee.rawValue.string
-            transferFeeModel.detailType = ExpensesFee.transfer.name
+            transferFeeModel.detailType = ExpensesFee.transfer.rawValue.string
             transferFeeModel.amount = transferFee
             transferFeeModel.memo = "轉帳手續費"
             transferFeeModel.date = date
             transferFeeModel.modifyDateTime = date
+            RealmManager.share.saveDetail(transferFeeModel)
+            
+            RealmManager.share.updateAccountMoney(billingType: .expenses, amount: transferFee, accountId: accountId)
         }
         
         // 新增 Memo
@@ -272,13 +280,12 @@ extension AddDetailViewModel {
             getCommonMemos()
             if commonMemos.count > 0, let model = commonMemos.first {
                 // 更新次數
-                model.count += 1
-                RealmManager.share.saveCommonMemo(memoModel: model)
+                RealmManager.share.saveCommonMemo(memoModel: model, update: true)
             } else {
                 let model = MemoModel()
                 model.userId = UserInfo.share.selectedUserId
+                model.billingType = billingType.rawValue
                 model.detailGroup = detailGroupId
-                model.detailType = detailTypeId
                 model.memo = memo
                 model.count = 1
                 RealmManager.share.saveCommonMemo(memoModel: model)
@@ -288,6 +295,6 @@ extension AddDetailViewModel {
     }
     
     func getCommonMemos() {
-        commonMemos = RealmManager.share.getCommonMemos(UserInfo.share.selectedUserId, groupId: detailGroupId, typeId: detailTypeId, memo: memo)
+        commonMemos = RealmManager.share.getCommonMemos(UserInfo.share.selectedUserId, billingType: billingType.rawValue, groupId: detailGroupId, memo: memo)
     }
 }

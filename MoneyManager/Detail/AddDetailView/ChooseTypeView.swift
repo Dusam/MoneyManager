@@ -14,7 +14,7 @@ struct ChooseTypeView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            switch addDetailVM.billingTypeSelection {
+            switch addDetailVM.billingType {
             case .expenses:
                 ExpensesGroupView(selectedGroup: $selectedGroup.toUnwrapped(defaultValue: ExpensesGroup.food))
             case .income:
@@ -30,7 +30,7 @@ struct ChooseTypeView: View {
         .environmentObject(addDetailVM)
         .navigationTitle("選擇類型")
         .onAppear {
-            switch addDetailVM.billingTypeSelection {
+            switch addDetailVM.billingType {
             case .expenses:
                 addDetailVM.detailGroupId = ExpensesGroup.food.rawValue.string
                 selectedGroup = ExpensesGroup.food

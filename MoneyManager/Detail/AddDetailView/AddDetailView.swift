@@ -20,14 +20,14 @@ struct AddDetailView: View {
             AddDetailHeaderView()
                 .padding([.top, .bottom], 10)
             
-            switch addDetailVM.billingTypeSelection {
-            case .expenses, .income:
-                ExpensesIncomeListView()
-            case .transfer:
-                TransferListView()
-            }
-            
             ZStack(alignment: .bottom) {
+                switch addDetailVM.billingType {
+                case .expenses, .income:
+                    ExpensesIncomeListView()
+                case .transfer:
+                    TransferListView()
+                }
+                
                 Button {
                     addDetailVM.createDetail()
                     dismiss()
@@ -48,7 +48,7 @@ struct AddDetailView: View {
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Picker("", selection: $addDetailVM.billingTypeSelection) {
+                Picker("", selection: $addDetailVM.billingType) {
                     ForEach(BillingType.allCases, id: \.self) { type in
                         Text(type.name)
                     }
@@ -68,7 +68,7 @@ struct AddDetailView: View {
         })
         .environmentObject(addDetailVM)
         .onAppear {
-            switch addDetailVM.billingTypeSelection {
+            switch addDetailVM.billingType {
             case .expenses:
                 addDetailVM.detailGroupId = UserInfo.share.expensesGroupId
                 addDetailVM.detailTypeId = UserInfo.share.expensesTypeId

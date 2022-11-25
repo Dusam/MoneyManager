@@ -12,7 +12,7 @@ import RealmSwift
 extension RealmManager {
     // MARK: 建立預設選項
     internal func setUpPresetOptions(realm: Realm, _ userId: ObjectId) {
-        self.presetAccount(realm, userId)
+//        self.presetAccount(realm, userId)
 //        self.presetExpensesGroup(realm, userId)
 //        self.presetIncomeGroup(realm, userId)
 //        self.presetTransferGroup(realm, userId)

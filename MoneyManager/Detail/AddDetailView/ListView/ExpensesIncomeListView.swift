@@ -18,33 +18,33 @@ struct ExpensesIncomeListView: View {
                         .font(.system(size: 18))
                     Text(addDetailVM.typeName)
                         .font(.system(size: 18))
-                        .foregroundColor(addDetailVM.billingTypeSelection.forgroundColor)
+                        .foregroundColor(addDetailVM.billingType.forgroundColor)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
             .padding(.bottom, 10)
             .listRowSeparator(.hidden)
             
-            NavigationLink(destination: AccountListView().environmentObject(addDetailVM))   {
+            NavigationLink(destination: ChooseAccountView().environmentObject(addDetailVM))   {
                 HStack {
                     Text("帳戶:")
                         .font(.system(size: 18))
                     Text(addDetailVM.accountName)
                         .font(.system(size: 18))
-                        .foregroundColor(addDetailVM.billingTypeSelection.forgroundColor)
+                        .foregroundColor(addDetailVM.billingType.forgroundColor)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
             .padding(.bottom, 10)
             .listRowSeparator(.hidden)
             
-            NavigationLink(destination: EmptyView())   {
+            NavigationLink(destination: MemoView().environmentObject(addDetailVM))   {
                 HStack {
                     Text("備註:")
                         .font(.system(size: 18))
                     Text(addDetailVM.memo)
                         .font(.system(size: 18))
-                        .foregroundColor(addDetailVM.billingTypeSelection.forgroundColor)
+                        .foregroundColor(addDetailVM.billingType.forgroundColor)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
