@@ -34,13 +34,36 @@ struct DetailView: View {
             }
             .scrollContentBackground(.hidden)
             
-            NavigationLink(destination: AccountDetailView()) {
-                VStack {
-                    Image(systemName: "house.fill")
-                    Text("帳戶")
+            HStack {
+                NavigationLink(destination: AccountDetailView()) {
+                    VStack {
+                        Image(systemName: "house.fill")
+                            .padding(.bottom, 1)
+                        Text("帳戶")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(.white)
                 }
-                .frame(maxWidth: .infinity)
-                .background(.white)
+                
+                NavigationLink(destination: AccountDetailView()) {
+                    VStack {
+                        Image(systemName: "plus")
+                            .padding(.bottom, 1)
+                        Text("新增")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(.white)
+                }
+                
+                NavigationLink(destination: AccountDetailView()) {
+                    VStack {
+                        Image(systemName: "gearshape.fill")
+                            .padding(.bottom, 1)
+                        Text("設定")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(.white)
+                }
             }
             
         }
