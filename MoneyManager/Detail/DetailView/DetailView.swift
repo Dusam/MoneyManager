@@ -38,28 +38,25 @@ struct DetailView: View {
                 NavigationLink(destination: AccountDetailView()) {
                     VStack {
                         Image(systemName: "house.fill")
-                            .padding(.bottom, 1)
                         Text("帳戶")
                     }
                     .frame(maxWidth: .infinity)
                     .background(.white)
                 }
                 
-                NavigationLink(destination: AccountDetailView()) {
+                NavigationLink(destination: AddDetailView()) {
                     VStack {
                         Image(systemName: "plus")
-                            .padding(.bottom, 1)
                         Text("新增")
                     }
                     .frame(maxWidth: .infinity)
                     .background(.white)
                 }
                 
-                NavigationLink(destination: AccountDetailView()) {
+                NavigationLink(destination: Text("圖表")) {
                     VStack {
-                        Image(systemName: "gearshape.fill")
-                            .padding(.bottom, 1)
-                        Text("設定")
+                        Image(systemName: "chart.pie.fill")
+                        Text("圖表")
                     }
                     .frame(maxWidth: .infinity)
                     .background(.white)

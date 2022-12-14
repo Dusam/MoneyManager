@@ -2,14 +2,12 @@ PODS:
   - Alamofire (5.6.4)
   - Introspect (0.1.4)
   - IQKeyboardManagerSwift (6.5.10)
-  - R.swift (6.1.0):
-    - R.swift.Library (~> 5.3.0)
-  - R.swift.Library (5.3.0)
-  - Realm (10.32.3):
-    - Realm/Headers (= 10.32.3)
-  - Realm/Headers (10.32.3)
-  - RealmSwift (10.32.3):
-    - Realm (= 10.32.3)
+  - R.swift (7.2.4)
+  - Realm (10.33.0):
+    - Realm/Headers (= 10.33.0)
+  - Realm/Headers (10.33.0)
+  - RealmSwift (10.33.0):
+    - Realm (= 10.33.0)
   - SwifterSwift (5.2.0):
     - SwifterSwift/AppKit (= 5.2.0)
     - SwifterSwift/CoreAnimation (= 5.2.0)
@@ -50,7 +48,6 @@ SPEC REPOS:
     - Introspect
     - IQKeyboardManagerSwift
     - R.swift
-    - R.swift.Library
     - Realm
     - RealmSwift
     - SwifterSwift
@@ -59,10 +56,9 @@ SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
   Introspect: b62c4dd2063072327c21d618ef2bedc3c87bc366
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
-  R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
-  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
-  Realm: fdf6732924dc5e69e30e0db2c11e869f92b53f3d
-  RealmSwift: 7c181da8fa1c2fe613656a77c198d6a3dc3879a1
+  R.swift: 681bb9135f482e7a81d9d27445b837fef5467e11
+  Realm: d4f810e161fa2c2c589b9860b6eb09238deacd73
+  RealmSwift: cef9946f09f2333a8f2ac8bac4f8de52fb9f5ac3
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
 
 PODFILE CHECKSUM: e411ba9651069774fbb7ce2311977ec66cb721d9
