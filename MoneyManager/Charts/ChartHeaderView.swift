@@ -1,20 +1,21 @@
 //
-//  DetailHeaderView.swift
+//  ChartHeaderView.swift
 //  MoneyManager
 //
-//  Created by Qian-Yu Du on 2022/5/25.
+//  Created by 杜千煜 on 2022/12/21.
 //
 
 import SwiftUI
 
-struct DetailHeaderView: View {
-    @EnvironmentObject var detailVM: DetailViewModel
+struct ChartHeaderView: View {
+    
+    @EnvironmentObject var chartVM: ChartViewModel
     
     var body: some View {
         HStack {
             Spacer()
             Button {
-                detailVM.toPreviousDate()
+                chartVM.toPrevious()
             } label: {
                 Image(systemName: "chevron.left")
                     .foregroundColor(.gray)
@@ -23,22 +24,19 @@ struct DetailHeaderView: View {
 
             Spacer()
             Button {
-                detailVM.toCurrentDate()
+                chartVM.toCurrentDate()
             } label: {
                 VStack {
-                    Text(detailVM.currentDateString)
+                    Text(chartVM.currentDateString)
                         .font(.system(.title2))
                         .foregroundColor(.gray)
-                    Text("TW$ \(detailVM.totalAmount)")
-                        .font(.system(.title3))
-                        .foregroundColor(detailVM.totalAmount >= 0 ? Color(R.color.transferColor()!) : Color(R.color.expensesColor()!))
                 }
                 
             }
             
             Spacer()
             Button {
-                detailVM.toNextDate()
+                chartVM.toNext()
             } label: {
                 Image(systemName: "chevron.forward")
                     .foregroundColor(.gray)
@@ -46,11 +44,13 @@ struct DetailHeaderView: View {
             }
             Spacer()
         }
+        .padding(.top, 15)
+        .padding(.bottom, 10)
     }
 }
 
-struct DetailHeaderView_Previews: PreviewProvider {
+struct ChartHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailHeaderView().environmentObject(DetailViewModel())
+        ChartHeaderView().environmentObject(ChartViewModel())
     }
 }

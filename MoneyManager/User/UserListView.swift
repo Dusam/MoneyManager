@@ -61,6 +61,7 @@ struct UserListView: View {
                 navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
             })
             .onAppear {
+                UserInfo.share.selectedDate = Date()
                 userVM.getUsers()
             }
             

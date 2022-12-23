@@ -25,8 +25,13 @@
 		22FB19FE2846F51B005DB4F9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19FD2846F51B005DB4F9 /* UserInfo.swift */; };
 		68329ABE29309F9A002B7905 /* AccountCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68329ABD29309F9A002B7905 /* AccountCellView.swift */; };
 		68329AC02930A0F9002B7905 /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68329ABF2930A0F9002B7905 /* AccountHeaderView.swift */; };
-		684F13992949A92700982455 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 684F13982949A92700982455 /* SwiftUICharts */; };
-		684F139C2949A97200982455 /* ChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F139B2949A97200982455 /* ChartsView.swift */; };
+		684F139C2949A97200982455 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F139B2949A97200982455 /* PieChart.swift */; };
+		684F139E295150C100982455 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F139D295150C100982455 /* ChartView.swift */; };
+		684F13A129515C8600982455 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F13A029515C8600982455 /* ChartViewModel.swift */; };
+		684F13A4295196FF00982455 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F13A3295196FF00982455 /* SceneDelegate.swift */; };
+		684F13AA2951A51E00982455 /* ChartType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F13A92951A51E00982455 /* ChartType.swift */; };
+		684F13AF295295DE00982455 /* ChartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F13AE295295DE00982455 /* ChartHeaderView.swift */; };
+		684F13B129554EBC00982455 /* DetailTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F13B029554EBC00982455 /* DetailTools.swift */; };
 		684F22DD2924BD1300550E72 /* MemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F22DC2924BD1300550E72 /* MemoView.swift */; };
 		684F22DF2925B8D600550E72 /* MemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F22DE2925B8D600550E72 /* MemoModel.swift */; };
 		6857476929135A1F00026B7C /* ExpensesGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6857476829135A1F00026B7C /* ExpensesGroupView.swift */; };
@@ -126,7 +131,14 @@
 		22FB19FD2846F51B005DB4F9 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		68329ABD29309F9A002B7905 /* AccountCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCellView.swift; sourceTree = "<group>"; };
 		68329ABF2930A0F9002B7905 /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
-		684F139B2949A97200982455 /* ChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsView.swift; sourceTree = "<group>"; };
+		684F139B2949A97200982455 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		684F139D295150C100982455 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		684F13A029515C8600982455 /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
+		684F13A3295196FF00982455 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		684F13A92951A51E00982455 /* ChartType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartType.swift; sourceTree = "<group>"; };
+		684F13AD2951B6A900982455 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		684F13AE295295DE00982455 /* ChartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartHeaderView.swift; sourceTree = "<group>"; };
+		684F13B029554EBC00982455 /* DetailTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTools.swift; sourceTree = "<group>"; };
 		684F22DC2924BD1300550E72 /* MemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoView.swift; sourceTree = "<group>"; };
 		684F22DE2925B8D600550E72 /* MemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoModel.swift; sourceTree = "<group>"; };
 		6857476829135A1F00026B7C /* ExpensesGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesGroupView.swift; sourceTree = "<group>"; };
@@ -215,7 +227,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B14F5FF5B972ABC3BF7876E0 /* Pods_MoneyManager.framework in Frameworks */,
-				684F13992949A92700982455 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +254,7 @@
 		22A2C6122836179D0066AF0D /* MoneyManager */ = {
 			isa = PBXGroup;
 			children = (
+				684F13A3295196FF00982455 /* SceneDelegate.swift */,
 				6857478E2914966A00026B7C /* R.generated.swift */,
 				22A2C6132836179D0066AF0D /* MoneyManagerApp.swift */,
 				22A2C62128361CB30066AF0D /* User */,
@@ -255,6 +267,7 @@
 				68F19D04290661850056819A /* Extension */,
 				68F19D552908C6670056819A /* Localizable.strings */,
 				22A2C6172836179F0066AF0D /* Assets.xcassets */,
+				684F13AD2951B6A900982455 /* Info.plist */,
 				22A2C6192836179F0066AF0D /* Preview Content */,
 			);
 			path = MoneyManager;
@@ -284,6 +297,7 @@
 			children = (
 				22A2C62828362D7E0066AF0D /* AddButtonView.swift */,
 				22FB19FD2846F51B005DB4F9 /* UserInfo.swift */,
+				684F13B029554EBC00982455 /* DetailTools.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -353,9 +367,29 @@
 		684F139A2949A95000982455 /* Charts */ = {
 			isa = PBXGroup;
 			children = (
-				684F139B2949A97200982455 /* ChartsView.swift */,
+				684F13A82951A51500982455 /* Enum */,
+				684F139F29515C6D00982455 /* ViewModel */,
+				684F139B2949A97200982455 /* PieChart.swift */,
+				684F139D295150C100982455 /* ChartView.swift */,
+				684F13AE295295DE00982455 /* ChartHeaderView.swift */,
 			);
 			path = Charts;
+			sourceTree = "<group>";
+		};
+		684F139F29515C6D00982455 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				684F13A029515C8600982455 /* ChartViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		684F13A82951A51500982455 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				684F13A92951A51E00982455 /* ChartType.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		68574767291359CB00026B7C /* GroupView */ = {
@@ -603,7 +637,6 @@
 			);
 			name = MoneyManager;
 			packageProductDependencies = (
-				684F13982949A92700982455 /* SwiftUICharts */,
 			);
 			productName = MoneyManager;
 			productReference = 22A2C6102836179D0066AF0D /* MoneyManager.app */;
@@ -635,7 +668,6 @@
 			);
 			mainGroup = 22A2C6072836179D0066AF0D;
 			packageReferences = (
-				684F13972949A92700982455 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 22A2C6112836179D0066AF0D /* Products */;
 			projectDirPath = "";
@@ -755,16 +787,18 @@
 				68F19D32290793D50056819A /* ExpensesMedical.swift in Sources */,
 				68F19D4D2908C39C0056819A /* AddDetailHeaderView.swift in Sources */,
 				685747802913939C00026B7C /* ExpensesMedicalList.swift in Sources */,
+				684F13AA2951A51E00982455 /* ChartType.swift in Sources */,
 				685747862913940000026B7C /* ExpensesOtherList.swift in Sources */,
 				22A2C62328361CD00066AF0D /* UserCellView.swift in Sources */,
 				22A2C62F28362FB10066AF0D /* RealmManager.swift in Sources */,
 				6857476C2913678600026B7C /* ExpensesFoodList.swift in Sources */,
 				685747882913941B00026B7C /* ExpensesFeeList.swift in Sources */,
+				684F13A4295196FF00982455 /* SceneDelegate.swift in Sources */,
 				22FB19F0283E10C8005DB4F9 /* DetailHeaderView.swift in Sources */,
 				68F19D2E29078FEF0056819A /* ExpensesBook.swift in Sources */,
 				22A2C625283624F30066AF0D /* UserModel.swift in Sources */,
 				68F19D422907B74F0056819A /* IncomeGroup.swift in Sources */,
-				684F139C2949A97200982455 /* ChartsView.swift in Sources */,
+				684F139C2949A97200982455 /* PieChart.swift in Sources */,
 				68F19D2629077E350056819A /* ExpensesTraffic.swift in Sources */,
 				68F19D5A290907E40056819A /* BillingType.swift in Sources */,
 				6857478C2913A48E00026B7C /* BindingExtension.swift in Sources */,
@@ -779,6 +813,7 @@
 				68F19D2C29078E210056819A /* ExpensesElectronicProduct.swift in Sources */,
 				6899CB6C2914DC780070681F /* TransferGeneralList.swift in Sources */,
 				68D7FD2B291B3B8B00E3F4DF /* InitMoneyCalculatorButtonView.swift in Sources */,
+				684F13B129554EBC00982455 /* DetailTools.swift in Sources */,
 				68F19D1C29068C130056819A /* PresetUserDB.swift in Sources */,
 				68F19D2829077FAC0056819A /* ExpensesEducate.swift in Sources */,
 				68F19D5C290B60170056819A /* DoubleExtension.swift in Sources */,
@@ -796,11 +831,13 @@
 				68F19D2429077CAE0056819A /* ExpensesLife.swift in Sources */,
 				68574774291392CA00026B7C /* ExpensesTrafficList.swift in Sources */,
 				22A2C6142836179D0066AF0D /* MoneyManagerApp.swift in Sources */,
+				684F139E295150C100982455 /* ChartView.swift in Sources */,
 				68F19D21290776B70056819A /* ExpensesClothing.swift in Sources */,
 				22FB19F5283F0578005DB4F9 /* DetailCellView.swift in Sources */,
 				68F19D09290665C50056819A /* AccountType.swift in Sources */,
 				6857479A2914BB5400026B7C /* IncomeGeneralList.swift in Sources */,
 				68B2C8112911163300F9C37F /* ExpensesIncomeListView.swift in Sources */,
+				684F13A129515C8600982455 /* ChartViewModel.swift in Sources */,
 				68D7FD27291A251900E3F4DF /* AddAccountView.swift in Sources */,
 				68F19D13290680C50056819A /* IncomeGroupModel.swift in Sources */,
 				685747782913931000026B7C /* ExpensesEntertainmentList.swift in Sources */,
@@ -811,6 +848,7 @@
 				22FB19FE2846F51B005DB4F9 /* UserInfo.swift in Sources */,
 				685747982914B8F900026B7C /* IncomeGroupView.swift in Sources */,
 				68F19D1F290775B10056819A /* ExpensesFood.swift in Sources */,
+				684F13AF295295DE00982455 /* ChartHeaderView.swift in Sources */,
 				22A2C633283631000066AF0D /* AddUserView.swift in Sources */,
 				6857476929135A1F00026B7C /* ExpensesGroupView.swift in Sources */,
 				68F19D472907B9CA0056819A /* TransferGeneral.swift in Sources */,
@@ -963,7 +1001,7 @@
 				DEVELOPMENT_TEAM = E2ZGHA3NG6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = MoneyManager/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -995,7 +1033,7 @@
 				DEVELOPMENT_TEAM = E2ZGHA3NG6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = MoneyManager/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1037,25 +1075,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		684F13972949A92700982455 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = exactVersion;
-				version = "2.0.0-beta.2";
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		684F13982949A92700982455 /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 684F13972949A92700982455 /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 22A2C6082836179D0066AF0D /* Project object */;
 }

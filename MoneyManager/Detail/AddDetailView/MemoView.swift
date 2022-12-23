@@ -17,7 +17,7 @@ struct MemoView: View {
     var body: some View {
         VStack(spacing: 15) {
             VStack {
-                TextEditor(text: $memo)
+                TextEditor(text: $addDetailVM.memo)
                     .focused($isFocused)
                     .padding(10)
                     .overlay(
@@ -29,18 +29,19 @@ struct MemoView: View {
            
             // 常用備註
             List(addDetailVM.commonMemos, id: \.self) { memoModel in
-                HStack {
-                    Text(memoModel.memo)
+                Button {
+                    addDetailVM.memo = memoModel.memo
+                    addDetailVM.needRefershMemo = false
+                } label: {
+                    Text(memoModel.memo.replacing("\n", with: " "))
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.black)
                 }
                 .contentShape(Rectangle())
                 .alignmentGuide(
                     .listRowSeparatorTrailing
                 ) { dimensions in
                     dimensions[.trailing]
-                }
-                .onTapGesture {
-                    self.memo = memoModel.memo
                 }
                 
             }
@@ -50,7 +51,6 @@ struct MemoView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    addDetailVM.memo = memo
                     dismiss()
                 } label: {
                     Text("完成")

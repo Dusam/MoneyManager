@@ -125,6 +125,24 @@ extension RealmManager {
         }
     }
     
+    func searchDeatilWithDateRange(_ startDate: Date, _ endDate: Date) -> [DetailModel] {
+        if let realm = realm {
+            let datas = Array(realm.objects(DetailModel.self)
+                .where {
+                    $0.userId == UserInfo.share.selectedUserId
+                })
+            
+            return datas.filter {
+                if let date = $0.date.date(withFormat: "yyyy-MM-dd"), date.isBetween(startDate, endDate) {
+                    return true
+                }
+                return false
+            }
+        }
+                              
+        return []
+    }
+    
     func saveCommonMemo(memoModel: MemoModel, update: Bool = false) {
         realm.beginWrite()
         if update {
@@ -141,7 +159,9 @@ extension RealmManager {
                 .sorted{ $0.count > $1.count}
         } else {
             return Array(realm.objects(MemoModel.self)
-                .filter("userId == %@ AND billingType == %@ AND detailGroup == %@ AND memo == %@", userId, billingType, groupId, memo))
+//                .filter("userId == %@ AND billingType == %@ AND detailGroup == %@ AND memo == %@", userId, billingType, groupId, memo))
+                .filter("userId == %@ AND billingType == %@ AND detailGroup == %@", userId, billingType, groupId))
+                .filter {$0.memo.contains(memo)}
                 .sorted{ $0.count > $1.count}
         }
         

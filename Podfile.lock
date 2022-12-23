@@ -1,5 +1,9 @@
 PODS:
   - Alamofire (5.6.4)
+  - Charts (4.1.0):
+    - Charts/Core (= 4.1.0)
+  - Charts/Core (4.1.0):
+    - SwiftAlgorithms (~> 1.0)
   - Introspect (0.1.4)
   - IQKeyboardManagerSwift (6.5.10)
   - R.swift (7.2.4)
@@ -8,6 +12,7 @@ PODS:
   - Realm/Headers (10.33.0)
   - RealmSwift (10.33.0):
     - Realm (= 10.33.0)
+  - SwiftAlgorithms (1.0.0)
   - SwifterSwift (5.2.0):
     - SwifterSwift/AppKit (= 5.2.0)
     - SwifterSwift/CoreAnimation (= 5.2.0)
@@ -36,6 +41,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - Charts
   - Introspect
   - IQKeyboardManagerSwift
   - R.swift
@@ -45,22 +51,26 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Charts
     - Introspect
     - IQKeyboardManagerSwift
     - R.swift
     - Realm
     - RealmSwift
+    - SwiftAlgorithms
     - SwifterSwift
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
+  Charts: 354f86803d11d9c35de280587fef50d1af063978
   Introspect: b62c4dd2063072327c21d618ef2bedc3c87bc366
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   R.swift: 681bb9135f482e7a81d9d27445b837fef5467e11
   Realm: d4f810e161fa2c2c589b9860b6eb09238deacd73
   RealmSwift: cef9946f09f2333a8f2ac8bac4f8de52fb9f5ac3
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
 
-PODFILE CHECKSUM: e411ba9651069774fbb7ce2311977ec66cb721d9
+PODFILE CHECKSUM: d1afa40f4005c045e15aa64c5d4c098d5ff0fa75
 
 COCOAPODS: 1.11.3

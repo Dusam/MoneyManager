@@ -27,11 +27,11 @@ enum BillingType: Int, CaseIterable {
     var forgroundColor: Color {
         switch self {
         case .expenses:
-            return .red
+            return Color(uiColor: R.color.expensesColor()!)
         case .income:
-            return .green
+            return Color(uiColor: R.color.incomeColor()!)
         case .transfer:
-            return .blue
+            return Color(uiColor: R.color.transferColor()!)
         }
     }
 }

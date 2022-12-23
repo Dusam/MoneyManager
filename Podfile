@@ -12,6 +12,7 @@ target 'MoneyManager' do
   pod 'SwifterSwift'
   pod 'Alamofire'
   pod 'R.swift'
+  pod 'Charts'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|

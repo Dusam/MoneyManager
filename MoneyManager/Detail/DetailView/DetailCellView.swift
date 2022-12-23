@@ -26,7 +26,7 @@ struct DetailCellView: View {
                     .minimumScaleFactor(0.3)
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.black)
-                Text(detail.memo)
+                Text(detail.memo.replacing("\n", with: " "))
                     .lineLimit(1)
                     .minimumScaleFactor(0.7)
                     .multilineTextAlignment(.leading)

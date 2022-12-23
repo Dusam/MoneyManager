@@ -1,75 +1,18 @@
 //
-//  DetailViewModel.swift
+//  DetailTools.swift
 //  MoneyManager
 //
-//  Created by Qian-Yu Du on 2022/5/25.
+//  Created by 杜千煜 on 2022/12/23.
 //
 
 import Foundation
-import RealmSwift
 
-class DetailViewModel: ObservableObject {
-    
-    private var currentDate = UserInfo.share.selectedDate {
-        didSet {
-            UserInfo.share.selectedDate = currentDate
-            currentDateString = currentDate.string(withFormat: "yyyy-MM-dd(EE)")
-        }
-    }
-        
-    @Published var detailModels: [DetailModel] = [] {
-        didSet {
-            countTotal()
-        }
-    }
-    @Published var currentDateString = UserInfo.share.selectedDate.string(withFormat: "yyyy-MM-dd(EE)")
-    @Published var totalAmount: Int = 0
-    
-}
-
-extension DetailViewModel {
-    func toNextDate() {
-        currentDate = currentDate.adding(.day, value: 1)
-        getDetail()
-    }
-    
-    func toPreviousDate() {
-        currentDate = currentDate.adding(.day, value: -1)
-        getDetail()
-    }
-    
-    func toCurrentDate() {
-        currentDate = Date()
-        getDetail()
-    }
-    
-    func countTotal() {
-        let total = detailModels.filter{ $0.billingType != 2 }.map{ $0.billingType == 0 ? -($0.amount) : $0.amount}.sum()
-        
-        if total > Int64.max || total < Int64.min {
-            return
-        }
-        totalAmount = total
-    }
-}
-
-// MARK: DB Method
-extension DetailViewModel {
-    func getDetail() {
-        detailModels = RealmManager.share.readDetail(currentDate.string(withFormat: "yyyy-MM-dd"), userID: UserInfo.share.selectedUserId)
-        
-        let addCell = DetailModel()
-        addCell.billingType = 3
-        detailModels.append(addCell)
-    }
-}
-
-extension DetailViewModel {
-    func detailTypeToString(detailModel: DetailModel) -> String {
-        guard let billingType = BillingType(rawValue: detailModel.billingType) else { return "" }
+class DetailTools {
+    static func detailTypeToString(billingType: Int, detailGroup: String, detailType: String) -> String {
+        guard let billingType = BillingType(rawValue: billingType) else { return "" }
         var typeTitle = ""
         
-        if let group = detailModel.detailGroup.int, let type = detailModel.detailType.int {
+        if let group = detailGroup.int, let type = detailType.int {
             // 預設內容
             switch billingType {
             case .expenses:
@@ -148,14 +91,14 @@ extension DetailViewModel {
         } else {
             switch billingType {
             case .expenses:
-                typeTitle += RealmManager.share.getExpensesGroup(detailModel.detailGroup).first?.name ?? ""
-                typeTitle += " - \(RealmManager.share.getExpensesType(detailModel.detailType).first?.name ?? "")"
+                typeTitle += RealmManager.share.getExpensesGroup(detailGroup).first?.name ?? ""
+                typeTitle += " - \(RealmManager.share.getExpensesType(detailType).first?.name ?? "")"
             case .income:
-                typeTitle += RealmManager.share.getIncomeGroup(detailModel.detailGroup).first?.name ?? ""
-                typeTitle += " - \(RealmManager.share.getIncomeType(detailModel.detailType).first?.name ?? "")"
+                typeTitle += RealmManager.share.getIncomeGroup(detailGroup).first?.name ?? ""
+                typeTitle += " - \(RealmManager.share.getIncomeType(detailType).first?.name ?? "")"
             case .transfer:
-                typeTitle += RealmManager.share.getTransferGroup(detailModel.detailGroup).first?.name ?? ""
-                typeTitle += " - \(RealmManager.share.getTransferType(detailModel.detailType).first?.name ?? "")"
+                typeTitle += RealmManager.share.getTransferGroup(detailGroup).first?.name ?? ""
+                typeTitle += " - \(RealmManager.share.getTransferType(detailType).first?.name ?? "")"
             }
         }
         

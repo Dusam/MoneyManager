@@ -53,7 +53,7 @@ struct DetailView: View {
                     .background(.white)
                 }
                 
-                NavigationLink(destination: Text("圖表")) {
+                NavigationLink(destination: ChartView()) {
                     VStack {
                         Image(systemName: "chart.pie.fill")
                         Text("圖表")

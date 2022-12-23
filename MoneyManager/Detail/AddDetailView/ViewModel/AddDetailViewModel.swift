@@ -22,13 +22,14 @@ class AddDetailViewModel: ObservableObject {
         transferToAccountId = UserInfo.share.transferToAccountId
     }
     
-    private var currentDate = Date() {
+    private var currentDate = UserInfo.share.selectedDate {
         didSet {
+            UserInfo.share.selectedDate = currentDate
             currentDateString = currentDate.string(withFormat: "yyyy-MM-dd(EE)")
         }
     }
         
-    @Published var currentDateString = Date().string(withFormat: "yyyy-MM-dd(EE)")
+    @Published var currentDateString = UserInfo.share.selectedDate.string(withFormat: "yyyy-MM-dd(EE)")
     @Published var billingType: BillingType = .expenses {
         didSet {
             switch billingType {
@@ -78,7 +79,18 @@ class AddDetailViewModel: ObservableObject {
             getAccountName()
         }
     }
-    @Published var memo: String = ""
+    
+    // 備註參數
+    @Published var needRefershMemo: Bool = true
+    @Published var memo: String = "" {
+        didSet {
+            needRefershMemo = true
+            // 延遲0.1秒以達成不會點擊常用備註後只顯示完全符合字串的選項
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.getCommonMemos()
+            }
+        }
+    }
     @Published var commonMemos: [MemoModel] = []
     
     private var detailModel: DetailModel = DetailModel()
@@ -227,7 +239,7 @@ extension AddDetailViewModel {
 // MARK: DB Method
 extension AddDetailViewModel {
     func createDetail() {
-        let date = Date().string(withFormat: "yyyy-MM-dd")
+        let date = currentDate.string(withFormat: "yyyy-MM-dd")
         
         // 金額大於0才儲存
         if let amount = valueString.int, amount > 0, let accountId = try? ObjectId(string: accountId) {
@@ -295,6 +307,8 @@ extension AddDetailViewModel {
     }
     
     func getCommonMemos() {
-        commonMemos = RealmManager.share.getCommonMemos(UserInfo.share.selectedUserId, billingType: billingType.rawValue, groupId: detailGroupId, memo: memo)
+        if needRefershMemo {
+            commonMemos = RealmManager.share.getCommonMemos(UserInfo.share.selectedUserId, billingType: billingType.rawValue, groupId: detailGroupId, memo: memo)
+        }
     }
 }

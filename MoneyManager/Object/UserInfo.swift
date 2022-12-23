@@ -12,6 +12,7 @@ class UserInfo {
     static let share = UserInfo()
     
     let ud = UserDefaults.standard
+    @objc dynamic var selectedDate: Date = Date()
     
     private init() {
         
