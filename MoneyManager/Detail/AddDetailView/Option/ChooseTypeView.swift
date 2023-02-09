@@ -14,21 +14,47 @@ struct ChooseTypeView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            switch addDetailVM.billingType {
-            case .expenses:
-                ExpensesGroupView(selectedGroup: $selectedGroup.toUnwrapped(defaultValue: ExpensesGroup.food))
-            case .income:
-                IncomeGroupView(selectedGroup: $selectedGroup.toUnwrapped(defaultValue: IncomeGroup.general))
-            case .transfer:
-                TransferGroupView(selectedGroup: $selectedGroup.toUnwrapped(defaultValue: IncomeGroup.general))
+            VStack {
+                switch addDetailVM.billingType {
+                case .expenses:
+                    ExpensesGroupView(selectedGroup: $selectedGroup.toUnwrapped(defaultValue: ExpensesGroup.food))
+                case .income:
+                    IncomeGroupView(selectedGroup: $selectedGroup.toUnwrapped(defaultValue: IncomeGroup.general))
+                case .transfer:
+                    TransferGroupView(selectedGroup: $selectedGroup.toUnwrapped(defaultValue: IncomeGroup.general))
+                }
+                
+                NavigationLink(destination: AddOptionView(.addGroup, addDetailVM.billingType)) {
+                    Text("+")
+                        .foregroundColor(.blue)
+                        .font(.system(size: 30))
+                        .frame(maxWidth: .infinity, alignment: .bottomLeading)
+                        .padding(.top, 1)
+                        .padding(.leading, 20)
+                        .background(.white)
+                }
             }
             
             Divider()
             
-            getTypeList()
+            VStack {
+                getTypeList()
+                
+                NavigationLink(destination: AddOptionView(.addType, addDetailVM.billingType, addDetailVM.detailGroupId)) {
+                    Text("+")
+                        .foregroundColor(.blue)
+                        .font(.system(size: 30))
+                        .frame(maxWidth: .infinity, alignment: .bottomTrailing)
+                        .padding(.top, 1)
+                        .padding(.trailing, 20)
+                        .background(.white)
+                }
+            }
+            
         }
         .environmentObject(addDetailVM)
         .navigationTitle("選擇類型")
+        .hideBackButtonTitle()
         .onAppear {
             switch addDetailVM.billingType {
             case .expenses:
@@ -94,10 +120,15 @@ struct ChooseTypeView: View {
             }
         }
         else if let _ = selectedGroup as? String {
-            // TODO: 查詢使用者自訂群組的類型
-            EmptyView()
+            switch addDetailVM.billingType {
+            case .expenses:
+                CustomExpensesList(selectedGroup: $selectedGroup)
+            case .income:
+                CustomIncomeList(selectedGroup: $selectedGroup)
+            case .transfer:
+                CustomTransferList(selectedGroup: $selectedGroup)
+            }
         }
-       
 
     }
     

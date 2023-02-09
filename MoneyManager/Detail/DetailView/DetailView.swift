@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Introspect
 
 struct DetailView: View {
     
@@ -61,6 +60,15 @@ struct DetailView: View {
                     .frame(maxWidth: .infinity)
                     .background(.white)
                 }
+                
+                NavigationLink(destination: SettingView()) {
+                    VStack {
+                        Image(systemName: "gearshape.fill")
+                        Text("設定")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(.white)
+                }
             }
             
         }
@@ -76,9 +84,7 @@ struct DetailView: View {
             })
         )
         .navigationTitle("\(userModel.name)")
-        .introspectNavigationController(customize: { navigation in
-            navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
-        })
+        .hideBackButtonTitle()
         .onAppear {
             UserInfo.share.selectedUserId = userModel.id
             detailVM.getDetail()

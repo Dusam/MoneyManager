@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Introspect
 
 struct AddDetailView: View {
     
@@ -63,9 +62,7 @@ struct AddDetailView: View {
             }
 
         }
-        .introspectNavigationController(customize: { navigation in
-            navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
-        })
+        .hideBackButtonTitle()
         .environmentObject(addDetailVM)
         .onAppear {
             switch addDetailVM.billingType {

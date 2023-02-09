@@ -26,6 +26,6 @@ class AddAccountViewModel: ObservableObject {
         self.accountModel.initMoney = initMoney.int ?? 0
         self.accountModel.money = initMoney.int ?? 0
         
-        RealmManager.share.saveAccount(self.accountModel)
+        RealmManager.share.saveData(self.accountModel)
     }
 }

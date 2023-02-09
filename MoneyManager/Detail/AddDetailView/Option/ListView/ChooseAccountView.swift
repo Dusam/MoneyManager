@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Introspect
 
 struct ChooseAccountView: View {
     enum AccountMode {
@@ -50,9 +49,7 @@ struct ChooseAccountView: View {
             
         }
         .navigationTitle(mode == .standard ? "轉出帳戶" : "轉入帳戶")
-        .introspectNavigationController(customize: { navigation in
-            navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
-        })
+        .hideBackButtonTitle()
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink("新增", destination: AddAccountView())

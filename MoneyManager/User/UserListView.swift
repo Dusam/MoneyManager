@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+
 struct UserListView: View {
     
     @ObservedObject private var userVM: UserViewModel = UserViewModel()
@@ -57,9 +58,7 @@ struct UserListView: View {
                         placement: .navigationBarDrawer(displayMode: .always))
             .navigationTitle("用戶清單")
             .navigationBarTitleDisplayMode(.inline)
-            .introspectNavigationController(customize: { navigation in
-                navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
-            })
+            .hideBackButtonTitle()
             .onAppear {
                 UserInfo.share.selectedDate = Date()
                 userVM.getUsers()

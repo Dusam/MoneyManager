@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Introspect
 
 struct AccountDetailView: View {
     
@@ -35,9 +34,7 @@ struct AccountDetailView: View {
             }
         }
         .navigationTitle("帳戶")
-        .introspectNavigationController(customize: { navigation in
-            navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
-        })
+        .hideBackButtonTitle()
         .onAppear {
             accountDetailVM.getAccounts()
         }

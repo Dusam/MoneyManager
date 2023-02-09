@@ -28,6 +28,20 @@ struct IncomeGroupView: View {
                 }
             }
             
+            ForEach(RealmManager.share.getIncomeGroup(), id: \.self) { group in
+                Button {
+                    addDetailVM.detailGroupId = group.id.stringValue
+                    selectedGroup = group.id.stringValue
+                } label: {
+                    Text(group.name)
+                        .foregroundColor(.black)
+                        .font(.system(size: 22))
+                        .padding([.top, .bottom, .leading], 20)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background((selectedGroup as? String) == group.id.stringValue ? Color(R.color.cellBackgroundColor()!) : .white)
+                }
+            }
+            
         }
         
     }

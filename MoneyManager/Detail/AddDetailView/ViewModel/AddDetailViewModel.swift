@@ -264,7 +264,8 @@ extension AddDetailViewModel {
                 RealmManager.share.updateAccountMoney(billingType: self.billingType, amount: amount, accountId: accountId)
             }
             
-            RealmManager.share.saveDetail(self.detailModel)
+//            RealmManager.share.saveDetail(self.detailModel)
+            RealmManager.share.saveData(self.detailModel)
         }
         
         
@@ -282,7 +283,8 @@ extension AddDetailViewModel {
             transferFeeModel.memo = "轉帳手續費"
             transferFeeModel.date = date
             transferFeeModel.modifyDateTime = date
-            RealmManager.share.saveDetail(transferFeeModel)
+//            RealmManager.share.saveDetail(transferFeeModel)
+            RealmManager.share.saveData(transferFeeModel)
             
             RealmManager.share.updateAccountMoney(billingType: .expenses, amount: transferFee, accountId: accountId)
         }
@@ -292,7 +294,8 @@ extension AddDetailViewModel {
             getCommonMemos()
             if commonMemos.count > 0, let model = commonMemos.first {
                 // 更新次數
-                RealmManager.share.saveCommonMemo(memoModel: model, update: true)
+//                RealmManager.share.saveCommonMemo(memoModel: model, update: true)
+                RealmManager.share.saveData(model, update: true)
             } else {
                 let model = MemoModel()
                 model.userId = UserInfo.share.selectedUserId
@@ -300,7 +303,8 @@ extension AddDetailViewModel {
                 model.detailGroup = detailGroupId
                 model.memo = memo
                 model.count = 1
-                RealmManager.share.saveCommonMemo(memoModel: model)
+//                RealmManager.share.saveCommonMemo(memoModel: model)
+                RealmManager.share.saveData(model)
             }
            
         }

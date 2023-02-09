@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Introspect
 
 struct AddAccountView: View {
     
@@ -72,9 +71,7 @@ struct AddAccountView: View {
                 }
             }
         })
-        .introspectNavigationController(customize: { navigation in
-            navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
-        })
+        .hideBackButtonTitle()
         .onTapGesture {
             addAccountVM.isHiddenCalculator = true
         }
