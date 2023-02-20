@@ -7,11 +7,11 @@ PODS:
   - Introspect (0.1.4)
   - IQKeyboardManagerSwift (6.5.11)
   - R.swift (7.2.4)
-  - Realm (10.35.0):
-    - Realm/Headers (= 10.35.0)
-  - Realm/Headers (10.35.0)
-  - RealmSwift (10.35.0):
-    - Realm (= 10.35.0)
+  - Realm (10.36.0):
+    - Realm/Headers (= 10.36.0)
+  - Realm/Headers (10.36.0)
+  - RealmSwift (10.36.0):
+    - Realm (= 10.36.0)
   - SwiftAlgorithms (1.0.0)
   - SwifterSwift (5.2.0):
     - SwifterSwift/AppKit (= 5.2.0)
@@ -66,8 +66,8 @@ SPEC CHECKSUMS:
   Introspect: b62c4dd2063072327c21d618ef2bedc3c87bc366
   IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
   R.swift: 681bb9135f482e7a81d9d27445b837fef5467e11
-  Realm: e6b04f15a814cb22aae621e7e15f2ccb27ac8f95
-  RealmSwift: b358779c10ba6d2648d541f8a1bcd671f73485c1
+  Realm: 3fd136cb4c83a927482a7f1612496d37beed3cf5
+  RealmSwift: 513d4dcbf5bfc4d573454088b592685fc48dd716
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
 

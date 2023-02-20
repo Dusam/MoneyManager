@@ -67,14 +67,14 @@ struct AddDetailView: View {
         .onAppear {
             switch addDetailVM.billingType {
             case .expenses:
-                addDetailVM.detailGroupId = UserInfo.share.expensesGroupId
-                addDetailVM.detailTypeId = UserInfo.share.expensesTypeId
+                addDetailVM.detailGroupId = UserInfo.share.selectedData.expensesGroupId
+                addDetailVM.detailTypeId = UserInfo.share.selectedData.expensesTypeId
             case .income:
-                addDetailVM.detailGroupId = UserInfo.share.incomeGroupId
-                addDetailVM.detailTypeId = UserInfo.share.incomeTypeId
+                addDetailVM.detailGroupId = UserInfo.share.selectedData.incomeGroupId
+                addDetailVM.detailTypeId = UserInfo.share.selectedData.incomeTypeId
             case .transfer:
-                addDetailVM.detailGroupId = UserInfo.share.transferGroupId
-                addDetailVM.detailTypeId = UserInfo.share.trnasferTypeId
+                addDetailVM.detailGroupId = UserInfo.share.selectedData.transferGroupId
+                addDetailVM.detailTypeId = UserInfo.share.selectedData.trnasferTypeId
             }
         }
     }

@@ -13,9 +13,9 @@ extension RealmManager {
     // MARK: 建立預設選項
     internal func setUpPresetOptions(realm: Realm, _ userId: ObjectId) {
 //        self.presetAccount(realm, userId)
-//        self.presetExpensesGroup(realm, userId)
-//        self.presetIncomeGroup(realm, userId)
-//        self.presetTransferGroup(realm, userId)
+        self.presetExpensesGroup(realm, userId)
+        self.presetIncomeGroup(realm, userId)
+        self.presetTransferGroup(realm, userId)
     }
     
     private func presetAccount(_ realm: Realm, _ userId: ObjectId) {
@@ -36,9 +36,11 @@ extension RealmManager {
         let expensesGroups = ExpensesGroup.allCases
         
         for expensesGroup in expensesGroups {
-            let expensesGroupModel = ExpensesGroupModel()
+//            let expensesGroupModel = ExpensesGroupModel()
+            let expensesGroupModel = DetailGroupModel()
             expensesGroupModel.userId = userId
             expensesGroupModel.name = expensesGroup.name
+            expensesGroupModel.billType = 0
             
             realm.add(expensesGroupModel)
             
@@ -79,10 +81,18 @@ extension RealmManager {
     private func presetFoodType(_ realm: Realm, _ userId: ObjectId, _ groupId: ObjectId) {
         let foods = ExpensesFood.allCases
         
+        selectedData.expensesGroupId = groupId.stringValue
+        
         for food in foods {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = food.name
+            
+            if food.name == ExpensesFood.lunch.name {
+                selectedData.expensesTypeId = model.id.stringValue
+            }
             
             realm.add(model)
         }
@@ -92,7 +102,9 @@ extension RealmManager {
         let clothings = ExpensesClothing.allCases
         
         for clothing in clothings {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = clothing.name
             
@@ -104,7 +116,9 @@ extension RealmManager {
         let lifes = ExpensesLife.allCases
         
         for life in lifes {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = life.name
             
@@ -116,7 +130,9 @@ extension RealmManager {
         let traffics = ExpensesTraffic.allCases
         
         for traffic in traffics {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = traffic.name
             
@@ -128,7 +144,9 @@ extension RealmManager {
         let educates = ExpensesEducate.allCases
         
         for educate in educates {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = educate.name
             
@@ -140,7 +158,9 @@ extension RealmManager {
         let entertainments = ExpensesEntertainment.allCases
         
         for entertainment in entertainments {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = entertainment.name
             
@@ -152,7 +172,9 @@ extension RealmManager {
         let electronicProducts = ExpensesElectronicProduct.allCases
         
         for electronicProduct in electronicProducts {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = electronicProduct.name
             
@@ -164,7 +186,9 @@ extension RealmManager {
         let books = ExpensesBook.allCases
         
         for book in books {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = book.name
             
@@ -176,7 +200,9 @@ extension RealmManager {
         let motors = ExpensesMotor.allCases
         
         for motor in motors {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = motor.name
             
@@ -188,7 +214,9 @@ extension RealmManager {
         let medicals = ExpensesMedical.allCases
         
         for medical in medicals {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = medical.name
             
@@ -200,7 +228,9 @@ extension RealmManager {
         let personalCommunications = ExpensesPersonalCommunication.allCases
         
         for personalCommunication in personalCommunications {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = personalCommunication.name
             
@@ -212,7 +242,9 @@ extension RealmManager {
         let invests = ExpensesInvest.allCases
         
         for invest in invests {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = invest.name
             
@@ -224,7 +256,9 @@ extension RealmManager {
         let others = ExpensesOther.allCases
         
         for other in others {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = other.name
             
@@ -236,7 +270,9 @@ extension RealmManager {
         let fees = ExpensesFee.allCases
         
         for fee in fees {
-            let model = ExpensesTypeModel()
+//            let model = ExpensesTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = fee.name
             
@@ -252,9 +288,11 @@ extension RealmManager {
         let incomeGroups = IncomeGroup.allCases
         
         for incomeGroup in incomeGroups {
-            let incomeGroupModel = IncomeGroupModel()
+//            let incomeGroupModel = IncomeGroupModel()
+            let incomeGroupModel = DetailGroupModel()
             incomeGroupModel.userId = userId
             incomeGroupModel.name = incomeGroup.name
+            incomeGroupModel.billType = 1
             
             realm.add(incomeGroupModel)
             
@@ -271,10 +309,18 @@ extension RealmManager {
     private func presetGeneralType(_ realm: Realm, _ userId: ObjectId, _ groupId: ObjectId) {
         let generals = IncomeGeneral.allCases
         
+        selectedData.incomeGroupId = groupId.stringValue
+        
         for general in generals {
-            let model = IncomeTypeModel()
+//            let model = IncomeTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = general.name
+            
+            if general.name == IncomeGeneral.other.name {
+                selectedData.incomeTypeId = model.id.stringValue
+            }
             
             realm.add(model)
         }
@@ -284,7 +330,9 @@ extension RealmManager {
         let investments = IncomeInvestment.allCases
         
         for investment in investments {
-            let model = IncomeTypeModel()
+//            let model = IncomeTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = investment.name
             
@@ -299,9 +347,11 @@ extension RealmManager {
         let transferGroups = TransferGroup.allCases
         
         for transferGroup in transferGroups {
-            let transferGroupModel = TransferGroupModel()
+//            let transferGroupModel = TransferGroupModel()
+            let transferGroupModel = DetailGroupModel()
             transferGroupModel.userId = userId
             transferGroupModel.name = transferGroup.name
+            transferGroupModel.billType = 2
             
             realm.add(transferGroupModel)
             
@@ -316,13 +366,31 @@ extension RealmManager {
     private func presetTransferType(_ realm: Realm, _ userId: ObjectId, _ groupId: ObjectId) {
         let generals = TransferGeneral.allCases
         
+        selectedData.transferGroupId = groupId.stringValue
+        
         for general in generals {
-            let model = TransferTypeModel()
+//            let model = TransferTypeModel()
+            let model = DetailTypeModel()
+            model.groupId = groupId.stringValue
             model.userId = userId
             model.name = general.name
             
+            
+            if general.name == TransferGeneral.general.name {
+                selectedData.trnasferTypeId = model.id.stringValue
+            }
+            
             realm.add(model)
         }
+        
+        setPresetSelectedData()
     }
     
+    
+    private func setPresetSelectedData() {
+        selectedData.accountId = RealmManager.share.getAccount(userId: UserInfo.share.selectedUserId).first?.id.stringValue ?? ""
+        selectedData.transferToAccountId = RealmManager.share.getAccount(userId: UserInfo.share.selectedUserId).first?.id.stringValue ?? ""
+        
+        UserInfo.share.selectedData = selectedData
+    }
 }

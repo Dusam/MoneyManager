@@ -14,6 +14,8 @@ class RealmManager {
     static let share = RealmManager()
     
     private(set) var realm: Realm!
+    
+    internal var selectedData = SelectedData()
         
     private init() {
         openRealm()
@@ -81,6 +83,8 @@ extension RealmManager {
             realm.beginWrite()
             realm.add(user)
             
+            UserInfo.share.selectedUserId = user.id
+            
             self.setUpPresetOptions(realm: realm, user.id)
             
             try! realm.commitWrite()
@@ -104,7 +108,18 @@ extension RealmManager {
     func deleteUser(_ deleteUser: UserModel) {
         if let realm = realm {
             realm.beginWrite()
+            
+            let delete = realm.objects(DetailModel.self).filter("userId == %@", deleteUser.id)
+            let group = realm.objects(DetailGroupModel.self).filter("userId == %@", deleteUser.id)
+            let type = realm.objects(DetailTypeModel.self).filter("userId == %@", deleteUser.id)
+            let account = realm.objects(AccountModel.self).filter("userId == %@", deleteUser.id)
+            
+            realm.delete(delete)
+            realm.delete(group)
+            realm.delete(type)
+            realm.delete(account)
             realm.delete(deleteUser)
+
             try! realm.commitWrite()
         }
     }
@@ -128,9 +143,9 @@ extension RealmManager {
         return []
     }
     
-    func deleteDetail(_ userId: ObjectId) {
+    func deleteDetail(_ id: ObjectId) {
         if let realm = realm {
-            let delete = realm.objects(DetailModel.self).filter("userId == %@", userId)
+            let delete = realm.objects(DetailModel.self).filter("id == %@", id)
             
             realm.beginWrite()
             realm.delete(delete)
@@ -262,16 +277,20 @@ extension RealmManager {
         return []
     }
     
-    func getDetailType(_ groupId: String = "") -> [DetailTypeModel] {
+    func getDetailType(_ groupId: String = "", typeId: String = "") -> [DetailTypeModel] {
         if let realm = realm {
             
-            if groupId.isEmpty {
+            if !groupId.isEmpty {
+                return Array(realm.objects(DetailTypeModel.self)).filter {
+                    $0.userId == UserInfo.share.selectedUserId && $0.groupId == groupId
+                }
+            } else if typeId.isEmpty {
                 return Array(realm.objects(DetailTypeModel.self)).filter {
                     $0.userId == UserInfo.share.selectedUserId
                 }
             } else {
                 return Array(realm.objects(DetailTypeModel.self)).filter {
-                    $0.userId == UserInfo.share.selectedUserId && $0.groupId == groupId
+                    $0.userId == UserInfo.share.selectedUserId && $0.id.stringValue == typeId
                 }
             }
             

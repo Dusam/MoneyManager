@@ -27,5 +27,10 @@ class AddAccountViewModel: ObservableObject {
         self.accountModel.money = initMoney.int ?? 0
         
         RealmManager.share.saveData(self.accountModel)
+        
+        let selectedData = UserInfo.share.selectedData
+        selectedData.accountId = self.accountModel.id.stringValue
+        selectedData.transferToAccountId = self.accountModel.id.stringValue
+        UserInfo.share.selectedData = selectedData
     }
 }

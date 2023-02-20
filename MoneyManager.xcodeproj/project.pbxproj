@@ -58,6 +58,8 @@
 		68648DFC291C8A56004915BE /* AddAccountInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68648DFB291C8A56004915BE /* AddAccountInfoView.swift */; };
 		6888E2662994D18D00DB4D31 /* DetailGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6888E2652994D18D00DB4D31 /* DetailGroupModel.swift */; };
 		6888E2682994D1CD00DB4D31 /* DetailTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6888E2672994D1CD00DB4D31 /* DetailTypeModel.swift */; };
+		6888E26A2994E74200DB4D31 /* DetailGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6888E2692994E74200DB4D31 /* DetailGroupView.swift */; };
+		6888E26C2994E7C100DB4D31 /* DetailTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6888E26B2994E7C100DB4D31 /* DetailTypeView.swift */; };
 		688B53DE29923DC80008C473 /* CustomExpensesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B53DD29923DC80008C473 /* CustomExpensesList.swift */; };
 		688B53E329939C690008C473 /* AddOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B53E229939C690008C473 /* AddOptionView.swift */; };
 		688B53EA2993A04A0008C473 /* AddOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B53E92993A04A0008C473 /* AddOptionViewModel.swift */; };
@@ -174,6 +176,8 @@
 		68648DFB291C8A56004915BE /* AddAccountInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountInfoView.swift; sourceTree = "<group>"; };
 		6888E2652994D18D00DB4D31 /* DetailGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGroupModel.swift; sourceTree = "<group>"; };
 		6888E2672994D1CD00DB4D31 /* DetailTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTypeModel.swift; sourceTree = "<group>"; };
+		6888E2692994E74200DB4D31 /* DetailGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGroupView.swift; sourceTree = "<group>"; };
+		6888E26B2994E7C100DB4D31 /* DetailTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTypeView.swift; sourceTree = "<group>"; };
 		688B53DD29923DC80008C473 /* CustomExpensesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExpensesList.swift; sourceTree = "<group>"; };
 		688B53E229939C690008C473 /* AddOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionView.swift; sourceTree = "<group>"; };
 		688B53E92993A04A0008C473 /* AddOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionViewModel.swift; sourceTree = "<group>"; };
@@ -420,6 +424,8 @@
 				6857479D2914DBD800026B7C /* Transfer */,
 				685747962914B8DF00026B7C /* Income */,
 				6857476A2913675D00026B7C /* Expenses */,
+				6888E2692994E74200DB4D31 /* DetailGroupView.swift */,
+				6888E26B2994E7C100DB4D31 /* DetailTypeView.swift */,
 			);
 			path = GroupView;
 			sourceTree = "<group>";
@@ -875,6 +881,7 @@
 				6888E2662994D18D00DB4D31 /* DetailGroupModel.swift in Sources */,
 				684F13AA2951A51E00982455 /* ChartType.swift in Sources */,
 				685747862913940000026B7C /* ExpensesOtherList.swift in Sources */,
+				6888E26A2994E74200DB4D31 /* DetailGroupView.swift in Sources */,
 				22A2C62328361CD00066AF0D /* UserCellView.swift in Sources */,
 				22A2C62F28362FB10066AF0D /* RealmManager.swift in Sources */,
 				6857476C2913678600026B7C /* ExpensesFoodList.swift in Sources */,
@@ -936,6 +943,7 @@
 				68EE3148290FC49600C3702F /* AddDetailNumberView.swift in Sources */,
 				68F19D3E2907B5340056819A /* IncomeGeneral.swift in Sources */,
 				68F19D302907916A0056819A /* ExpensesMotor.swift in Sources */,
+				6888E26C2994E7C100DB4D31 /* DetailTypeView.swift in Sources */,
 				22FB19FE2846F51B005DB4F9 /* UserInfo.swift in Sources */,
 				685747982914B8F900026B7C /* IncomeGroupView.swift in Sources */,
 				68F19D1F290775B10056819A /* ExpensesFood.swift in Sources */,

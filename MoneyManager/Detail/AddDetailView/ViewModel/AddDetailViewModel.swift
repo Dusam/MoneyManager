@@ -15,12 +15,16 @@ class AddDetailViewModel: ObservableObject {
         detailTypeToString()
         getAccountName()
         
-        detailGroupId = UserInfo.share.expensesGroupId
-        detailTypeId = UserInfo.share.expensesTypeId
+        selectedData = UserInfo.share.selectedData
         
-        accountId = UserInfo.share.accountId
-        transferToAccountId = UserInfo.share.transferToAccountId
+        detailGroupId = selectedData.expensesGroupId
+        detailTypeId = selectedData.expensesTypeId
+        
+        accountId = selectedData.accountId
+        transferToAccountId = selectedData.transferToAccountId
     }
+    
+    private var selectedData = UserInfo.share.selectedData
     
     private var currentDate = UserInfo.share.selectedDate {
         didSet {
@@ -34,14 +38,14 @@ class AddDetailViewModel: ObservableObject {
         didSet {
             switch billingType {
             case .expenses:
-                detailGroupId = UserInfo.share.expensesGroupId
-                detailTypeId = UserInfo.share.expensesTypeId
+                detailGroupId = selectedData.expensesGroupId
+                detailTypeId = selectedData.expensesTypeId
             case .income:
-                detailGroupId = UserInfo.share.incomeGroupId
-                detailTypeId = UserInfo.share.incomeTypeId
+                detailGroupId = selectedData.incomeGroupId
+                detailTypeId = selectedData.incomeTypeId
             case .transfer:
-                detailGroupId = UserInfo.share.transferGroupId
-                detailTypeId = UserInfo.share.trnasferTypeId
+                detailGroupId = selectedData.transferGroupId
+                detailTypeId = selectedData.trnasferTypeId
             }
         }
     }
@@ -57,6 +61,8 @@ class AddDetailViewModel: ObservableObject {
     @Published var detailGroupId: String = "0" {
         didSet {
             detailTypeToString()
+            
+            detailTypeModels = RealmManager.share.getDetailType(detailGroupId)
         }
     }
     @Published var detailTypeId: String = "0" {
@@ -65,11 +71,13 @@ class AddDetailViewModel: ObservableObject {
             storeSelectedType()
         }
     }
+    @Published var detailTypeModels: [DetailTypeModel] = []
     
     // 新增列表參數
     @Published var accountName: String = ""
     @Published var accountId: String = "" {
         didSet {
+            
             getAccountName()
         }
     }
@@ -98,15 +106,17 @@ class AddDetailViewModel: ObservableObject {
     private func storeSelectedType() {
         switch billingType {
         case .expenses:
-            UserInfo.share.expensesGroupId = detailGroupId
-            UserInfo.share.expensesTypeId = detailTypeId
+            selectedData.expensesGroupId = detailGroupId
+            selectedData.expensesTypeId = detailTypeId
         case .income:
-            UserInfo.share.incomeGroupId = detailGroupId
-            UserInfo.share.incomeTypeId = detailTypeId
+            selectedData.incomeGroupId = detailGroupId
+            selectedData.incomeTypeId = detailTypeId
         case .transfer:
-            UserInfo.share.transferGroupId = detailGroupId
-            UserInfo.share.trnasferTypeId = detailTypeId
+            selectedData.transferGroupId = detailGroupId
+            selectedData.trnasferTypeId = detailTypeId
         }
+        
+        UserInfo.share.selectedData = selectedData
     }
 }
 
@@ -130,109 +140,115 @@ extension AddDetailViewModel {
         if accountId.isEmpty {
             accountName = RealmManager.share.getAccount(userId: UserInfo.share.selectedUserId).first?.name ?? ""
         } else {
+            selectedData.accountId = accountId
             accountName = RealmManager.share.getAccount(accountId, userId: UserInfo.share.selectedUserId).first?.name ?? ""
         }
         
         if transferToAccountId.isEmpty {
             transferToAccountName = RealmManager.share.getAccount(userId: UserInfo.share.selectedUserId).first?.name ?? ""
         } else {
+            selectedData.accountId = transferToAccountId
             transferToAccountName = RealmManager.share.getAccount(transferToAccountId, userId: UserInfo.share.selectedUserId).first?.name ?? ""
         }
+        
+        UserInfo.share.selectedData = selectedData
     }
     
     private func detailTypeToString() {
         typeName = ""
         
-        if let group = detailGroupId.int, let type = detailTypeId.int {
-            // 預設內容
-            switch billingType {
-            case .expenses:
-                if let group = ExpensesGroup(rawValue: group) {
-                    typeName += group.name
-                    
-                    switch group {
-                    case .food:
-                        guard let type = ExpensesFood(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .clothing:
-                        guard let type = ExpensesClothing(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .life:
-                        guard let type = ExpensesLife(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .traffic:
-                        guard let type = ExpensesTraffic(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .educate:
-                        guard let type = ExpensesEducate(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .entertainment:
-                        guard let type = ExpensesEntertainment(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .electronicProduct:
-                        guard let type = ExpensesElectronicProduct(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .book:
-                        guard let type = ExpensesBook(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .motor:
-                        guard let type = ExpensesMotor(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .medical:
-                        guard let type = ExpensesMedical(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .personalCommunication:
-                        guard let type = ExpensesPersonalCommunication(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .invest:
-                        guard let type = ExpensesInvest(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .other:
-                        guard let type = ExpensesOther(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .fee:
-                        guard let type = ExpensesFee(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    }
-                }
-            case .income:
-                if let group = IncomeGroup(rawValue: group) {
-                    typeName += group.name
-                    
-                    switch group {
-                    case .general:
-                        guard let type = IncomeGeneral(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    case .investment:
-                        guard let type = IncomeInvestment(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    }
-                }
-            case .transfer:
-                if let group = TransferGroup(rawValue: group) {
-                    typeName += group.name
-                    
-                    switch group {
-                    case .transferMoney:
-                        guard let type = TransferGeneral(rawValue: type) else { return }
-                        typeName += " - \(type.name)"
-                    }
-                }
-            }
-            
-        } else {
-            switch billingType {
-            case .expenses:
-                typeName += RealmManager.share.getExpensesGroup(detailGroupId).first?.name ?? ""
-                typeName += " - \(RealmManager.share.getExpensesType(detailTypeId).first?.name ?? "")"
-            case .income:
-                typeName += RealmManager.share.getIncomeGroup(detailGroupId).first?.name ?? ""
-                typeName += " - \(RealmManager.share.getIncomeType(detailTypeId).first?.name ?? "")"
-            case .transfer:
-                typeName += RealmManager.share.getTransferGroup(detailGroupId).first?.name ?? ""
-                typeName += " - \(RealmManager.share.getTransferType(detailTypeId).first?.name ?? "")"
-            }
-        }
+//        if let group = detailGroupId.int, let type = detailTypeId.int {
+//            // 預設內容
+//            switch billingType {
+//            case .expenses:
+//                if let group = ExpensesGroup(rawValue: group) {
+//                    typeName += group.name
+//
+//                    switch group {
+//                    case .food:
+//                        guard let type = ExpensesFood(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .clothing:
+//                        guard let type = ExpensesClothing(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .life:
+//                        guard let type = ExpensesLife(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .traffic:
+//                        guard let type = ExpensesTraffic(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .educate:
+//                        guard let type = ExpensesEducate(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .entertainment:
+//                        guard let type = ExpensesEntertainment(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .electronicProduct:
+//                        guard let type = ExpensesElectronicProduct(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .book:
+//                        guard let type = ExpensesBook(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .motor:
+//                        guard let type = ExpensesMotor(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .medical:
+//                        guard let type = ExpensesMedical(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .personalCommunication:
+//                        guard let type = ExpensesPersonalCommunication(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .invest:
+//                        guard let type = ExpensesInvest(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .other:
+//                        guard let type = ExpensesOther(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .fee:
+//                        guard let type = ExpensesFee(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    }
+//                }
+//            case .income:
+//                if let group = IncomeGroup(rawValue: group) {
+//                    typeName += group.name
+//
+//                    switch group {
+//                    case .general:
+//                        guard let type = IncomeGeneral(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    case .investment:
+//                        guard let type = IncomeInvestment(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    }
+//                }
+//            case .transfer:
+//                if let group = TransferGroup(rawValue: group) {
+//                    typeName += group.name
+//
+//                    switch group {
+//                    case .transferMoney:
+//                        guard let type = TransferGeneral(rawValue: type) else { return }
+//                        typeName += " - \(type.name)"
+//                    }
+//                }
+//            }
+//
+//        } else {
+//            switch billingType {
+//            case .expenses:
+//                typeName += RealmManager.share.getExpensesGroup(detailGroupId).first?.name ?? ""
+//                typeName += " - \(RealmManager.share.getExpensesType(detailTypeId).first?.name ?? "")"
+//            case .income:
+//                typeName += RealmManager.share.getIncomeGroup(detailGroupId).first?.name ?? ""
+//                typeName += " - \(RealmManager.share.getIncomeType(detailTypeId).first?.name ?? "")"
+//            case .transfer:
+//                typeName += RealmManager.share.getTransferGroup(detailGroupId).first?.name ?? ""
+//                typeName += " - \(RealmManager.share.getTransferType(detailTypeId).first?.name ?? "")"
+//            }
+        typeName += RealmManager.share.getDetailGroup(billType: billingType, groupId: detailGroupId).first?.name ?? ""
+        typeName += " - \(RealmManager.share.getDetailType(typeId: detailTypeId).first?.name ?? "")"
+//        }
     }
 }
 
@@ -240,7 +256,6 @@ extension AddDetailViewModel {
 extension AddDetailViewModel {
     func createDetail() {
         let date = currentDate.string(withFormat: "yyyy-MM-dd")
-        
         // 金額大於0才儲存
         if let amount = valueString.int, amount > 0, let accountId = try? ObjectId(string: accountId) {
             self.detailModel = DetailModel()

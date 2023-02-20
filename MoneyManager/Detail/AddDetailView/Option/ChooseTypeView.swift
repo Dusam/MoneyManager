@@ -15,14 +15,7 @@ struct ChooseTypeView: View {
     var body: some View {
         HStack(spacing: 0) {
             VStack {
-                switch addDetailVM.billingType {
-                case .expenses:
-                    ExpensesGroupView(selectedGroup: $selectedGroup.toUnwrapped(defaultValue: ExpensesGroup.food))
-                case .income:
-                    IncomeGroupView(selectedGroup: $selectedGroup.toUnwrapped(defaultValue: IncomeGroup.general))
-                case .transfer:
-                    TransferGroupView(selectedGroup: $selectedGroup.toUnwrapped(defaultValue: IncomeGroup.general))
-                }
+                DetailGroupView()
                 
                 NavigationLink(destination: AddOptionView(.addGroup, addDetailVM.billingType)) {
                     Text("+")
@@ -38,7 +31,7 @@ struct ChooseTypeView: View {
             Divider()
             
             VStack {
-                getTypeList()
+                DetailTypeView()
                 
                 NavigationLink(destination: AddOptionView(.addType, addDetailVM.billingType, addDetailVM.detailGroupId)) {
                     Text("+")
@@ -55,80 +48,68 @@ struct ChooseTypeView: View {
         .environmentObject(addDetailVM)
         .navigationTitle("選擇類型")
         .hideBackButtonTitle()
-        .onAppear {
-            switch addDetailVM.billingType {
-            case .expenses:
-                addDetailVM.detailGroupId = ExpensesGroup.food.rawValue.string
-                selectedGroup = ExpensesGroup.food
-            case .income:
-                addDetailVM.detailGroupId = IncomeGroup.general.rawValue.string
-                selectedGroup = IncomeGroup.general
-            case .transfer:
-                addDetailVM.detailGroupId = TransferGroup.transferMoney.rawValue.string
-                selectedGroup = TransferGroup.transferMoney
-            }
-        }
     }
     
     
     @ViewBuilder
     private func getTypeList() -> some View {
-        if let selectedGroup = selectedGroup as? ExpensesGroup {
-            switch selectedGroup {
-            case .food:
-                ExpensesFoodList()
-            case .clothing:
-                ExpensesClothingList()
-            case .life:
-                ExpensesLifeList()
-            case .traffic:
-                ExpensesTrafficList()
-            case .educate:
-                ExpensesEducateList()
-            case .entertainment:
-                ExpensesEntertainmentList()
-            case .electronicProduct:
-                ExpensesElectronicProductList()
-            case .book:
-                ExpensesBookList()
-            case .motor:
-                ExpensesMotorList()
-            case .medical:
-                ExpensesMedicalList()
-            case .personalCommunication:
-                ExpensesPersonalCommunicationList()
-            case .invest:
-                ExpensesInvestList()
-            case .other:
-                ExpensesOtherList()
-            case .fee:
-                ExpensesFeeList()
-            }
-        }
-        else if let selectedGroup = selectedGroup as? IncomeGroup {
-            switch selectedGroup {
-            case .general:
-                IncomeGeneralList()
-            case .investment:
-                IncomeInvestmentList()
-            }
-        }
-        else if let selectedGroup = selectedGroup as? TransferGroup {
-            switch selectedGroup {
-            case .transferMoney:
-                TransferGeneralList()
-            }
-        }
-        else if let _ = selectedGroup as? String {
-            switch addDetailVM.billingType {
-            case .expenses:
-                CustomExpensesList(selectedGroup: $selectedGroup)
-            case .income:
-                CustomIncomeList(selectedGroup: $selectedGroup)
-            case .transfer:
-                CustomTransferList(selectedGroup: $selectedGroup)
-            }
-        }
+//        if let selectedGroup = selectedGroup as? ExpensesGroup {
+//            switch selectedGroup {
+//            case .food:
+//                ExpensesFoodList()
+//            case .clothing:
+//                ExpensesClothingList()
+//            case .life:
+//                ExpensesLifeList()
+//            case .traffic:
+//                ExpensesTrafficList()
+//            case .educate:
+//                ExpensesEducateList()
+//            case .entertainment:
+//                ExpensesEntertainmentList()
+//            case .electronicProduct:
+//                ExpensesElectronicProductList()
+//            case .book:
+//                ExpensesBookList()
+//            case .motor:
+//                ExpensesMotorList()
+//            case .medical:
+//                ExpensesMedicalList()
+//            case .personalCommunication:
+//                ExpensesPersonalCommunicationList()
+//            case .invest:
+//                ExpensesInvestList()
+//            case .other:
+//                ExpensesOtherList()
+//            case .fee:
+//                ExpensesFeeList()
+//            }
+//        }
+//        else if let selectedGroup = selectedGroup as? IncomeGroup {
+//            switch selectedGroup {
+//            case .general:
+//                IncomeGeneralList()
+//            case .investment:
+//                IncomeInvestmentList()
+//            }
+//        }
+//        else if let selectedGroup = selectedGroup as? TransferGroup {
+//            switch selectedGroup {
+//            case .transferMoney:
+//                TransferGeneralList()
+//            }
+//        }
+//        else if let _ = selectedGroup as? String {
+//            switch addDetailVM.billingType {
+//            case .expenses:
+//                CustomExpensesList(selectedGroup: $selectedGroup)
+//            case .income:
+//                CustomIncomeList(selectedGroup: $selectedGroup)
+//            case .transfer:
+//                CustomTransferList(selectedGroup: $selectedGroup)
+//            }
+//            DetailTypeView()
+//        }
 
     }
     
