@@ -33,7 +33,7 @@ struct AddDetailView: View {
                 } label: {
                     VStack {
                         Image(systemName: "checkmark.circle")
-                        Text("儲存")
+                        Text(R.string.localizable.save())
                     }
                     .frame(maxWidth: .infinity)
                     .background(.white)

@@ -22,7 +22,7 @@ struct SettingView: View {
             }
             Divider()
         }
-        .navigationTitle("設定")
+        .navigationTitle(R.string.localizable.setting())
     }
     
 }

@@ -19,7 +19,7 @@ struct ChartView: View {
                 .frame(height: UIScreen.main.bounds.height * 0.3)
                 
             
-            Text("總計 - TW$\(chartVM.total)")
+            Text(R.string.localizable.chartTotal(chartVM.total.string))
                 .font(.bold(.system(size: 20))())
                 .frame(maxWidth: .infinity)
                 .padding([.bottom], 10)
@@ -39,7 +39,7 @@ struct ChartView: View {
                 } label: {
                     VStack {
                         HStack {
-                            Text("\(data.billingType.name) - TW$\(data.total)")
+                            Text("\(data.billingType.name) - $\(data.total)")
                             Spacer()
                             Text("\(String(format:"%.2f", data.percent))%")
                                  

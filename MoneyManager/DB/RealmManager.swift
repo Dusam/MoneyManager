@@ -114,6 +114,7 @@ extension RealmManager {
             let type = realm.objects(DetailTypeModel.self).filter("userId == %@", deleteUser.id)
             let account = realm.objects(AccountModel.self).filter("userId == %@", deleteUser.id)
             
+            UserInfo.share.removeInfo(userId: deleteUser.id.stringValue)
             realm.delete(delete)
             realm.delete(group)
             realm.delete(type)

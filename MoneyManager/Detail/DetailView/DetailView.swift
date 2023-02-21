@@ -26,7 +26,7 @@ struct DetailView: View {
                             AddDetailView()
                         }.opacity(0)
 
-                        Text("新增一筆...")
+                        Text(R.string.localizable.addNew())
                             .foregroundColor(.gray)
                     }
                 }
@@ -37,7 +37,7 @@ struct DetailView: View {
                 NavigationLink(destination: AccountDetailView()) {
                     VStack {
                         Image(systemName: "house.fill")
-                        Text("帳戶")
+                        Text(R.string.localizable.account())
                     }
                     .frame(maxWidth: .infinity)
                     .background(.white)
@@ -46,7 +46,7 @@ struct DetailView: View {
                 NavigationLink(destination: AddDetailView()) {
                     VStack {
                         Image(systemName: "plus")
-                        Text("新增")
+                        Text(R.string.localizable.add())
                     }
                     .frame(maxWidth: .infinity)
                     .background(.white)
@@ -55,7 +55,7 @@ struct DetailView: View {
                 NavigationLink(destination: ChartView()) {
                     VStack {
                         Image(systemName: "chart.pie.fill")
-                        Text("圖表")
+                        Text(R.string.localizable.chart())
                     }
                     .frame(maxWidth: .infinity)
                     .background(.white)
@@ -64,7 +64,7 @@ struct DetailView: View {
                 NavigationLink(destination: SettingView()) {
                     VStack {
                         Image(systemName: "gearshape.fill")
-                        Text("設定")
+                        Text(R.string.localizable.setting())
                     }
                     .frame(maxWidth: .infinity)
                     .background(.white)

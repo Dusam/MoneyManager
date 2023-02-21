@@ -14,7 +14,7 @@ struct AddAccountInfoView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text("帳戶名稱")
+            Text(R.string.localizable.accountName())
                 .font(.system(size: 26))
                 .padding([.top, .leading, .trailing], 20)
             
@@ -33,7 +33,7 @@ struct AddAccountInfoView: View {
                     addAccountVM.isHiddenCalculator = true
                 }
             
-            Text("初始金額")
+            Text(R.string.localizable.initialAmount())
                 .font(.system(size: 26))
                 .padding([.top, .leading, .trailing], 20)
             

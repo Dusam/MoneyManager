@@ -24,7 +24,7 @@ struct AddOptionView: View {
     var body: some View {
         VStack {
             HStack {
-                TextField("請輸入名稱", text: $addOptionVM.name)
+                TextField(R.string.localizable.enterName(), text: $addOptionVM.name)
                     .foregroundColor(.black)
                     .font(.system(size: 20))
                     .padding()

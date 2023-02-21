@@ -45,6 +45,10 @@ class UserInfo {
         }
     }
     
+    func removeInfo(userId: String) {
+        ud.removeObject(forKey: userId)
+    }
+    
 //    var expensesGroupId: String {
 //        set {
 //            ud.set(newValue, forKey: "expensesGroupId")

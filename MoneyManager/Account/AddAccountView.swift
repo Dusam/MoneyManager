@@ -37,7 +37,7 @@ struct AddAccountView: View {
                 
                 AddAccountInfoView()
                 
-                Toggle("計入總計", isOn: $addAccountVM.includTotal)
+                Toggle(R.string.localizable.joinTotal(), isOn: $addAccountVM.includTotal)
                     .font(.system(size: 24))
                     .padding(20)
                     .background(.white)
@@ -51,7 +51,7 @@ struct AddAccountView: View {
                 .offset(y: addAccountVM.isHiddenCalculator ? 500 : 0)
                 .animation(.easeOut(duration: 0.3), value: addAccountVM.isHiddenCalculator)
         }
-        .confirmationDialog("帳戶類型", isPresented: $showingConfirmation) {
+        .confirmationDialog(R.string.localizable.accountType(), isPresented: $showingConfirmation) {
             ForEach(AccountType.allCases, id: \.self) { account in
                 Button {
                     addAccountVM.accountType = account
@@ -67,7 +67,7 @@ struct AddAccountView: View {
                     addAccountVM.saveAccount()
                     dismiss()
                 } label: {
-                    Text("儲存")
+                    Text(R.string.localizable.save())
                 }
             }
         })
@@ -75,7 +75,7 @@ struct AddAccountView: View {
         .onTapGesture {
             addAccountVM.isHiddenCalculator = true
         }
-        .navigationTitle("新增帳戶")
+        .navigationTitle(R.string.localizable.addAccount())
         .environmentObject(addAccountVM)
         
     }

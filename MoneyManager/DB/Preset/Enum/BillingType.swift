@@ -16,11 +16,11 @@ enum BillingType: Int, CaseIterable {
     var name: String {
         switch self {
         case .expenses:
-            return "支出"
+            return R.string.localizable.spend()
         case .income:
-            return "收入"
+            return R.string.localizable.income()
         case .transfer:
-            return "轉帳"
+            return R.string.localizable.transfer()
         }
     }
     

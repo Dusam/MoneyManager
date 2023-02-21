@@ -14,7 +14,7 @@ struct TransferListView: View {
         List {
             NavigationLink(destination: ChooseAccountView().environmentObject(addDetailVM))   {
                 HStack {
-                    Text("從:")
+                    Text(R.string.localizable.from_title())
                         .font(.system(size: 18))
                     Text(addDetailVM.accountName)
                         .font(.system(size: 18))
@@ -28,7 +28,7 @@ struct TransferListView: View {
             NavigationLink(destination:
                             ChooseAccountView(mode: .transfer).environmentObject(addDetailVM))   {
                 HStack {
-                    Text("到:")
+                    Text(R.string.localizable.to_title())
                         .font(.system(size: 18))
                     Text(addDetailVM.transferToAccountName)
                         .font(.system(size: 18))
@@ -44,7 +44,7 @@ struct TransferListView: View {
                 addDetailVM.isEditingTransferFee = true
             } label: {
                 HStack {
-                    Text("手續費:")
+                    Text(R.string.localizable.handlingfee_title())
                         .font(.system(size: 18))
                     Text(addDetailVM.transferFee)
                         .font(.system(size: 18))
@@ -58,7 +58,7 @@ struct TransferListView: View {
             
             NavigationLink(destination: ChooseTypeView().environmentObject(addDetailVM))   {
                 HStack {
-                    Text("類別:")
+                    Text(R.string.localizable.type_title())
                         .font(.system(size: 18))
                     Text(addDetailVM.typeName)
                         .font(.system(size: 18))
@@ -71,7 +71,7 @@ struct TransferListView: View {
             
             NavigationLink(destination: MemoView().environmentObject(addDetailVM))   {
                 HStack {
-                    Text("備註:")
+                    Text(R.string.localizable.memo_title())
                         .font(.system(size: 18))
                     Text(addDetailVM.memo)
                         .font(.system(size: 18))

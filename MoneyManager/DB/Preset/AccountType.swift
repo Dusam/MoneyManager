@@ -27,11 +27,11 @@ enum AccountType: Int, CaseIterable {
     var typeName: String {
         switch self {
         case .cash:
-            return "現金"
+            return R.string.localizable.cash()
         case .card:
-            return "信用卡"
+            return R.string.localizable.creditCard()
         case .bank:
-            return "銀行"
+            return R.string.localizable.bank()
         }
     }
     

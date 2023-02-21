@@ -35,19 +35,19 @@ struct UserListView: View {
                                 deleteUser = user
                                 isShowAlert = true
                             } label: {
-                                Text("刪除")
+                                Text(R.string.localizable.delete())
                             }
                             
                         }
                 }
                 .scrollContentBackground(.hidden)
                 .alert(isPresented: $isShowAlert) {
-                    Alert(title: Text("刪除"),
-                          message: Text("確定要刪除 \(deleteUser.name) ?"),
-                          primaryButton: .destructive(Text("刪除")) {
+                    Alert(title: Text(R.string.localizable.delete()),
+                          message: Text(R.string.localizable.confirmDelete(deleteUser.name)),
+                          primaryButton: .destructive(Text(R.string.localizable.delete())) {
                         userVM.removeUser(deleteUser)
                     },
-                          secondaryButton: .cancel(Text("取消")))
+                          secondaryButton: .cancel(Text(R.string.localizable.cancel())))
                 }
                 
                 // 新增按鈕
@@ -56,7 +56,7 @@ struct UserListView: View {
             }
             .searchable(text: $userVM.searchText,
                         placement: .navigationBarDrawer(displayMode: .always))
-            .navigationTitle("用戶清單")
+            .navigationTitle(R.string.localizable.userList())
             .navigationBarTitleDisplayMode(.inline)
             .hideBackButtonTitle()
             .onAppear {

@@ -13,16 +13,16 @@ struct AccountDetailView: View {
     
     var body: some View {
         VStack {
-            AccountHeaderView(title: "總資產", money: $accountDetailVM.totalAssets)
-            AccountHeaderView(title: "總負債", money: $accountDetailVM.totalLiability)
-            AccountHeaderView(title: "結餘", money: $accountDetailVM.balance)
+            AccountHeaderView(title: R.string.localizable.totalAssets(), money: $accountDetailVM.totalAssets)
+            AccountHeaderView(title: R.string.localizable.totalLiability(), money: $accountDetailVM.totalLiability)
+            AccountHeaderView(title: R.string.localizable.theBalance(), money: $accountDetailVM.balance)
                         
             ScrollView {
-                AccountCellView(sectionHeader: "計入總計",
+                AccountCellView(sectionHeader: R.string.localizable.joinTotal(),
                                 datas: $accountDetailVM.includeTotalAccounts)
                 // 不計入總計
                 if accountDetailVM.notIncludeTotalAccounts.count > 0 {
-                    AccountCellView(sectionHeader: "不計入總計",
+                    AccountCellView(sectionHeader: R.string.localizable.notJoinTotal(),
                                     datas: $accountDetailVM.notIncludeTotalAccounts)
                 }
                 
@@ -30,10 +30,10 @@ struct AccountDetailView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink("新增", destination: AddAccountView())
+                NavigationLink(R.string.localizable.add(), destination: AddAccountView())
             }
         }
-        .navigationTitle("帳戶")
+        .navigationTitle(R.string.localizable.account())
         .hideBackButtonTitle()
         .onAppear {
             accountDetailVM.getAccounts()

@@ -14,7 +14,7 @@ struct ExpensesIncomeListView: View {
         List {
             NavigationLink(destination: ChooseTypeView().environmentObject(addDetailVM))   {
                 HStack {
-                    Text("類別:")
+                    Text(R.string.localizable.type_title())
                         .font(.system(size: 18))
                     Text(addDetailVM.typeName)
                         .font(.system(size: 18))
@@ -27,7 +27,7 @@ struct ExpensesIncomeListView: View {
             
             NavigationLink(destination: ChooseAccountView().environmentObject(addDetailVM))   {
                 HStack {
-                    Text("帳戶:")
+                    Text(R.string.localizable.account_title())
                         .font(.system(size: 18))
                     Text(addDetailVM.accountName)
                         .font(.system(size: 18))
@@ -40,7 +40,7 @@ struct ExpensesIncomeListView: View {
             
             NavigationLink(destination: MemoView().environmentObject(addDetailVM))   {
                 HStack {
-                    Text("備註:")
+                    Text(R.string.localizable.memo_title())
                         .font(.system(size: 18))
                     Text(addDetailVM.memo)
                         .font(.system(size: 18))

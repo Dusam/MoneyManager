@@ -53,12 +53,12 @@ struct MemoView: View {
                 Button {
                     dismiss()
                 } label: {
-                    Text("完成")
+                    Text(R.string.localizable.compelete())
                 }
 
             }
         }
-        .navigationTitle("備註")
+        .navigationTitle(R.string.localizable.memo())
         .onAppear {
             isFocused = true
             self.memo = addDetailVM.memo
