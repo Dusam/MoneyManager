@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import RealmSwift
+import SamUtils
 
 class AddDetailViewModel: ObservableObject {
     
@@ -57,14 +58,14 @@ class AddDetailViewModel: ObservableObject {
     @Published var typeName: String = ""
     @Published var detailGroupId: String = "" {
         didSet {
-            detailTypeToString()
+            typeName = DBTools.detailTypeToString(billingType: billingType, detailGroupId: detailGroupId, detailTypeId: detailTypeId)
             
             detailTypeModels = RealmManager.share.getDetailType(detailGroupId)
         }
     }
     @Published var detailTypeId: String = "" {
         didSet {
-            detailTypeToString()
+            typeName = DBTools.detailTypeToString(billingType: billingType, detailGroupId: detailGroupId, detailTypeId: detailTypeId)
             storeSelectedType()
         }
     }
@@ -100,16 +101,18 @@ class AddDetailViewModel: ObservableObject {
     private var detailModel: DetailModel = DetailModel()
     
     private func storeSelectedType() {
-        switch billingType {
-        case .expenses:
-            selectedData.expensesGroupId = detailGroupId
-            selectedData.expensesTypeId = detailTypeId
-        case .income:
-            selectedData.incomeGroupId = detailGroupId
-            selectedData.incomeTypeId = detailTypeId
-        case .transfer:
-            selectedData.transferGroupId = detailGroupId
-            selectedData.trnasferTypeId = detailTypeId
+        if self.detailModel.accountName.isEmpty {
+            switch billingType {
+            case .expenses:
+                selectedData.expensesGroupId = detailGroupId
+                selectedData.expensesTypeId = detailTypeId
+            case .income:
+                selectedData.incomeGroupId = detailGroupId
+                selectedData.incomeTypeId = detailTypeId
+            case .transfer:
+                selectedData.transferGroupId = detailGroupId
+                selectedData.trnasferTypeId = detailTypeId
+            }
         }
         
         UserInfo.share.selectedData = selectedData
@@ -128,29 +131,48 @@ extension AddDetailViewModel {
     func toCurrentDate() {
         currentDate = Date()
     }
+    
+    func setEditDetailModel(_ detailModel: DetailModel) {
+        self.detailModel = detailModel
+        
+        if let billType = BillingType(rawValue: detailModel.billingType) {
+            billingType = billType
+            
+            currentDate = detailModel.date.toDate()
+            valueString = detailModel.amount.string
+            detailGroupId = detailModel.detailGroup
+            detailTypeId = detailModel.detailType
+            accountId = detailModel.accountId.stringValue
+            memo = detailModel.memo
+            
+            if billType == .transfer {
+                transferToAccountId = detailModel.toAccountId.stringValue
+            }
+        }
+        
+    }
 }
 
-// 選項字串
+// MARK: 選項字串
 extension AddDetailViewModel {
     func getAccountName() {
         if !accountId.isEmpty {
-            selectedData.accountId = accountId
+            if self.detailModel.accountName.isEmpty {
+                // 空值代表正在新增，此時才儲存選擇過的帳戶
+                selectedData.accountId = accountId
+            }
             accountName = RealmManager.share.getAccount(accountId, userId: UserInfo.share.selectedUserId).first?.name ?? ""
         }
         
         if !transferToAccountId.isEmpty {
-            selectedData.transferToAccountId = transferToAccountId
+            if self.detailModel.toAccountName.isEmpty {
+                // 空值代表正在新增，此時才儲存選擇過的帳戶
+                selectedData.transferToAccountId = transferToAccountId
+            }
             transferToAccountName = RealmManager.share.getAccount(transferToAccountId, userId: UserInfo.share.selectedUserId).first?.name ?? ""
         }
         
         UserInfo.share.selectedData = selectedData
-    }
-    
-    private func detailTypeToString() {
-        typeName = ""
-        
-        typeName += RealmManager.share.getDetailGroup(billType: billingType, groupId: detailGroupId).first?.name ?? ""
-        typeName += " - \(RealmManager.share.getDetailType(typeId: detailTypeId).first?.name ?? "")"
     }
 }
 
@@ -160,10 +182,9 @@ extension AddDetailViewModel {
         let date = currentDate.string(withFormat: "yyyy-MM-dd")
         // 金額大於0才儲存
         if let amount = valueString.int, amount > 0, let accountId = try? ObjectId(string: accountId) {
-            self.detailModel = DetailModel()
             self.detailModel.userId = UserInfo.share.selectedUserId
             self.detailModel.billingType = self.billingType.rawValue
-            self.detailModel.accountType = accountId
+            self.detailModel.accountId = accountId
             self.detailModel.accountName = accountName
             self.detailModel.detailGroup = detailGroupId
             self.detailModel.detailType = detailTypeId
@@ -175,7 +196,7 @@ extension AddDetailViewModel {
             if self.billingType == .transfer {
                 
                 if let toAccountId = try? ObjectId(string: transferToAccountId) {
-                    self.detailModel.toAccountType = toAccountId
+                    self.detailModel.toAccountId = toAccountId
                     self.detailModel.toAccountName = transferToAccountName
                     
                     RealmManager.share.updateAccountMoney(billingType: self.billingType, amount: amount, accountId: accountId, toAccountId: toAccountId)
@@ -183,9 +204,10 @@ extension AddDetailViewModel {
                     return
                 }
                 
+            } else {
+                RealmManager.share.updateAccountMoney(billingType: self.billingType, amount: amount, accountId: accountId)
             }
             
-            RealmManager.share.updateAccountMoney(billingType: self.billingType, amount: amount, accountId: accountId)
             RealmManager.share.saveData(self.detailModel)
         }
         
@@ -196,7 +218,7 @@ extension AddDetailViewModel {
             let transferFeeModel = DetailModel()
             transferFeeModel.userId = UserInfo.share.selectedUserId
             transferFeeModel.billingType = 0
-            transferFeeModel.accountType = accountId
+            transferFeeModel.accountId = accountId
             transferFeeModel.accountName = accountName
             transferFeeModel.detailGroup = ExpensesGroup.fee.rawValue.string
             transferFeeModel.detailType = ExpensesFee.transfer.rawValue.string
@@ -225,6 +247,73 @@ extension AddDetailViewModel {
                 RealmManager.share.saveData(model)
             }
            
+        }
+    }
+    
+    func updateDetail() {
+        let date = currentDate.string(withFormat: "yyyy-MM-dd")
+        // 金額大於0才儲存
+        if let amount = valueString.int, amount > 0, let accountId = try? ObjectId(string: accountId) {
+            
+            // if type change, reset status.
+            resetDetailStatus()
+            
+            try! RealmManager.share.realm.write {
+                self.detailModel.userId = UserInfo.share.selectedUserId
+                self.detailModel.billingType = self.billingType.rawValue
+                self.detailModel.accountId = accountId
+                self.detailModel.accountName = accountName
+                self.detailModel.detailGroup = detailGroupId
+                self.detailModel.detailType = detailTypeId
+                self.detailModel.amount = amount
+                self.detailModel.memo = memo
+                self.detailModel.date = date
+                self.detailModel.modifyDateTime = date
+            }
+            
+            if self.billingType == .transfer {
+                
+                if let toAccountId = try? ObjectId(string: transferToAccountId) {
+                    try! RealmManager.share.realm.write {
+                        self.detailModel.toAccountId = toAccountId
+                        self.detailModel.toAccountName = transferToAccountName
+                    }
+                    
+                    RealmManager.share.updateAccountMoney(billingType: self.billingType, amount: amount, accountId: accountId, toAccountId: toAccountId)
+                } else {
+                    return
+                }
+                
+            } else {
+                RealmManager.share.updateAccountMoney(billingType: self.billingType, amount: amount, accountId: accountId)
+            }
+            
+        }
+    }
+    
+    private func resetDetailStatus() {
+        if let billingType = BillingType(rawValue: self.detailModel.billingType) {
+            // expenses -> other
+            if billingType == .expenses {
+                RealmManager.share.updateAccountMoney(billingType: .income, amount: self.detailModel.amount, accountId: self.detailModel.accountId)
+            }
+            
+            // income -> other
+            if billingType == .income {
+                RealmManager.share.updateAccountMoney(billingType: .expenses, amount: self.detailModel.amount, accountId: self.detailModel.accountId)
+            }
+            
+            // transfer -> other
+            if billingType == .transfer {
+                RealmManager.share.updateAccountMoney(billingType: .transfer, amount: self.detailModel.amount, accountId: self.detailModel.toAccountId, toAccountId: self.detailModel.accountId)
+            }
+        }
+    }
+    
+    func deleteDetail() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.resetDetailStatus()
+            RealmManager.share.deleteDetail(self.detailModel.id)
         }
     }
     

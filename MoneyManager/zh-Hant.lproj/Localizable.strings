@@ -20,8 +20,7 @@
 "save"="儲存";
 "enterName"="請輸入名稱";
 "chooseType"="選擇類型";
-"transferAccount"="轉出帳戶";
-"transferToAccount"="轉入帳戶";
+"account"="帳戶";
 "type_title"="類別:";
 "account_title"="帳戶:";
 "memo_title"="備註:";
@@ -47,3 +46,5 @@
 "totalAssets"="總資產";
 "totalLiability"="總負債";
 "transferFee"="轉帳手續費";
+"yes"="是";
+"no"="否";

@@ -23,6 +23,10 @@
 		22FB19F5283F0578005DB4F9 /* DetailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19F4283F0578005DB4F9 /* DetailCellView.swift */; };
 		22FB19F9283F7345005DB4F9 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19F8283F7345005DB4F9 /* DetailModel.swift */; };
 		22FB19FE2846F51B005DB4F9 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB19FD2846F51B005DB4F9 /* UserInfo.swift */; };
+		6830C0A429D5677E00DBBA49 /* DBTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6830C0A329D5677E00DBBA49 /* DBTools.swift */; };
+		6830C0A729D5822700DBBA49 /* SingleAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6830C0A629D5822700DBBA49 /* SingleAccountView.swift */; };
+		6830C0AA29D5827400DBBA49 /* SingleAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6830C0A929D5827400DBBA49 /* SingleAccountViewModel.swift */; };
+		6830C0AC29D5872700DBBA49 /* SingleAccountCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6830C0AB29D5872700DBBA49 /* SingleAccountCellView.swift */; };
 		68329ABE29309F9A002B7905 /* AccountCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68329ABD29309F9A002B7905 /* AccountCellView.swift */; };
 		68329AC02930A0F9002B7905 /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68329ABF2930A0F9002B7905 /* AccountHeaderView.swift */; };
 		684F139C2949A97200982455 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F139B2949A97200982455 /* PieChart.swift */; };
@@ -139,6 +143,10 @@
 		22FB19F4283F0578005DB4F9 /* DetailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellView.swift; sourceTree = "<group>"; };
 		22FB19F8283F7345005DB4F9 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		22FB19FD2846F51B005DB4F9 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		6830C0A329D5677E00DBBA49 /* DBTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBTools.swift; sourceTree = "<group>"; };
+		6830C0A629D5822700DBBA49 /* SingleAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAccountView.swift; sourceTree = "<group>"; };
+		6830C0A929D5827400DBBA49 /* SingleAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAccountViewModel.swift; sourceTree = "<group>"; };
+		6830C0AB29D5872700DBBA49 /* SingleAccountCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleAccountCellView.swift; sourceTree = "<group>"; };
 		68329ABD29309F9A002B7905 /* AccountCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCellView.swift; sourceTree = "<group>"; };
 		68329ABF2930A0F9002B7905 /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
 		684F139B2949A97200982455 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
@@ -281,7 +289,6 @@
 				68F19D492908C24C0056819A /* Detail */,
 				684F139A2949A95000982455 /* Charts */,
 				68D7FD25291A249A00E3F4DF /* Account */,
-				68DD493D29308B490064F3CB /* AccountDetail */,
 				68953FB829909B1700624136 /* Setting */,
 				22A2C62D28362F130066AF0D /* DB */,
 				22A2C62A28362E240066AF0D /* Object */,
@@ -328,6 +335,7 @@
 				68F19D1A29068BBF0056819A /* Preset */,
 				22A2C630283630B60066AF0D /* Model */,
 				22A2C62E28362FB10066AF0D /* RealmManager.swift */,
+				6830C0A329D5677E00DBBA49 /* DBTools.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -384,6 +392,47 @@
 				AD4D613585326609F83DA2DE /* Pods_MoneyManager.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6830C0A129D533E600DBBA49 /* AddAccount */ = {
+			isa = PBXGroup;
+			children = (
+				68D7FD2C291B459800E3F4DF /* ViewModel */,
+				68D7FD26291A251900E3F4DF /* AddAccountView.swift */,
+				68648DFB291C8A56004915BE /* AddAccountInfoView.swift */,
+				68D7FD28291B38DE00E3F4DF /* InitMoneyCalculatorView.swift */,
+				68D7FD2A291B3B8B00E3F4DF /* InitMoneyCalculatorButtonView.swift */,
+			);
+			path = AddAccount;
+			sourceTree = "<group>";
+		};
+		6830C0A229D5340100DBBA49 /* AccountDetail */ = {
+			isa = PBXGroup;
+			children = (
+				68DD494029308C150064F3CB /* ViewModel */,
+				68DD493E29308BA90064F3CB /* AccountDetailView.swift */,
+				68329ABD29309F9A002B7905 /* AccountCellView.swift */,
+				68329ABF2930A0F9002B7905 /* AccountHeaderView.swift */,
+			);
+			path = AccountDetail;
+			sourceTree = "<group>";
+		};
+		6830C0A529D5821400DBBA49 /* SingleAccount */ = {
+			isa = PBXGroup;
+			children = (
+				6830C0A829D5826400DBBA49 /* ViewModel */,
+				6830C0A629D5822700DBBA49 /* SingleAccountView.swift */,
+				6830C0AB29D5872700DBBA49 /* SingleAccountCellView.swift */,
+			);
+			path = SingleAccount;
+			sourceTree = "<group>";
+		};
+		6830C0A829D5826400DBBA49 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6830C0A929D5827400DBBA49 /* SingleAccountViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		684F139A2949A95000982455 /* Charts */ = {
@@ -544,11 +593,9 @@
 		68D7FD25291A249A00E3F4DF /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				68D7FD2C291B459800E3F4DF /* ViewModel */,
-				68D7FD26291A251900E3F4DF /* AddAccountView.swift */,
-				68648DFB291C8A56004915BE /* AddAccountInfoView.swift */,
-				68D7FD28291B38DE00E3F4DF /* InitMoneyCalculatorView.swift */,
-				68D7FD2A291B3B8B00E3F4DF /* InitMoneyCalculatorButtonView.swift */,
+				6830C0A529D5821400DBBA49 /* SingleAccount */,
+				6830C0A229D5340100DBBA49 /* AccountDetail */,
+				6830C0A129D533E600DBBA49 /* AddAccount */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -559,17 +606,6 @@
 				68D7FD2D291B45AA00E3F4DF /* AddAccountViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		68DD493D29308B490064F3CB /* AccountDetail */ = {
-			isa = PBXGroup;
-			children = (
-				68DD494029308C150064F3CB /* ViewModel */,
-				68DD493E29308BA90064F3CB /* AccountDetailView.swift */,
-				68329ABD29309F9A002B7905 /* AccountCellView.swift */,
-				68329ABF2930A0F9002B7905 /* AccountHeaderView.swift */,
-			);
-			path = AccountDetail;
 			sourceTree = "<group>";
 		};
 		68DD494029308C150064F3CB /* ViewModel */ = {
@@ -857,6 +893,7 @@
 				6857477C2913935B00026B7C /* ExpensesBookList.swift in Sources */,
 				6857477E2913937C00026B7C /* ExpensesMotorList.swift in Sources */,
 				22A2C6162836179D0066AF0D /* UserListView.swift in Sources */,
+				6830C0A729D5822700DBBA49 /* SingleAccountView.swift in Sources */,
 				6899CB6A2914DC240070681F /* TransferGroupView.swift in Sources */,
 				68EE314D2910C83C00C3702F /* Operation.swift in Sources */,
 				68F19D5E290BAB020056819A /* CalculatorButtonView.swift in Sources */,
@@ -903,6 +940,7 @@
 				68B2C817291239E300F9C37F /* TransferListView.swift in Sources */,
 				68F19D0B290666270056819A /* ExpensesGroup.swift in Sources */,
 				68F19D2C29078E210056819A /* ExpensesElectronicProduct.swift in Sources */,
+				6830C0A429D5677E00DBBA49 /* DBTools.swift in Sources */,
 				6899CB6C2914DC780070681F /* TransferGeneralList.swift in Sources */,
 				68D7FD2B291B3B8B00E3F4DF /* InitMoneyCalculatorButtonView.swift in Sources */,
 				68F19D1C29068C130056819A /* PresetUserDB.swift in Sources */,
@@ -915,11 +953,13 @@
 				22A2C62928362D7E0066AF0D /* AddButtonView.swift in Sources */,
 				68D7FD2E291B45AA00E3F4DF /* AddAccountViewModel.swift in Sources */,
 				68F19D17290681470056819A /* TransferGroupModel.swift in Sources */,
+				6830C0AA29D5827400DBBA49 /* SingleAccountViewModel.swift in Sources */,
 				68F19D06290661D00056819A /* UserDefaultsExtension.swift in Sources */,
 				688B53EC299481F20008C473 /* SwiftUI_ViewExtension.swift in Sources */,
 				68F19D402907B66B0056819A /* IncomeInvestment.swift in Sources */,
 				68F19D15290680ED0056819A /* IncomeTypeModel.swift in Sources */,
 				68D7FD29291B38DE00E3F4DF /* InitMoneyCalculatorView.swift in Sources */,
+				6830C0AC29D5872700DBBA49 /* SingleAccountCellView.swift in Sources */,
 				684F22DF2925B8D600550E72 /* MemoModel.swift in Sources */,
 				68F19D2429077CAE0056819A /* ExpensesLife.swift in Sources */,
 				68574774291392CA00026B7C /* ExpensesTrafficList.swift in Sources */,
@@ -1100,8 +1140,8 @@
 				INFOPLIST_FILE = MoneyManager/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1132,8 +1172,8 @@
 				INFOPLIST_FILE = MoneyManager/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (

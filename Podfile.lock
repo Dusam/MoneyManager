@@ -6,12 +6,31 @@ PODS:
     - SwiftAlgorithms (~> 1.0)
   - Introspect (0.1.4)
   - IQKeyboardManagerSwift (6.5.11)
-  - R.swift (7.2.4)
-  - Realm (10.36.0):
-    - Realm/Headers (= 10.36.0)
-  - Realm/Headers (10.36.0)
-  - RealmSwift (10.36.0):
-    - Realm (= 10.36.0)
+  - R.swift (7.3.0)
+  - Realm (10.37.0):
+    - Realm/Headers (= 10.37.0)
+  - Realm/Headers (10.37.0)
+  - RealmSwift (10.37.0):
+    - Realm (= 10.37.0)
+  - SamUtils (0.0.3):
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - SamUtils/CommonTools (= 0.0.3)
+    - SwifterSwift
+  - SamUtils/CommonTools (0.0.3):
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - SamUtils/CommonTools/API (= 0.0.3)
+    - SamUtils/CommonTools/Extensions (= 0.0.3)
+    - SwifterSwift
+  - SamUtils/CommonTools/API (0.0.3):
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - SwifterSwift
+  - SamUtils/CommonTools/Extensions (0.0.3):
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - SwifterSwift
   - SwiftAlgorithms (1.0.0)
   - SwifterSwift (5.2.0):
     - SwifterSwift/AppKit (= 5.2.0)
@@ -46,6 +65,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - R.swift
   - RealmSwift
+  - SamUtils
   - SwifterSwift
 
 SPEC REPOS:
@@ -57,6 +77,7 @@ SPEC REPOS:
     - R.swift
     - Realm
     - RealmSwift
+    - SamUtils
     - SwiftAlgorithms
     - SwifterSwift
 
@@ -65,12 +86,13 @@ SPEC CHECKSUMS:
   Charts: 354f86803d11d9c35de280587fef50d1af063978
   Introspect: b62c4dd2063072327c21d618ef2bedc3c87bc366
   IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
-  R.swift: 681bb9135f482e7a81d9d27445b837fef5467e11
-  Realm: 3fd136cb4c83a927482a7f1612496d37beed3cf5
-  RealmSwift: 513d4dcbf5bfc4d573454088b592685fc48dd716
+  R.swift: cef1c530541cb49412752721797f10dae6b32d11
+  Realm: 9c5fc6f8f5cb70b299f2e3064d2b9f6cb0f1523d
+  RealmSwift: 7be7bb45911c16400dd1bfce3a01764ecb4cae7a
+  SamUtils: c1fa6f6de2647ce9536b3d131f7524cfa2a14f78
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
 
-PODFILE CHECKSUM: d1afa40f4005c045e15aa64c5d4c098d5ff0fa75
+PODFILE CHECKSUM: d48b4324b099f5b64d816d0a97434e5d5a77f698
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.0

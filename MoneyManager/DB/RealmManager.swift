@@ -24,7 +24,7 @@ class RealmManager {
     func openRealm() {
         do {
             // Setting the schema version
-            var config = Realm.Configuration(schemaVersion: 2) { migration, oldSchemaVersion in
+            var config = Realm.Configuration(schemaVersion: 1) { migration, oldSchemaVersion in
 //                練習範例
 //                if oldSchemaVersion < 8 {
 //                    migration.enumerateObjects(ofType: "RLM_Account") { oldObject, newObject in
@@ -38,8 +38,9 @@ class RealmManager {
 //                    }
 //                }
 //
-//                if oldSchemaVersion < 11 {
-//                    migration.renameProperty(onType: RLM_Account.className(), from: "disable", to: "disable3")
+//                if oldSchemaVersion < 3 {
+//                    migration.renameProperty(onType: DetailModel.className(), from: "accountType", to: "accountId")
+//                    migration.renameProperty(onType: DetailModel.className(), from: "toAccountType", to: "toAccountId")
 //                }
                 
             }

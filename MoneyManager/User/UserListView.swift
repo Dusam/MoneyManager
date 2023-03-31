@@ -29,7 +29,6 @@ struct UserListView: View {
             ZStack {
                 List(userVM.users, id: \.id) { user in
                     UserCellView(user: user)
-                        .listRowBackground(Color.clear)
                         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                             Button(role: .destructive) {
                                 deleteUser = user

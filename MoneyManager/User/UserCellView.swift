@@ -21,6 +21,8 @@ struct UserCellView: View {
                 .font(.system(.title2))
             
         }
+        .listRowBackground(Color.clear)
+        .listRowSeparator(.hidden)
         .padding(10)
         .overlay(
             RoundedRectangle(cornerRadius: 20)

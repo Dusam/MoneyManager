@@ -12,9 +12,9 @@ class DetailModel: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id = ObjectId.generate()
     @Persisted var userId: ObjectId
     @Persisted var billingType: Int = 0
-    @Persisted var accountType: ObjectId
+    @Persisted var accountId: ObjectId
     @Persisted var accountName: String
-    @Persisted var toAccountType: ObjectId?
+    @Persisted var toAccountId: ObjectId
     @Persisted var toAccountName: String
     @Persisted var detailGroup: String = "0"
     @Persisted var detailType: String = "0"

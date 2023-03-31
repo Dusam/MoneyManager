@@ -19,8 +19,7 @@
 "save"="Save";
 "enterName"="Enter Name";
 "chooseType"="Choose Type";
-"transferAccount"="Transfer account";
-"transferToAccount"="Transfer to account";
+"account"="Account";
 "type_title"="Type:";
 "account_title"="Account:";
 "memo_title"="Memo:";
@@ -46,3 +45,5 @@
 "totalAssets"="Total Assets";
 "totalLiability"="Total Liability";
 "transferFee"="Transfer Fee";
+"yes"="Yes";
+"no"="No";

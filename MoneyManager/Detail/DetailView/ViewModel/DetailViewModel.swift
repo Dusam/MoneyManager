@@ -63,15 +63,3 @@ extension DetailViewModel {
         detailModels.append(addCell)
     }
 }
-
-extension DetailViewModel {
-    func detailTypeToString(detailModel: DetailModel) -> String {
-        guard let billingType = BillingType(rawValue: detailModel.billingType) else { return "" }
-        var typeTitle = ""
-        
-        typeTitle += RealmManager.share.getDetailGroup(billType: billingType, groupId: detailModel.detailGroup).first?.name ?? ""
-        typeTitle += " - \(RealmManager.share.getDetailType(typeId: detailModel.detailType).first?.name ?? "")"
-        
-        return typeTitle
-    }
-}

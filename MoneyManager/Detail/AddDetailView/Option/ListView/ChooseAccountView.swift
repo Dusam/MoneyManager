@@ -48,7 +48,7 @@ struct ChooseAccountView: View {
             }
             
         }
-        .navigationTitle(mode == .standard ? R.string.localizable.transferAccount() : R.string.localizable.transferToAccount())
+        .navigationTitle(R.string.localizable.account() )
         .hideBackButtonTitle()
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
