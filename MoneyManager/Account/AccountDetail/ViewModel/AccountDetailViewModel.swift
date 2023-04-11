@@ -18,6 +18,8 @@ class AccountDetailViewModel: ObservableObject {
 
 extension AccountDetailViewModel {
     func getAccounts() {
+        includeTotalAccounts.removeAll()
+        notIncludeTotalAccounts.removeAll()
         totalAssets = 0
         totalLiability = 0
         balance = 0

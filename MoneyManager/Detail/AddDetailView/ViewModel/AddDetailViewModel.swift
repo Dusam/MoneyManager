@@ -269,6 +269,11 @@ extension AddDetailViewModel {
                 self.detailModel.memo = memo
                 self.detailModel.date = date
                 self.detailModel.modifyDateTime = date
+                
+                if self.billingType != .transfer {
+                    self.detailModel.toAccountId = ObjectId.generate()
+                    self.detailModel.toAccountName = ""
+                }
             }
             
             if self.billingType == .transfer {
@@ -311,7 +316,7 @@ extension AddDetailViewModel {
     }
     
     func deleteDetail() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
             self.resetDetailStatus()
             RealmManager.share.deleteDetail(self.detailModel.id)
         }

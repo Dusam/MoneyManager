@@ -19,7 +19,8 @@ struct DetailView: View {
             
             List(detailVM.detailModels) { detail in
                 if detail.billingType < 3 {
-                    DetailCellView(detail: detail, details: $detailVM.detailModels)
+                    DetailCellView(detail: detail,
+                                   details: $detailVM.detailModels)
                 } else {
                     ZStack(alignment: .leading) {
                         NavigationLink("") {
@@ -87,7 +88,7 @@ struct DetailView: View {
         .hideBackButtonTitle()
         .onAppear {
             UserInfo.share.selectedUserId = userModel.id
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                 detailVM.getDetail()
             }
         }

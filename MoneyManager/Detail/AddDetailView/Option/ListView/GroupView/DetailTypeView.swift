@@ -13,7 +13,7 @@ struct DetailTypeView: View {
     
     var body: some View {
         ScrollView {
-            ForEach(addDetailVM.detailTypeModels, id: \.self) { type in
+            ForEach(addDetailVM.detailTypeModels, id: \.id) { type in
                 Button {
                     addDetailVM.detailTypeId = type.id.stringValue
                     dismiss()

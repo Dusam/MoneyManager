@@ -18,7 +18,6 @@ struct ChartView: View {
             PieChart(datas: $chartVM.chartDatas)
                 .frame(height: UIScreen.main.bounds.height * 0.3)
                 
-            
             Text(R.string.localizable.chartTotal(chartVM.total.string))
                 .font(.bold(.system(size: 20))())
                 .frame(maxWidth: .infinity)
@@ -34,8 +33,18 @@ struct ChartView: View {
                 }
             
             List(chartVM.listDatas, id: \.self) { data in
-                Button {
-                    // TODO: 查看單一項目
+                NavigationLink {
+                    switch data.billingType {
+                    case .income:
+                        SectionDetailView(title: R.string.localizable.income(),
+                                          datas: $chartVM.incomeSectionDatas)
+                    case .expenses:
+                        SectionDetailView(title: R.string.localizable.spend(),
+                                          datas: $chartVM.expensesSectionDatas)
+                    case .transfer:
+                        SectionDetailView(title: R.string.localizable.transfer(),
+                                          datas: $chartVM.transferSectionDatas)
+                    }
                 } label: {
                     VStack {
                         HStack {
@@ -71,6 +80,12 @@ struct ChartView: View {
             }
 
         }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                chartVM.getDatas()
+            }
+        }
+        .hideBackButtonTitle()
         .environmentObject(chartVM)
     }
 }

@@ -21,7 +21,7 @@ struct ChooseAccountView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
-            ForEach(accountDatas, id: \.self) { account in
+            ForEach(accountDatas, id: \.id) { account in
                 Button {
                     if mode == .transfer {
                         addDetailVM.transferToAccountId = account.id.stringValue

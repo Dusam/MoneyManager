@@ -73,7 +73,7 @@ struct TransferListView: View {
                 HStack {
                     Text(R.string.localizable.memo_title())
                         .font(.system(size: 18))
-                    Text(addDetailVM.memo)
+                    Text(addDetailVM.memo.replacing("\n", with: " "))
                         .font(.system(size: 18))
                         .foregroundColor(addDetailVM.billingType.forgroundColor)
                         .frame(maxWidth: .infinity, alignment: .trailing)

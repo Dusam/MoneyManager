@@ -20,20 +20,36 @@ struct SingleAccountView: View {
     
     var body: some View {
         VStack {
-            List(singleAccountVM.singleAccounts, id: \.self) { detail in
-                SingleAccountCellView(sectionHeader: detail.date,
-                                      datas: Binding<[DetailModel]>(
-                                        get: { detail.details },
-                                        set: { _ in }
-                                      ))
-                
+            SingleAccountListHeaderView()
+                .padding(20)
+            
+            VStack {
+                HStack {
+                    Text(R.string.localizable.income())
+                    Spacer()
+                    Text("$\(singleAccountVM.incomeTotal)")
+                        .foregroundColor(.green)
+                }
+                .font(.system(.title3))
+                .padding(.bottom, 10)
+                HStack {
+                    Text(R.string.localizable.spend())
+                    Spacer()
+                    Text("$\(singleAccountVM.spendTotal)")
+                        .foregroundColor(.red)
+                }
+                .font(.system(.title3))
             }
-            .listStyle(.plain)
-            .scrollContentBackground(.hidden)
+            .padding([.leading, .trailing, .bottom], 20)
+            
+            SectionDetailView(title: accountName,
+                              datas: $singleAccountVM.singleAccounts)
         }
-        .navigationTitle(accountName)
+        .environmentObject(singleAccountVM)
         .onAppear {
-            singleAccountVM.getAccountDetail(accountId: self.accountId)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                singleAccountVM.setAccountId(accountId: self.accountId)
+            }
         }
     }
 }

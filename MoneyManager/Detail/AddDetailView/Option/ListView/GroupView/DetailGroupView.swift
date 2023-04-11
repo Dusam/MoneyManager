@@ -13,7 +13,7 @@ struct DetailGroupView: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             
-            ForEach(RealmManager.share.getDetailGroup(billType: addDetailVM.billingType), id: \.self) { group in
+            ForEach(RealmManager.share.getDetailGroup(billType: addDetailVM.billingType), id: \.id) { group in
                 
                 Button {
                     addDetailVM.detailGroupId = group.id.stringValue

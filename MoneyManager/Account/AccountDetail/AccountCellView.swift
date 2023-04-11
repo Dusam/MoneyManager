@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct AccountCellView: View {
-    
     var sectionHeader: String = ""
     @Binding var datas: [AccountModel]
     
     var body: some View {
         Section {
-            ForEach(datas, id: \.self) { account in
+            ForEach(datas, id: \.id) { account in
                 NavigationLink(destination: SingleAccountView(accountId: account.id.stringValue,
                                                               accountName: account.name)) {
                     HStack {

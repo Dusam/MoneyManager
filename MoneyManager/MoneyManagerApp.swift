@@ -13,7 +13,6 @@ import IQKeyboardManagerSwift
 struct MoneyManagerApp: App {
     
     init() {
-        let _ = RealmManager.share
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.enableAutoToolbar = true

@@ -38,6 +38,10 @@ struct AddDetailView: View {
         self._details = details
         self.detail = detail
         addDetailVM.isHiddenCalculator = addDetailType == .edit
+        
+        if addDetailType == .edit {
+            addDetailVM.setEditDetailModel(detail)
+        }
     }
     
     var body: some View {
@@ -107,7 +111,7 @@ struct AddDetailView: View {
                 Text("    ")
                     .font(.system(.body))
             }
-
+            
         }
         .alert(isPresented: $isShowDeleteAlert) {
             Alert(title: Text(R.string.localizable.delete()),
@@ -122,9 +126,7 @@ struct AddDetailView: View {
         .hideBackButtonTitle()
         .environmentObject(addDetailVM)
         .onAppear {
-            if addDetailType == .edit {
-                addDetailVM.setEditDetailModel(detail)
-            } else {
+            if addDetailType != .edit {
                 switch addDetailVM.billingType {
                 case .expenses:
                     addDetailVM.detailGroupId = UserInfo.share.selectedData.expensesGroupId

@@ -12,14 +12,13 @@ class ChartViewModel: ObservableObject {
     
     struct ChartListData: Hashable {
         var billingType: BillingType
-        var datas: [DetailModel]
         var total: Int
         var percent: Double
     }
     
     @Published var chartDatas: [PieChartDataEntry] = [PieChartDataEntry(value: 20, label: "收入"),
-                                                 PieChartDataEntry(value: 70, label: "支出"),
-                                                 PieChartDataEntry(value: 10, label: "轉帳")]
+                                                      PieChartDataEntry(value: 70, label: "支出"),
+                                                      PieChartDataEntry(value: 10, label: "轉帳")]
     @Published var listDatas: [ChartListData] = []
     
     @Published var chartType: ChartType = .month {
@@ -50,27 +49,10 @@ class ChartViewModel: ObservableObject {
     @Published var expensesPercent: Double = 0
     @Published var transferPercent: Double = 0
     
-    
-    init() {
-        getDatas()
-    }
-    
-    func test1() {
-        chartDatas = [PieChartDataEntry(value: 20, label: "收入"),
-                 PieChartDataEntry(value: 70, label: "支出"),
-                 PieChartDataEntry(value: 10, label: "轉帳")]
-    }
-
-    func test2() {
-        chartDatas = [PieChartDataEntry(value: 10, label: "收入"),
-                 PieChartDataEntry(value: 60, label: "支出"),
-                 PieChartDataEntry(value: 30, label: "轉帳")]
-    }
-    
-    func test3() {
-        chartDatas = [PieChartDataEntry(value: 1, label: "")]
-    }
-    
+    @Published var incomeSectionDatas: [SectionDetailModel] = []
+    @Published var expensesSectionDatas: [SectionDetailModel] = []
+    @Published var transferSectionDatas: [SectionDetailModel] = []
+   
     func setDateString() {
         switch chartType {
         case .week:
@@ -95,6 +77,10 @@ class ChartViewModel: ObservableObject {
         let expensesDatas = data.filter {BillingType(rawValue: $0.billingType) == .expenses}
         let transferDatas = data.filter {BillingType(rawValue: $0.billingType) == .transfer}
         
+        incomeSectionDatas = setSectionDatas(datas: incomeDatas.reversed())
+        expensesSectionDatas = setSectionDatas(datas: expensesDatas.reversed())
+        transferSectionDatas = setSectionDatas(datas: transferDatas.reversed())
+        
         incomeTotal = incomeDatas.reduce(0) { partialResult, model in
             partialResult + abs(model.amount)
         }
@@ -112,18 +98,43 @@ class ChartViewModel: ObservableObject {
         expensesPercent = String(format: "%.2f", (expensesTotal.double / totalAmount.double) * 100).double() ?? 0.0
         transferPercent = String(format: "%.2f", (transferTotal.double / totalAmount.double) * 100).double() ?? 0.0
         
-        listDatas = [ChartListData(billingType: .income, datas: incomeDatas, total: incomeTotal, percent: incomePercent),
-                     ChartListData(billingType: .expenses, datas: expensesDatas, total: expensesTotal, percent: expensesPercent),
-                     ChartListData(billingType: .transfer, datas: transferDatas, total: transferTotal, percent: transferPercent)]
+        listDatas = [ChartListData(billingType: .income, total: incomeTotal, percent: incomePercent),
+                     ChartListData(billingType: .expenses, total: expensesTotal, percent: expensesPercent),
+                     ChartListData(billingType: .transfer, total: transferTotal, percent: transferPercent)]
         
         if incomePercent > 0 || expensesPercent > 0 || transferPercent > 0 {
             chartDatas = [PieChartDataEntry(value: incomePercent, label: "\(incomePercent)%"),
-                     PieChartDataEntry(value: expensesPercent, label: "\(expensesPercent)%"),
-                     PieChartDataEntry(value: transferPercent, label: "\(transferPercent)%")]
+                          PieChartDataEntry(value: expensesPercent, label: "\(expensesPercent)%"),
+                          PieChartDataEntry(value: transferPercent, label: "\(transferPercent)%")]
         } else {
             chartDatas = [PieChartDataEntry(value: 1, label: "")]
         }
         
+        
+        
+    }
+    
+    private func setSectionDatas(datas: [DetailModel]) -> [SectionDetailModel] {
+        var date = ""
+        var dateDetails: [DetailModel] = []
+        var sectionDatas: [SectionDetailModel] = []
+        
+        datas.forEach { detail in
+            if date != detail.date {
+                if !date.isEmpty {
+                    sectionDatas.append(SectionDetailModel(date: date, details: dateDetails))
+                }
+                dateDetails.removeAll()
+                date = detail.date
+            }
+            dateDetails.append(detail)
+            
+            if let last = datas.last, last == detail {
+                sectionDatas.append(SectionDetailModel(date: date, details: dateDetails))
+            }
+        }
+        
+        return sectionDatas
     }
 }
 
@@ -179,6 +190,6 @@ extension ChartViewModel {
             self.endDate = endDate
         }
     }
-   
+    
 }
 
