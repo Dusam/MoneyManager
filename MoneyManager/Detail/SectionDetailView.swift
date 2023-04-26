@@ -32,9 +32,10 @@ struct SectionDetailView: View {
                         Text(datas[index].date)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(10)
+                            .foregroundColor(UserInfo.share.themeColor.isLight ? .black : .white)
                     }
                     .frame(maxWidth: .infinity)
-                    .background(Color(uiColor: .lightGray))
+                    .background(UserInfo.share.themeColor)
                 }
                 .listRowInsets(EdgeInsets())
             }
@@ -43,7 +44,7 @@ struct SectionDetailView: View {
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
         .navigationBarTitle(title)
-        .hideBackButtonTitle()
+        .hideBackTitle()
     }
 }
 

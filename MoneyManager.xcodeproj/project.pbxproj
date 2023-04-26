@@ -29,6 +29,8 @@
 		6830C0AC29D5872700DBBA49 /* SectionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6830C0AB29D5872700DBBA49 /* SectionDetailView.swift */; };
 		68329ABE29309F9A002B7905 /* AccountCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68329ABD29309F9A002B7905 /* AccountCellView.swift */; };
 		68329AC02930A0F9002B7905 /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68329ABF2930A0F9002B7905 /* AccountHeaderView.swift */; };
+		683F4E1D29F7C39900C2D5E9 /* ChangeThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683F4E1C29F7C39900C2D5E9 /* ChangeThemeView.swift */; };
+		683F4E1F29F8C08200C2D5E9 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683F4E1E29F8C08200C2D5E9 /* AppAppearance.swift */; };
 		684F139C2949A97200982455 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F139B2949A97200982455 /* PieChart.swift */; };
 		684F139E295150C100982455 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F139D295150C100982455 /* ChartView.swift */; };
 		684F13A129515C8600982455 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F13A029515C8600982455 /* ChartViewModel.swift */; };
@@ -53,7 +55,6 @@
 		685747862913940000026B7C /* ExpensesOtherList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685747852913940000026B7C /* ExpensesOtherList.swift */; };
 		685747882913941B00026B7C /* ExpensesFeeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685747872913941B00026B7C /* ExpensesFeeList.swift */; };
 		6857478A2913975100026B7C /* ChooseTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685747892913975100026B7C /* ChooseTypeView.swift */; };
-		6857478C2913A48E00026B7C /* BindingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6857478B2913A48E00026B7C /* BindingExtension.swift */; };
 		6857478F2914966A00026B7C /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6857478E2914966A00026B7C /* R.generated.swift */; };
 		685747982914B8F900026B7C /* IncomeGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685747972914B8F900026B7C /* IncomeGroupView.swift */; };
 		6857479A2914BB5400026B7C /* IncomeGeneralList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685747992914BB5400026B7C /* IncomeGeneralList.swift */; };
@@ -67,7 +68,7 @@
 		688B53DE29923DC80008C473 /* CustomExpensesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B53DD29923DC80008C473 /* CustomExpensesList.swift */; };
 		688B53E329939C690008C473 /* AddOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B53E229939C690008C473 /* AddOptionView.swift */; };
 		688B53EA2993A04A0008C473 /* AddOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B53E92993A04A0008C473 /* AddOptionViewModel.swift */; };
-		688B53EC299481F20008C473 /* SwiftUI_ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B53EB299481F20008C473 /* SwiftUI_ViewExtension.swift */; };
+		688B53EC299481F20008C473 /* SwiftUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688B53EB299481F20008C473 /* SwiftUIExtension.swift */; };
 		68953FBA29909B3B00624136 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68953FB929909B3B00624136 /* SettingView.swift */; };
 		68953FC129923BFD00624136 /* CustomTransferList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68953FC029923BFD00624136 /* CustomTransferList.swift */; };
 		68953FC329923CD800624136 /* CustomIncomeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68953FC229923CD800624136 /* CustomIncomeList.swift */; };
@@ -150,6 +151,8 @@
 		6830C0AB29D5872700DBBA49 /* SectionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDetailView.swift; sourceTree = "<group>"; };
 		68329ABD29309F9A002B7905 /* AccountCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCellView.swift; sourceTree = "<group>"; };
 		68329ABF2930A0F9002B7905 /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
+		683F4E1C29F7C39900C2D5E9 /* ChangeThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeThemeView.swift; sourceTree = "<group>"; };
+		683F4E1E29F8C08200C2D5E9 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		684F139B2949A97200982455 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
 		684F139D295150C100982455 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		684F13A029515C8600982455 /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
@@ -175,7 +178,6 @@
 		685747852913940000026B7C /* ExpensesOtherList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesOtherList.swift; sourceTree = "<group>"; };
 		685747872913941B00026B7C /* ExpensesFeeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesFeeList.swift; sourceTree = "<group>"; };
 		685747892913975100026B7C /* ChooseTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTypeView.swift; sourceTree = "<group>"; };
-		6857478B2913A48E00026B7C /* BindingExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingExtension.swift; sourceTree = "<group>"; };
 		6857478E2914966A00026B7C /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		685747972914B8F900026B7C /* IncomeGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeGroupView.swift; sourceTree = "<group>"; };
 		685747992914BB5400026B7C /* IncomeGeneralList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeGeneralList.swift; sourceTree = "<group>"; };
@@ -189,7 +191,7 @@
 		688B53DD29923DC80008C473 /* CustomExpensesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExpensesList.swift; sourceTree = "<group>"; };
 		688B53E229939C690008C473 /* AddOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionView.swift; sourceTree = "<group>"; };
 		688B53E92993A04A0008C473 /* AddOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOptionViewModel.swift; sourceTree = "<group>"; };
-		688B53EB299481F20008C473 /* SwiftUI_ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_ViewExtension.swift; sourceTree = "<group>"; };
+		688B53EB299481F20008C473 /* SwiftUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtension.swift; sourceTree = "<group>"; };
 		68953FB929909B3B00624136 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		68953FC029923BFD00624136 /* CustomTransferList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransferList.swift; sourceTree = "<group>"; };
 		68953FC229923CD800624136 /* CustomIncomeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIncomeList.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				22A2C626283625560066AF0D /* UserViewModel.swift */,
+				683F4E1E29F8C08200C2D5E9 /* AppAppearance.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 			isa = PBXGroup;
 			children = (
 				68953FB929909B3B00624136 /* SettingView.swift */,
+				683F4E1C29F7C39900C2D5E9 /* ChangeThemeView.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -632,8 +636,7 @@
 			children = (
 				68F19D05290661D00056819A /* UserDefaultsExtension.swift */,
 				68F19D5B290B60170056819A /* DoubleExtension.swift */,
-				6857478B2913A48E00026B7C /* BindingExtension.swift */,
-				688B53EB299481F20008C473 /* SwiftUI_ViewExtension.swift */,
+				688B53EB299481F20008C473 /* SwiftUIExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -896,6 +899,7 @@
 				6857477C2913935B00026B7C /* ExpensesBookList.swift in Sources */,
 				6857477E2913937C00026B7C /* ExpensesMotorList.swift in Sources */,
 				22A2C6162836179D0066AF0D /* UserListView.swift in Sources */,
+				683F4E1F29F8C08200C2D5E9 /* AppAppearance.swift in Sources */,
 				6830C0A729D5822700DBBA49 /* SingleAccountView.swift in Sources */,
 				6899CB6A2914DC240070681F /* TransferGroupView.swift in Sources */,
 				68EE314D2910C83C00C3702F /* Operation.swift in Sources */,
@@ -910,6 +914,7 @@
 				68F19D3A2907AD900056819A /* ExpensesFee.swift in Sources */,
 				68953FC129923BFD00624136 /* CustomTransferList.swift in Sources */,
 				6857479C2914BB8C00026B7C /* IncomeInvestmentList.swift in Sources */,
+				683F4E1D29F7C39900C2D5E9 /* ChangeThemeView.swift in Sources */,
 				68329AC02930A0F9002B7905 /* AccountHeaderView.swift in Sources */,
 				68F19D502908C3CB0056819A /* AddDetailViewModel.swift in Sources */,
 				68F19D32290793D50056819A /* ExpensesMedical.swift in Sources */,
@@ -934,7 +939,6 @@
 				6874B4F829DE99DB00586595 /* SingleAccountListHeaderView.swift in Sources */,
 				68F19D2629077E350056819A /* ExpensesTraffic.swift in Sources */,
 				68F19D5A290907E40056819A /* BillingType.swift in Sources */,
-				6857478C2913A48E00026B7C /* BindingExtension.swift in Sources */,
 				68F19D452907B9690056819A /* TransferGroup.swift in Sources */,
 				68F19D36290796E80056819A /* ExpensesInvest.swift in Sources */,
 				68F19D112906808B0056819A /* ExpensesTypeModel.swift in Sources */,
@@ -959,7 +963,7 @@
 				68F19D17290681470056819A /* TransferGroupModel.swift in Sources */,
 				6830C0AA29D5827400DBBA49 /* SingleAccountViewModel.swift in Sources */,
 				68F19D06290661D00056819A /* UserDefaultsExtension.swift in Sources */,
-				688B53EC299481F20008C473 /* SwiftUI_ViewExtension.swift in Sources */,
+				688B53EC299481F20008C473 /* SwiftUIExtension.swift in Sources */,
 				68F19D402907B66B0056819A /* IncomeInvestment.swift in Sources */,
 				68F19D15290680ED0056819A /* IncomeTypeModel.swift in Sources */,
 				68D7FD29291B38DE00E3F4DF /* InitMoneyCalculatorView.swift in Sources */,

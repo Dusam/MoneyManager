@@ -12,6 +12,7 @@ struct ChooseAccountView: View {
         case standard, transfer
     }
     
+    @EnvironmentObject var appearance: AppAppearance
     @EnvironmentObject var addDetailVM: AddDetailViewModel
     @Environment(\.dismiss) var dismiss
     
@@ -49,10 +50,11 @@ struct ChooseAccountView: View {
             
         }
         .navigationTitle(R.string.localizable.account() )
-        .hideBackButtonTitle()
+        .hideBackTitle()
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(R.string.localizable.add(), destination: AddAccountView())
+                    .foregroundColor(appearance.themeColor.isLight ? .black : .white)
             }
         }
         .onAppear {

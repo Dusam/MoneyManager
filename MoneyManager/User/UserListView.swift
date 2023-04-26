@@ -9,23 +9,14 @@ import SwiftUI
 import RealmSwift
 
 struct UserListView: View {
-    
+    @StateObject var appearance = AppAppearance()
     @ObservedObject private var userVM: UserViewModel = UserViewModel()
     
     @State private var isShowAlert = false
     @State private var deleteUser: UserModel!
     
-    init() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.setBackIndicatorImage(UIImage(systemName: "chevron.backward.circle.fill"), transitionMaskImage: UIImage(systemName: "chevron.backward.circle.fill"))
-        
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-    }
-    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 List(userVM.users, id: \.id) { user in
                     UserCellView(user: user)
@@ -57,14 +48,18 @@ struct UserListView: View {
                         placement: .navigationBarDrawer(displayMode: .always))
             .navigationTitle(R.string.localizable.userList())
             .navigationBarTitleDisplayMode(.inline)
-            .hideBackButtonTitle()
             .onAppear {
                 UserInfo.share.selectedDate = Date()
                 userVM.getUsers()
+                
+                UISearchBar.appearance().overrideUserInterfaceStyle = appearance.themeColor.isLight ? .light : .dark
+                UISearchBar.appearance().tintColor = appearance.themeColor.isLight ? .black : .white
             }
-            
         }
+        .setNavigationBar(appearance.themeColor)
+        .preferredColorScheme(appearance.colorScheme)
         .environmentObject(userVM)
+        .environmentObject(appearance)
     }
 }
 

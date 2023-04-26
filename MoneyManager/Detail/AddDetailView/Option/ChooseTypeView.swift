@@ -47,7 +47,7 @@ struct ChooseTypeView: View {
         }
         .environmentObject(addDetailVM)
         .navigationTitle(R.string.localizable.chooseType())
-        .hideBackButtonTitle()
+        .hideBackTitle()
     }
     
     

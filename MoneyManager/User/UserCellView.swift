@@ -10,6 +10,8 @@ import SwiftUI
 struct UserCellView: View {
     var user: UserModel!
     
+    @EnvironmentObject var appearance: AppAppearance
+    
     var body: some View {
         ZStack(alignment: .leading) {
             NavigationLink("") {
@@ -26,9 +28,8 @@ struct UserCellView: View {
         .padding(10)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.blue, lineWidth: 1)
+                .stroke(appearance.themeColor, lineWidth: 1)
         )
-        
     }
 }
 

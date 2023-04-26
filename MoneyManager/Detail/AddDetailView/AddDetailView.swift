@@ -12,7 +12,7 @@ struct AddDetailView: View {
     enum AddDetailType {
         case add, edit
     }
-    
+    @EnvironmentObject var appearance: AppAppearance
     @ObservedObject var addDetailVM = AddDetailViewModel()
     @Environment(\.dismiss) var dismiss
     @State private var isShowDeleteAlert = false
@@ -72,7 +72,8 @@ struct AddDetailView: View {
                             Text(R.string.localizable.save())
                         }
                         .frame(maxWidth: .infinity)
-                        .background(.white)
+                        .background(.clear)
+                        .foregroundColor(appearance.themeColor.isLight ? .black : .white)
                     }
                     
                     if addDetailType == .edit {
@@ -84,11 +85,13 @@ struct AddDetailView: View {
                                 Text(R.string.localizable.delete())
                             }
                             .frame(maxWidth: .infinity)
-                            .tint(.red)
-                            .background(.white)
+                            .background(.clear)
+                            .foregroundColor(appearance.themeColor.isLight ? .black : .white)
                         }
                     }
                 }
+                .padding(.top, 10)
+                .background(UserInfo.share.themeColor)
                 
                 CalculatorView()
                     .offset(y: addDetailVM.isHiddenCalculator ? 500 : 0)
@@ -123,7 +126,7 @@ struct AddDetailView: View {
             },
                   secondaryButton: .cancel(Text(R.string.localizable.no())))
         }
-        .hideBackButtonTitle()
+        .hideBackTitle()
         .environmentObject(addDetailVM)
         .onAppear {
             if addDetailType != .edit {
@@ -145,6 +148,6 @@ struct AddDetailView: View {
 
 struct AddDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        AddDetailView()
+        AddDetailView().environmentObject(AppAppearance())
     }
 }

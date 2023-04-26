@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MemoView: View {
+    @EnvironmentObject var appearance: AppAppearance
     @EnvironmentObject var addDetailVM: AddDetailViewModel
     @Environment(\.dismiss) var dismiss
     
@@ -54,6 +55,7 @@ struct MemoView: View {
                     dismiss()
                 } label: {
                     Text(R.string.localizable.compelete())
+                        .foregroundColor(appearance.themeColor.isLight ? .black : .white)
                 }
 
             }

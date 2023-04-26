@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailView: View {
     
     var userModel: UserModel!
+    @EnvironmentObject var appearance: AppAppearance
     @ObservedObject var detailVM = DetailViewModel()
   
     var body: some View {
@@ -41,7 +42,8 @@ struct DetailView: View {
                         Text(R.string.localizable.account())
                     }
                     .frame(maxWidth: .infinity)
-                    .background(.white)
+                    .background(.clear)
+                    .foregroundColor(appearance.themeColor.isLight ? .black : .white)
                 }
                 
                 NavigationLink(destination: AddDetailView()) {
@@ -50,7 +52,8 @@ struct DetailView: View {
                         Text(R.string.localizable.add())
                     }
                     .frame(maxWidth: .infinity)
-                    .background(.white)
+                    .background(.clear)
+                    .foregroundColor(appearance.themeColor.isLight ? .black : .white)
                 }
                 
                 NavigationLink(destination: ChartView()) {
@@ -59,7 +62,8 @@ struct DetailView: View {
                         Text(R.string.localizable.chart())
                     }
                     .frame(maxWidth: .infinity)
-                    .background(.white)
+                    .background(.clear)
+                    .foregroundColor(appearance.themeColor.isLight ? .black : .white)
                 }
                 
                 NavigationLink(destination: SettingView()) {
@@ -68,9 +72,12 @@ struct DetailView: View {
                         Text(R.string.localizable.setting())
                     }
                     .frame(maxWidth: .infinity)
-                    .background(.white)
+                    .background(.clear)
+                    .foregroundColor(appearance.themeColor.isLight ? .black : .white)
                 }
             }
+            .padding(.top, 10)
+            .background(UserInfo.share.themeColor)
             
         }
         .gesture(DragGesture(minimumDistance: 20, coordinateSpace: .local)
@@ -85,7 +92,7 @@ struct DetailView: View {
             })
         )
         .navigationTitle("\(userModel.name)")
-        .hideBackButtonTitle()
+        .hideBackTitle()
         .onAppear {
             UserInfo.share.selectedUserId = userModel.id
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {

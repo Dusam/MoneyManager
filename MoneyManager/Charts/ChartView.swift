@@ -9,6 +9,7 @@ import SwiftUI
 import Charts
 
 struct ChartView: View {
+    @EnvironmentObject var appearance: AppAppearance
     @ObservedObject var chartVM: ChartViewModel = ChartViewModel()
     
     var body: some View {
@@ -85,7 +86,7 @@ struct ChartView: View {
                 chartVM.getDatas()
             }
         }
-        .hideBackButtonTitle()
+        .hideBackTitle()
         .environmentObject(chartVM)
     }
 }

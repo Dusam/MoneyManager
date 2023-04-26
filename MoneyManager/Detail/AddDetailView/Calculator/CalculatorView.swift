@@ -46,6 +46,7 @@ struct CalculatorView: View {
                     })
                 }
             }
+            .frame(maxWidth: .infinity)
             .padding(.top, 10)
             .background(.white)
         }

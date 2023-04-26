@@ -13,8 +13,8 @@ struct SettingView: View {
     
     var body: some View {
         ScrollView {
-            NavigationLink(destination: EmptyView()) {
-                Text("類別管理")
+            NavigationLink(destination: ChangeThemeView()) {
+                Text("主題顏色")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                     .font(.system(size: 20))
@@ -23,6 +23,7 @@ struct SettingView: View {
             Divider()
         }
         .navigationTitle(R.string.localizable.setting())
+        .hideBackTitle()
     }
     
 }

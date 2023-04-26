@@ -10,6 +10,7 @@ import SwiftUI
 struct AddButtonView<TargetView: View>: View {
     
     var nextView: TargetView
+    @EnvironmentObject var appearance: AppAppearance
     
     var body: some View {
         VStack {
@@ -22,10 +23,10 @@ struct AddButtonView<TargetView: View>: View {
                     ZStack {
                         Image(systemName: "plus")
                             .font(.title)
-                            .foregroundColor(.white)
+                            .foregroundColor(appearance.themeColor.isLight ? .black : .white)
                             .frame(width: 50, height: 50)
                     }
-                    .background(Color.blue)
+                    .background(appearance.themeColor)
                     .clipShape(Circle())
                     
                 }

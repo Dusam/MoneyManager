@@ -10,7 +10,7 @@ import SwiftUI
 struct AddAccountView: View {
     
     @Environment(\.dismiss) var dismiss
-    
+    @EnvironmentObject var appearance: AppAppearance
     @ObservedObject var addAccountVM: AddAccountViewModel = AddAccountViewModel()
     
     @State private var showingConfirmation = false
@@ -68,10 +68,11 @@ struct AddAccountView: View {
                     dismiss()
                 } label: {
                     Text(R.string.localizable.save())
+                        .foregroundColor(appearance.themeColor.isLight ? .black : .white)
                 }
             }
         })
-        .hideBackButtonTitle()
+        .hideBackTitle()
         .onTapGesture {
             addAccountVM.isHiddenCalculator = true
         }
