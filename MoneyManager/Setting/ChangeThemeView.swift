@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ChangeThemeView: View {
     @EnvironmentObject var appearance: AppAppearance
-    @State private var themeColor = UserInfo.share.themeColor
     
     var body: some View {
         VStack {
@@ -17,9 +16,11 @@ struct ChangeThemeView: View {
                 Text("選擇主題顏色")
                     .font(.system(size: 20))
                 Spacer()
-                ColorPicker("", selection: $themeColor)
+                ColorPicker("", selection: $appearance.themeColor)
+                    .pickerStyle(.segmented)
                     .labelsHidden()
                     .scaleEffect(CGSize(width: 1.3, height: 1.3))
+                    
             }
             
             Spacer()
@@ -27,12 +28,22 @@ struct ChangeThemeView: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .navigationTitle("主題顏色")
-        .onChange(of: themeColor, perform: { newValue in
+        .onChange(of: appearance.themeColor, perform: { newValue in
             UserInfo.share.themeColor = newValue
+            
+            let searchBarAppearance = UISearchBar.appearance()
+            searchBarAppearance.overrideUserInterfaceStyle = newValue.isLight ? .light : .dark
+            searchBarAppearance.tintColor = newValue.isLight ? .black : .white
             
             appearance.themeColor = newValue
             appearance.colorScheme = newValue.isLight ? .light : .dark
         })
+        .onAppear {
+            setSegmentColor(isShowColorPicker: true)
+        }
+        .onDisappear {
+            setSegmentColor(isShowColorPicker: false)
+        }
         .hideBackTitle()
     }
 }

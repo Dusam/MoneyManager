@@ -7,11 +7,11 @@ PODS:
   - Introspect (0.2.3)
   - IQKeyboardManagerSwift (6.5.11)
   - R.swift (7.3.2)
-  - Realm (10.38.0):
-    - Realm/Headers (= 10.38.0)
-  - Realm/Headers (10.38.0)
-  - RealmSwift (10.38.0):
-    - Realm (= 10.38.0)
+  - Realm (10.38.2):
+    - Realm/Headers (= 10.38.2)
+  - Realm/Headers (10.38.2)
+  - RealmSwift (10.38.2):
+    - Realm (= 10.38.2)
   - SamUtils (0.0.5):
     - Alamofire
     - IQKeyboardManagerSwift
@@ -87,8 +87,8 @@ SPEC CHECKSUMS:
   Introspect: 6917895ed34004271bc8d75a75db6c07839fa971
   IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
   R.swift: 0af0d882f49f03711415cb4e5215daa977d8a480
-  Realm: 5902885dd1d5e71b0b020830caab937ecdf5bf07
-  RealmSwift: 0fc037d6c32c7c4fc9362892380f380114ecdcf0
+  Realm: 4132817bce88db8415114f49070ff844aa2f5600
+  RealmSwift: 4175fd7a42483a7951b2c2c79b9d291dfe3a5cf0
   SamUtils: 5313431e2bb1e46b749e1697fc8906074153041b
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2

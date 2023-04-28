@@ -49,11 +49,13 @@ struct UserListView: View {
             .navigationTitle(R.string.localizable.userList())
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
+                let searchBarAppearance = UISearchBar.appearance()
+                let isLight = appearance.themeColor.isLight
+                searchBarAppearance.overrideUserInterfaceStyle = isLight ? .light : .dark
+                searchBarAppearance.tintColor = isLight ? .black : .white
+                
                 UserInfo.share.selectedDate = Date()
                 userVM.getUsers()
-                
-                UISearchBar.appearance().overrideUserInterfaceStyle = appearance.themeColor.isLight ? .light : .dark
-                UISearchBar.appearance().tintColor = appearance.themeColor.isLight ? .black : .white
             }
         }
         .setNavigationBar(appearance.themeColor)

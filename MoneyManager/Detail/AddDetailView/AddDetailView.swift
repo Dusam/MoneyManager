@@ -73,7 +73,7 @@ struct AddDetailView: View {
                         }
                         .frame(maxWidth: .infinity)
                         .background(.clear)
-                        .foregroundColor(appearance.themeColor.isLight ? .black : .white)
+                        .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
                     }
                     
                     if addDetailType == .edit {
@@ -86,7 +86,7 @@ struct AddDetailView: View {
                             }
                             .frame(maxWidth: .infinity)
                             .background(.clear)
-                            .foregroundColor(appearance.themeColor.isLight ? .black : .white)
+                            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
                         }
                     }
                 }

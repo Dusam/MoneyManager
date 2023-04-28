@@ -19,13 +19,13 @@ extension View {
                 var titleColor:UIColor = .white
                 
                 if color.isLight {
-                    titleColor = .black
+                    titleColor = .darkGray
                 }
 
                 navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
                 
                 let navBarAppearance = UINavigationBarAppearance()
-                let backImage = UIImage(systemName: "chevron.backward.circle.fill")?.withTintColor(color.isLight ? .black : .white, renderingMode: .alwaysOriginal)
+                let backImage = UIImage(systemName: "chevron.backward.circle.fill")?.withTintColor(color.isLight ? .darkGray : .white, renderingMode: .alwaysOriginal)
                 navBarAppearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
                 
                 navBarAppearance.largeTitleTextAttributes = [.foregroundColor: titleColor]
@@ -46,11 +46,21 @@ extension View {
                 navigation.overrideUserInterfaceStyle = .light
                 
                 // segment control
-                UISegmentedControl.appearance().selectedSegmentTintColor = color.uiColor
-                UISegmentedControl.appearance().backgroundColor = color.isLight ? color.uiColor : .white
-                UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: color.isLight ? UIColor.black : UIColor.white], for: .selected)
-                UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: color.isLight ? UIColor.darkGray : UIColor.black], for: .normal)
+                setSegmentColor()
             })
+    }
+    
+    func setSegmentColor(isShowColorPicker: Bool = false) {
+        let segmentAppearance = UISegmentedControl.appearance()
+        if isShowColorPicker {
+            segmentAppearance.backgroundColor = .white
+            segmentAppearance.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
+            segmentAppearance.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+        } else {
+            segmentAppearance.backgroundColor = UserInfo.share.themeColor.uiColor
+            segmentAppearance.setTitleTextAttributes([.foregroundColor: UserInfo.share.themeColor.isLight ? UIColor.black : UserInfo.share.themeColor.uiColor], for: .selected)
+            segmentAppearance.setTitleTextAttributes([.foregroundColor: UserInfo.share.themeColor.isLight ? UIColor.darkGray : UIColor.white], for: .normal)
+        }
     }
     
     func hideBackTitle() -> some View {

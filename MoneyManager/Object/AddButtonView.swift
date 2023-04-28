@@ -23,7 +23,7 @@ struct AddButtonView<TargetView: View>: View {
                     ZStack {
                         Image(systemName: "plus")
                             .font(.title)
-                            .foregroundColor(appearance.themeColor.isLight ? .black : .white)
+                            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
                             .frame(width: 50, height: 50)
                     }
                     .background(appearance.themeColor)
@@ -40,6 +40,6 @@ struct AddButtonView<TargetView: View>: View {
 
 struct AddButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        AddButtonView(nextView: AddUserView())
+        AddButtonView(nextView: AddUserView()).environmentObject(AppAppearance())
     }
 }

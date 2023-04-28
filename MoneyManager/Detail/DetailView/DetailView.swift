@@ -43,7 +43,7 @@ struct DetailView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .background(.clear)
-                    .foregroundColor(appearance.themeColor.isLight ? .black : .white)
+                    .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
                 }
                 
                 NavigationLink(destination: AddDetailView()) {
@@ -53,7 +53,7 @@ struct DetailView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .background(.clear)
-                    .foregroundColor(appearance.themeColor.isLight ? .black : .white)
+                    .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
                 }
                 
                 NavigationLink(destination: ChartView()) {
@@ -63,7 +63,7 @@ struct DetailView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .background(.clear)
-                    .foregroundColor(appearance.themeColor.isLight ? .black : .white)
+                    .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
                 }
                 
                 NavigationLink(destination: SettingView()) {
@@ -73,7 +73,7 @@ struct DetailView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .background(.clear)
-                    .foregroundColor(appearance.themeColor.isLight ? .black : .white)
+                    .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
                 }
             }
             .padding(.top, 10)
@@ -105,6 +105,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(userModel: UserModel())
+        DetailView(userModel: UserModel()).environmentObject(AppAppearance())
     }
 }

@@ -15,11 +15,11 @@ enum ChartType: Int, CaseIterable {
     var name: String {
         switch self {
         case .week:
-            return "週"
+            return R.string.localizable.week()
         case .month:
-            return "月"
+            return R.string.localizable.month()
         case .year:
-            return "年"
+            return R.string.localizable.year()
         }
     }
     
