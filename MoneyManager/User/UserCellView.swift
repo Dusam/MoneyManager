@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
-import Introspect
 
 struct UserCellView: View {
     var user: UserModel!
+    
+    @EnvironmentObject var appearance: AppAppearance
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -22,12 +23,13 @@ struct UserCellView: View {
                 .font(.system(.title2))
             
         }
+        .listRowBackground(Color.clear)
+        .listRowSeparator(.hidden)
         .padding(10)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(Color.blue, lineWidth: 1)
+                .stroke(appearance.themeColor, lineWidth: 1)
         )
-        
     }
 }
 
