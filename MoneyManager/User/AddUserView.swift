@@ -14,7 +14,7 @@ struct AddUserView: View {
     
     var body: some View {
         VStack {
-            TextField("名稱", text: $registerVM.userName)
+            TextField(R.string.localizable.name(), text: $registerVM.userName)
                 .textFieldStyle(.roundedBorder)
                 .font(.title2)
             
@@ -23,7 +23,7 @@ struct AddUserView: View {
                 registerVM.userName = ""
                 self.presentationMode.wrappedValue.dismiss()
             } label: {
-                Text("新增")
+                Text(R.string.localizable.add())
                     .font(.title2)
             }
             .padding(.top, 20)
@@ -31,7 +31,7 @@ struct AddUserView: View {
             Spacer()
         }
         .padding()
-        .navigationTitle("新增用戶")
+        .navigationTitle(R.string.localizable.addUser())
         
     }
 }

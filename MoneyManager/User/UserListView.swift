@@ -7,51 +7,37 @@
 
 import SwiftUI
 import RealmSwift
-import Introspect
 
 struct UserListView: View {
-    
+    @StateObject var appearance = AppAppearance()
     @ObservedObject private var userVM: UserViewModel = UserViewModel()
     
     @State private var isShowAlert = false
     @State private var deleteUser: UserModel!
     
-    init() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.setBackIndicatorImage(UIImage(systemName: "chevron.backward.circle.fill"), transitionMaskImage: UIImage(systemName: "chevron.backward.circle.fill"))
-        
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().compactAppearance = navBarAppearance
-    }
-    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 List(userVM.users, id: \.id) { user in
                     UserCellView(user: user)
-                        .listRowBackground(Color.clear)
                         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                             Button(role: .destructive) {
                                 deleteUser = user
                                 isShowAlert = true
                             } label: {
-                                Text("刪除")
+                                Text(R.string.localizable.delete())
                             }
                             
                         }
                 }
-                .introspectTableView { tableView in
-                    tableView.separatorStyle = .none
-                    tableView.backgroundColor = .white
-                }
+                .scrollContentBackground(.hidden)
                 .alert(isPresented: $isShowAlert) {
-                    Alert(title: Text("刪除"),
-                          message: Text("確定要刪除 \(deleteUser.name) ?"),
-                          primaryButton: .destructive(Text("刪除")) {
+                    Alert(title: Text(R.string.localizable.delete()),
+                          message: Text(R.string.localizable.confirmDelete(deleteUser.name)),
+                          primaryButton: .destructive(Text(R.string.localizable.delete())) {
                         userVM.removeUser(deleteUser)
                     },
-                          secondaryButton: .cancel(Text("取消")))
+                          secondaryButton: .cancel(Text(R.string.localizable.cancel())))
                 }
                 
                 // 新增按鈕
@@ -60,17 +46,22 @@ struct UserListView: View {
             }
             .searchable(text: $userVM.searchText,
                         placement: .navigationBarDrawer(displayMode: .always))
-            .navigationTitle("用戶清單")
+            .navigationTitle(R.string.localizable.userList())
             .navigationBarTitleDisplayMode(.inline)
-            .introspectNavigationController(customize: { navigation in
-                navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
-            })
             .onAppear {
+                let searchBarAppearance = UISearchBar.appearance()
+                let isLight = appearance.themeColor.isLight
+                searchBarAppearance.overrideUserInterfaceStyle = isLight ? .light : .dark
+                searchBarAppearance.tintColor = isLight ? .black : .white
+                
+                UserInfo.share.selectedDate = Date()
                 userVM.getUsers()
             }
-            
         }
+        .setNavigationBar(appearance.themeColor)
+        .preferredColorScheme(appearance.colorScheme)
         .environmentObject(userVM)
+        .environmentObject(appearance)
     }
 }
 

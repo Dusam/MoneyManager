@@ -36,7 +36,6 @@ extension UserViewModel {
 
         // Realm 的刪除要慢一點，先將物件從陣列移除，才不會閃退
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            RealmManager.share.deleteDetail(deleteUserModel.id)
             RealmManager.share.deleteUser(deleteUserModel)
         }
     }
