@@ -8,16 +8,18 @@
 import SwiftUI
 import SwifterSwift
 import IQKeyboardManagerSwift
+import IQKeyboardToolbarManager
 
 @main
 struct MoneyManagerApp: App {
     
     init() {
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.enableAutoToolbar = true
+        IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardManager.shared.resignOnTouchOutside = true
         IQKeyboardManager.shared.layoutIfNeededOnUpdate = true
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 150
+        IQKeyboardManager.shared.keyboardDistance = 150
+        
+        IQKeyboardToolbarManager.shared.isEnabled = true
         
         if UserDefaults.isFirstLaunch() {
             // TODO: 新增預設選項

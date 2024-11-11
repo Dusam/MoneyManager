@@ -1,62 +1,107 @@
 PODS:
-  - Alamofire (5.6.4)
+  - Alamofire (5.10.1)
   - Charts (4.1.0):
     - Charts/Core (= 4.1.0)
   - Charts/Core (4.1.0):
     - SwiftAlgorithms (~> 1.0)
-  - Introspect (0.2.3)
-  - IQKeyboardManagerSwift (6.5.11)
-  - R.swift (7.3.2)
-  - Realm (10.38.2):
-    - Realm/Headers (= 10.38.2)
-  - Realm/Headers (10.38.2)
-  - RealmSwift (10.38.2):
-    - Realm (= 10.38.2)
-  - SamUtils (0.0.5):
+  - Introspect (0.12.0)
+  - IQKeyboardCore (1.0.5)
+  - IQKeyboardManagerSwift (8.0.0):
+    - IQKeyboardManagerSwift/Appearance (= 8.0.0)
+    - IQKeyboardManagerSwift/Core (= 8.0.0)
+    - IQKeyboardManagerSwift/IQKeyboardReturnManager (= 8.0.0)
+    - IQKeyboardManagerSwift/IQKeyboardToolbarManager (= 8.0.0)
+    - IQKeyboardManagerSwift/IQTextView (= 8.0.0)
+    - IQKeyboardManagerSwift/Resign (= 8.0.0)
+  - IQKeyboardManagerSwift/Appearance (8.0.0):
+    - IQKeyboardManagerSwift/Core
+  - IQKeyboardManagerSwift/Core (8.0.0):
+    - IQKeyboardNotification
+    - IQTextInputViewNotification
+  - IQKeyboardManagerSwift/IQKeyboardReturnManager (8.0.0):
+    - IQKeyboardReturnManager
+  - IQKeyboardManagerSwift/IQKeyboardToolbarManager (8.0.0):
+    - IQKeyboardManagerSwift/Core
+    - IQKeyboardToolbarManager
+  - IQKeyboardManagerSwift/IQTextView (8.0.0):
+    - IQTextView
+  - IQKeyboardManagerSwift/Resign (8.0.0):
+    - IQKeyboardManagerSwift/Core
+  - IQKeyboardNotification (1.0.3)
+  - IQKeyboardReturnManager (1.0.4):
+    - IQKeyboardCore (= 1.0.5)
+  - IQKeyboardToolbar (1.1.1):
+    - IQKeyboardCore
+    - IQKeyboardToolbar/Core (= 1.1.1)
+  - IQKeyboardToolbar/Core (1.1.1):
+    - IQKeyboardCore
+    - IQKeyboardToolbar/Placeholderable
+  - IQKeyboardToolbar/Placeholderable (1.1.1):
+    - IQKeyboardCore
+  - IQKeyboardToolbarManager (1.1.2):
+    - IQKeyboardToolbar
+    - IQTextInputViewNotification
+  - IQTextInputViewNotification (1.0.8):
+    - IQKeyboardCore
+  - IQTextView (1.0.5):
+    - IQKeyboardToolbar/Placeholderable
+  - R.swift (7.8.0)
+  - Realm (20.0.0):
+    - Realm/Headers (= 20.0.0)
+  - Realm/Headers (20.0.0)
+  - RealmSwift (20.0.0):
+    - Realm (= 20.0.0)
+  - SamUtils (1.0.1):
     - Alamofire
     - IQKeyboardManagerSwift
-    - SamUtils/CommonTools (= 0.0.5)
+    - SamUtils/CommonTools (= 1.0.1)
     - SwifterSwift
-  - SamUtils/CommonTools (0.0.5):
+  - SamUtils/CommonTools (1.0.1):
     - Alamofire
     - IQKeyboardManagerSwift
-    - SamUtils/CommonTools/API (= 0.0.5)
-    - SamUtils/CommonTools/Extensions (= 0.0.5)
+    - SamUtils/CommonTools/API (= 1.0.1)
+    - SamUtils/CommonTools/Extensions (= 1.0.1)
     - SwifterSwift
-  - SamUtils/CommonTools/API (0.0.5):
+  - SamUtils/CommonTools/API (1.0.1):
     - Alamofire
     - IQKeyboardManagerSwift
     - SwifterSwift
-  - SamUtils/CommonTools/Extensions (0.0.5):
+  - SamUtils/CommonTools/Extensions (1.0.1):
     - Alamofire
     - IQKeyboardManagerSwift
     - SwifterSwift
   - SwiftAlgorithms (1.0.0)
-  - SwifterSwift (5.2.0):
-    - SwifterSwift/AppKit (= 5.2.0)
-    - SwifterSwift/CoreAnimation (= 5.2.0)
-    - SwifterSwift/CoreGraphics (= 5.2.0)
-    - SwifterSwift/CoreLocation (= 5.2.0)
-    - SwifterSwift/Dispatch (= 5.2.0)
-    - SwifterSwift/Foundation (= 5.2.0)
-    - SwifterSwift/MapKit (= 5.2.0)
-    - SwifterSwift/SceneKit (= 5.2.0)
-    - SwifterSwift/SpriteKit (= 5.2.0)
-    - SwifterSwift/StoreKit (= 5.2.0)
-    - SwifterSwift/SwiftStdlib (= 5.2.0)
-    - SwifterSwift/UIKit (= 5.2.0)
-  - SwifterSwift/AppKit (5.2.0)
-  - SwifterSwift/CoreAnimation (5.2.0)
-  - SwifterSwift/CoreGraphics (5.2.0)
-  - SwifterSwift/CoreLocation (5.2.0)
-  - SwifterSwift/Dispatch (5.2.0)
-  - SwifterSwift/Foundation (5.2.0)
-  - SwifterSwift/MapKit (5.2.0)
-  - SwifterSwift/SceneKit (5.2.0)
-  - SwifterSwift/SpriteKit (5.2.0)
-  - SwifterSwift/StoreKit (5.2.0)
-  - SwifterSwift/SwiftStdlib (5.2.0)
-  - SwifterSwift/UIKit (5.2.0)
+  - SwifterSwift (7.0.0):
+    - SwifterSwift/AppKit (= 7.0.0)
+    - SwifterSwift/CoreAnimation (= 7.0.0)
+    - SwifterSwift/CoreGraphics (= 7.0.0)
+    - SwifterSwift/CoreLocation (= 7.0.0)
+    - SwifterSwift/CryptoKit (= 7.0.0)
+    - SwifterSwift/Dispatch (= 7.0.0)
+    - SwifterSwift/Foundation (= 7.0.0)
+    - SwifterSwift/HealthKit (= 7.0.0)
+    - SwifterSwift/MapKit (= 7.0.0)
+    - SwifterSwift/SceneKit (= 7.0.0)
+    - SwifterSwift/SpriteKit (= 7.0.0)
+    - SwifterSwift/StoreKit (= 7.0.0)
+    - SwifterSwift/SwiftStdlib (= 7.0.0)
+    - SwifterSwift/UIKit (= 7.0.0)
+    - SwifterSwift/WebKit (= 7.0.0)
+  - SwifterSwift/AppKit (7.0.0)
+  - SwifterSwift/CoreAnimation (7.0.0)
+  - SwifterSwift/CoreGraphics (7.0.0)
+  - SwifterSwift/CoreLocation (7.0.0)
+  - SwifterSwift/CryptoKit (7.0.0)
+  - SwifterSwift/Dispatch (7.0.0)
+  - SwifterSwift/Foundation (7.0.0)
+  - SwifterSwift/HealthKit (7.0.0)
+  - SwifterSwift/MapKit (7.0.0)
+  - SwifterSwift/SceneKit (7.0.0)
+  - SwifterSwift/SpriteKit (7.0.0)
+  - SwifterSwift/StoreKit (7.0.0)
+  - SwifterSwift/SwiftStdlib (7.0.0)
+  - SwifterSwift/UIKit (7.0.0)
+  - SwifterSwift/WebKit (7.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -73,7 +118,14 @@ SPEC REPOS:
     - Alamofire
     - Charts
     - Introspect
+    - IQKeyboardCore
     - IQKeyboardManagerSwift
+    - IQKeyboardNotification
+    - IQKeyboardReturnManager
+    - IQKeyboardToolbar
+    - IQKeyboardToolbarManager
+    - IQTextInputViewNotification
+    - IQTextView
     - R.swift
     - Realm
     - RealmSwift
@@ -82,17 +134,24 @@ SPEC REPOS:
     - SwifterSwift
 
 SPEC CHECKSUMS:
-  Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
-  Charts: 354f86803d11d9c35de280587fef50d1af063978
-  Introspect: 6917895ed34004271bc8d75a75db6c07839fa971
-  IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
-  R.swift: 0af0d882f49f03711415cb4e5215daa977d8a480
-  Realm: 4132817bce88db8415114f49070ff844aa2f5600
-  RealmSwift: 4175fd7a42483a7951b2c2c79b9d291dfe3a5cf0
-  SamUtils: 5313431e2bb1e46b749e1697fc8906074153041b
+  Alamofire: 840d2a1ad82355b536ec6ba5f97e5bfa54600ca3
+  Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
+  Introspect: b66b675de8a85d9ef832f3a710d8e3c7db186884
+  IQKeyboardCore: 28c8bf3bcd8ba5aa1570b318cbc4da94b861711e
+  IQKeyboardManagerSwift: 0c6fbbaa2e60739e48d7cf59f25661471a7a3a65
+  IQKeyboardNotification: d7382c4466c5a5adef92c7452ebf861b36050088
+  IQKeyboardReturnManager: 972be48528ce9e7508ab3ab15ac7efac803f17f5
+  IQKeyboardToolbar: d4bdccfb78324aec2f3920659c77bb89acd33312
+  IQKeyboardToolbarManager: 6f4072ac620c2572d4af8c09f42a801f3e4909f7
+  IQTextInputViewNotification: f5e954d8881fd9808b744e49e024cc0d4bcfe572
+  IQTextView: ae13b4922f22e6f027f62c557d9f4f236b19d5c7
+  R.swift: f573269ca45b2ab066c082e363dd4c2b297b0d71
+  Realm: a799b5f9145623fb0bfe149fe81422863631dd0f
+  RealmSwift: f8c4354ebd5053343e6ab9f4eda244145308a51e
+  SamUtils: 52eb185e201cf442eb03d1079f7fcc1085e8a653
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
-  SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
+  SwifterSwift: e9caf990fc72e835432280755d1f4c43f2a483d5
 
-PODFILE CHECKSUM: 2831aeab6c9a4eb4117904a479a5a56b78b54845
+PODFILE CHECKSUM: f33e07591f37a958f510dfc03f83c29ffbf8dfdb
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.16.2

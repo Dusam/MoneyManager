@@ -59,7 +59,7 @@ struct UserListView: View {
             }
         }
         .setNavigationBar(appearance.themeColor)
-        .preferredColorScheme(appearance.colorScheme)
+//        .preferredColorScheme(appearance.colorScheme)
         .environmentObject(userVM)
         .environmentObject(appearance)
     }
