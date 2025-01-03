@@ -8,13 +8,14 @@
 import Foundation
 import RealmSwift
 import UIKit
+import Observation
 
+@Observable
 class UserViewModel: ObservableObject {
     
-    @Published var users: [UserModel] = []
-
-    @Published var userName: String = ""
-    @Published var searchText: String = "" {
+    var users: [UserModel] = []
+    var userName: String = ""
+    var searchText: String = "" {
         didSet {
             getUsers()
         }

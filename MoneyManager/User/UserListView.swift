@@ -9,8 +9,8 @@ import SwiftUI
 import RealmSwift
 
 struct UserListView: View {
-    @StateObject var appearance = AppAppearance()
-    @ObservedObject private var userVM: UserViewModel = UserViewModel()
+    @EnvironmentObject var appearance: AppAppearance
+    @StateObject private var userVM: UserViewModel = UserViewModel()
     
     @State private var isShowAlert = false
     @State private var deleteUser: UserModel!
@@ -59,14 +59,11 @@ struct UserListView: View {
             }
         }
         .setNavigationBar(appearance.themeColor)
-//        .preferredColorScheme(appearance.colorScheme)
         .environmentObject(userVM)
-        .environmentObject(appearance)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserListView()
-    }
+#Preview {
+    UserListView()
+        .environment(AppAppearance())
 }

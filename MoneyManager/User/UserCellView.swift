@@ -33,8 +33,7 @@ struct UserCellView: View {
     }
 }
 
-struct UserCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserCellView(user: UserModel())
-    }
+#Preview {
+    UserCellView(user: UserModel())
+        .environmentObject(AppAppearance())
 }

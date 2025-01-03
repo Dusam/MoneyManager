@@ -12,6 +12,8 @@ import IQKeyboardToolbarManager
 
 @main
 struct MoneyManagerApp: App {
+    @StateObject var appearance = AppAppearance()
+
     
     init() {
         IQKeyboardManager.shared.isEnabled = true
@@ -29,6 +31,7 @@ struct MoneyManagerApp: App {
     var body: some Scene {
         WindowGroup {
             UserListView()
+                .environmentObject(appearance)
         }
     }
 }

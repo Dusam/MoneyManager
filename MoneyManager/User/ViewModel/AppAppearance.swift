@@ -7,8 +7,10 @@
 
 import Foundation
 import SwiftUI
+import Observation
 
+@Observable
 class AppAppearance: ObservableObject {
-    @Published var colorScheme: ColorScheme = UserInfo.share.themeColor.isLight ? .light : .dark
-    @Published var themeColor: Color = UserInfo.share.themeColor
+    var colorScheme: ColorScheme = UserInfo.share.themeColor.isLight ? .light : .dark
+    var themeColor: Color = UserInfo.share.themeColor
 }

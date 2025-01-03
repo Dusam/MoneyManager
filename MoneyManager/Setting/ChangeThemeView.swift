@@ -28,7 +28,7 @@ struct ChangeThemeView: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .navigationTitle("主題顏色")
-        .onChange(of: appearance.themeColor, perform: { newValue in
+        .onChange(of: appearance.themeColor, { oldValue, newValue in
             UserInfo.share.themeColor = newValue
             
             let searchBarAppearance = UISearchBar.appearance()
@@ -48,8 +48,7 @@ struct ChangeThemeView: View {
     }
 }
 
-struct ChangeThemeView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChangeThemeView()
-    }
+#Preview {
+    ChangeThemeView()
+        .environmentObject(AppAppearance())
 }

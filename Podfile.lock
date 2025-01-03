@@ -1,10 +1,9 @@
 PODS:
-  - Alamofire (5.10.1)
+  - Alamofire (5.10.2)
   - Charts (4.1.0):
     - Charts/Core (= 4.1.0)
   - Charts/Core (4.1.0):
     - SwiftAlgorithms (~> 1.0)
-  - Introspect (0.12.0)
   - IQKeyboardCore (1.0.5)
   - IQKeyboardManagerSwift (8.0.0):
     - IQKeyboardManagerSwift/Appearance (= 8.0.0)
@@ -46,11 +45,11 @@ PODS:
   - IQTextView (1.0.5):
     - IQKeyboardToolbar/Placeholderable
   - R.swift (7.8.0)
-  - Realm (20.0.0):
-    - Realm/Headers (= 20.0.0)
-  - Realm/Headers (20.0.0)
-  - RealmSwift (20.0.0):
-    - Realm (= 20.0.0)
+  - Realm (20.0.1):
+    - Realm/Headers (= 20.0.1)
+  - Realm/Headers (20.0.1)
+  - RealmSwift (20.0.1):
+    - Realm (= 20.0.1)
   - SamUtils (1.0.1):
     - Alamofire
     - IQKeyboardManagerSwift
@@ -102,22 +101,22 @@ PODS:
   - SwifterSwift/SwiftStdlib (7.0.0)
   - SwifterSwift/UIKit (7.0.0)
   - SwifterSwift/WebKit (7.0.0)
+  - SwiftUIIntrospect (1.3.0)
 
 DEPENDENCIES:
   - Alamofire
   - Charts
-  - Introspect
   - IQKeyboardManagerSwift
   - R.swift
   - RealmSwift
   - SamUtils
   - SwifterSwift
+  - SwiftUIIntrospect
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Charts
-    - Introspect
     - IQKeyboardCore
     - IQKeyboardManagerSwift
     - IQKeyboardNotification
@@ -132,11 +131,11 @@ SPEC REPOS:
     - SamUtils
     - SwiftAlgorithms
     - SwifterSwift
+    - SwiftUIIntrospect
 
 SPEC CHECKSUMS:
-  Alamofire: 840d2a1ad82355b536ec6ba5f97e5bfa54600ca3
+  Alamofire: 7193b3b92c74a07f85569e1a6c4f4237291e7496
   Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
-  Introspect: b66b675de8a85d9ef832f3a710d8e3c7db186884
   IQKeyboardCore: 28c8bf3bcd8ba5aa1570b318cbc4da94b861711e
   IQKeyboardManagerSwift: 0c6fbbaa2e60739e48d7cf59f25661471a7a3a65
   IQKeyboardNotification: d7382c4466c5a5adef92c7452ebf861b36050088
@@ -146,12 +145,13 @@ SPEC CHECKSUMS:
   IQTextInputViewNotification: f5e954d8881fd9808b744e49e024cc0d4bcfe572
   IQTextView: ae13b4922f22e6f027f62c557d9f4f236b19d5c7
   R.swift: f573269ca45b2ab066c082e363dd4c2b297b0d71
-  Realm: a799b5f9145623fb0bfe149fe81422863631dd0f
-  RealmSwift: f8c4354ebd5053343e6ab9f4eda244145308a51e
+  Realm: 9572204903ef28caeb3c03bb30c1147f354ee3e7
+  RealmSwift: d230b44017a55a1ba97de6a944da1fe3bedb92b5
   SamUtils: 52eb185e201cf442eb03d1079f7fcc1085e8a653
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   SwifterSwift: e9caf990fc72e835432280755d1f4c43f2a483d5
+  SwiftUIIntrospect: fee9aa07293ee280373a591e1824e8ddc869ba5d
 
-PODFILE CHECKSUM: f33e07591f37a958f510dfc03f83c29ffbf8dfdb
+PODFILE CHECKSUM: a57cfad0c07b774a848748e1cac89e25d523481f
 
 COCOAPODS: 1.16.2

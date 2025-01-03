@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-import Introspect
+import SwiftUIIntrospect
 import UIKit
 
 
@@ -15,7 +15,7 @@ import UIKit
 extension View {
     func setNavigationBar(_ color: Color = UserInfo.share.themeColor) -> some View {
         self
-            .introspectNavigationController(customize: { navigation in
+            .introspect(.navigationStack, on: .iOS(.v16, .v17, .v18), customize: { navigation in
                 var titleColor:UIColor = .white
                 
                 if color.isLight {
@@ -65,7 +65,7 @@ extension View {
     
     func hideBackTitle() -> some View {
         self
-            .introspectNavigationController(customize: { navigation in
+            .introspect(.navigationStack, on: .iOS(.v16, .v17, .v18), customize: { navigation in
                 navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
             })
     }

@@ -36,9 +36,7 @@ struct AddUserView: View {
     }
 }
 
-struct AddUserView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddUserView()
-            .environmentObject(UserViewModel())
-    }
+#Preview {
+    AddUserView()
+        .environmentObject(UserViewModel())
 }

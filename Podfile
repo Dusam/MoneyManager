@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '15.0'
+platform :ios, '17.0'
 
 target 'MoneyManager' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -8,7 +8,7 @@ target 'MoneyManager' do
   # Pods for MoneyManager
   pod 'RealmSwift'
   pod 'IQKeyboardManagerSwift'
-  pod 'Introspect'
+  pod 'SwiftUIIntrospect'
   pod 'SwifterSwift'
   pod 'Alamofire'
   pod 'R.swift'
