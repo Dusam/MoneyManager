@@ -13,44 +13,56 @@ struct DetailHeaderView: View {
     var body: some View {
         HStack {
             Spacer()
-            Button {
-                detailVM.toPreviousDate()
-            } label: {
-                Image(systemName: "chevron.left")
-                    .foregroundColor(.gray)
-                    .font(.system(.title2))
-            }
-
+            previousButton()
             Spacer()
-            Button {
-                detailVM.toCurrentDate()
-            } label: {
-                VStack {
-                    Text(detailVM.currentDateString)
-                        .font(.system(.title2))
-                        .foregroundColor(.gray)
-                    Text("TW$ \(detailVM.totalAmount)")
-                        .font(.system(.title3))
-                        .foregroundColor(detailVM.totalAmount >= 0 ? Color(R.color.transferColor()!) : Color(R.color.expensesColor()!))
-                }
-                
-            }
-            
+            todayButton()
             Spacer()
-            Button {
-                detailVM.toNextDate()
-            } label: {
-                Image(systemName: "chevron.forward")
-                    .foregroundColor(.gray)
-                    .font(.system(.title2))
-            }
+            nextButton()
             Spacer()
         }
     }
 }
 
-struct DetailHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailHeaderView().environmentObject(DetailViewModel())
+extension DetailHeaderView {
+    @ViewBuilder
+    private func previousButton() -> some View {
+        Button {
+            detailVM.toPreviousDate()
+        } label: {
+            Image(systemName: "chevron.left")
+                .foregroundColor(.gray)
+                .font(.system(.title2))
+        }
     }
+    
+    @ViewBuilder
+    private func todayButton() -> some View {
+        Button {
+            detailVM.toCurrentDate()
+        } label: {
+            VStack {
+                Text(detailVM.currentDateString)
+                    .font(.system(.title2))
+                    .foregroundColor(.gray)
+                Text("TW$ \(detailVM.totalAmount)")
+                    .font(.system(.title3))
+                    .foregroundColor(detailVM.totalAmount >= 0 ? Color(R.color.transferColor()!) : Color(R.color.expensesColor()!))
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func nextButton() -> some View {
+        Button {
+            detailVM.toNextDate()
+        } label: {
+            Image(systemName: "chevron.right")
+                .foregroundColor(.gray)
+                .font(.system(.title2))
+        }
+    }
+}
+
+#Preview {
+    DetailHeaderView().environmentObject(DetailViewModel())
 }

@@ -11,7 +11,7 @@ struct DetailView: View {
     
     var userModel: UserModel!
     @EnvironmentObject var appearance: AppAppearance
-    @ObservedObject var detailVM = DetailViewModel()
+    @StateObject var detailVM = DetailViewModel()
   
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -36,45 +36,10 @@ struct DetailView: View {
             .scrollContentBackground(.hidden)
             
             HStack {
-                NavigationLink(destination: AccountDetailView()) {
-                    VStack {
-                        Image(systemName: "house.fill")
-                        Text(R.string.localizable.account())
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(.clear)
-                    .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
-                }
-                
-                NavigationLink(destination: AddDetailView()) {
-                    VStack {
-                        Image(systemName: "plus")
-                        Text(R.string.localizable.add())
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(.clear)
-                    .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
-                }
-                
-                NavigationLink(destination: ChartView()) {
-                    VStack {
-                        Image(systemName: "chart.pie.fill")
-                        Text(R.string.localizable.chart())
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(.clear)
-                    .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
-                }
-                
-                NavigationLink(destination: SettingView()) {
-                    VStack {
-                        Image(systemName: "gearshape.fill")
-                        Text(R.string.localizable.setting())
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(.clear)
-                    .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
-                }
+                accountNavigationLink()
+                addDetailNavigationLink()
+                chartNavigationLink()
+                settingNavigationLink()
             }
             .padding(.top, 10)
             .background(UserInfo.share.themeColor)
@@ -103,8 +68,62 @@ struct DetailView: View {
     }
 }
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailView(userModel: UserModel()).environmentObject(AppAppearance())
+// MARK: Tabbar Navigation
+extension DetailView {
+    @ViewBuilder
+    private func accountNavigationLink() -> some View {
+        NavigationLink(destination: AccountDetailView()) {
+            VStack {
+                Image(systemName: "house.fill")
+                Text(R.string.localizable.account())
+            }
+            .frame(maxWidth: .infinity)
+            .background(.clear)
+            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+        }
     }
+    
+    @ViewBuilder
+    private func addDetailNavigationLink() -> some View {
+        NavigationLink(destination: AddDetailView()) {
+            VStack {
+                Image(systemName: "plus")
+                Text(R.string.localizable.add())
+            }
+            .frame(maxWidth: .infinity)
+            .background(.clear)
+            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+        }
+    }
+    
+    @ViewBuilder
+    private func chartNavigationLink() -> some View {
+        NavigationLink(destination: ChartView()) {
+            VStack {
+                Image(systemName: "chart.pie.fill")
+                Text(R.string.localizable.chart())
+            }
+            .frame(maxWidth: .infinity)
+            .background(.clear)
+            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+        }
+    }
+    
+    @ViewBuilder
+    private func settingNavigationLink() -> some View {
+        NavigationLink(destination: SettingView()) {
+            VStack {
+                Image(systemName: "gearshape.fill")
+                Text(R.string.localizable.setting())
+            }
+            .frame(maxWidth: .infinity)
+            .background(.clear)
+            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+        }
+    }
+}
+
+#Preview {
+    DetailView(userModel: UserModel())
+        .environmentObject(AppAppearance())
 }

@@ -21,36 +21,9 @@ struct DetailCellView: View {
     var body: some View {
         ZStack {
             HStack{
-                VStack(alignment: .leading) {
-                    Text(DBTools.detailTypeToString(detailModel: detail))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.3)
-                        .multilineTextAlignment(.leading)
-                        .foregroundColor(.black)
-                    Text(detail.memo.replacing("\n", with: " "))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.7)
-                        .multilineTextAlignment(.leading)
-                        .padding(.bottom, 5)
-                        .foregroundColor(.gray)
-                }
-                
+                typeLabel()
                 Spacer()
-                
-                VStack(alignment: .trailing) {
-                    Text("TW$ \(detail.amount)")
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.3)
-                        .multilineTextAlignment(.trailing)
-                        .foregroundColor(billingType.forgroundColor)
-                    Text(billingType == .transfer ? "\(detail.accountName) -> \(detail.toAccountName)" : detail.accountName)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.3)
-                        .multilineTextAlignment(.trailing)
-                        .padding(.bottom, 5)
-                        .foregroundColor(.brown)
-                    
-                }
+                priceLabel()
             }
             
             NavigationLink("") {
@@ -63,8 +36,43 @@ struct DetailCellView: View {
     }
 }
 
-struct DetailCellView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailCellView(detail: DetailModel(), details: .constant([])).environmentObject(DetailViewModel())
+extension DetailCellView {
+    @ViewBuilder
+    private func typeLabel() -> some View {
+        VStack(alignment: .leading) {
+            Text(DBTools.detailTypeToString(detailModel: detail))
+                .lineLimit(1)
+                .minimumScaleFactor(0.3)
+                .multilineTextAlignment(.leading)
+                .foregroundColor(.black)
+            Text(detail.memo.replacing("\n", with: " "))
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
+                .multilineTextAlignment(.leading)
+                .padding(.bottom, 5)
+                .foregroundColor(.gray)
+        }
     }
+    
+    @ViewBuilder
+    private func priceLabel() -> some View {
+        VStack(alignment: .trailing) {
+            Text("TW$ \(detail.amount)")
+                .lineLimit(1)
+                .minimumScaleFactor(0.3)
+                .multilineTextAlignment(.trailing)
+                .foregroundColor(billingType.forgroundColor)
+            Text(billingType == .transfer ? "\(detail.accountName) -> \(detail.toAccountName)" : detail.accountName)
+                .lineLimit(1)
+                .minimumScaleFactor(0.3)
+                .multilineTextAlignment(.trailing)
+                .padding(.bottom, 5)
+                .foregroundColor(.brown)
+            
+        }
+    }
+}
+
+#Preview {
+    DetailCellView(detail: DetailModel(), details: .constant([]))
 }

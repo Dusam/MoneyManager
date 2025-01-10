@@ -7,9 +7,12 @@
 
 import Foundation
 import RealmSwift
+import Observation
 
+@Observable
 class DetailViewModel: ObservableObject {
     
+    @ObservationIgnored
     private var currentDate = UserInfo.share.selectedDate {
         didSet {
             UserInfo.share.selectedDate = currentDate
@@ -17,13 +20,13 @@ class DetailViewModel: ObservableObject {
         }
     }
         
-    @Published var detailModels: [DetailModel] = [] {
+    var detailModels: [DetailModel] = [] {
         didSet {
             countTotal()
         }
     }
-    @Published var currentDateString = UserInfo.share.selectedDate.string(withFormat: "yyyy-MM-dd(EE)")
-    @Published var totalAmount: Int = 0
+    var currentDateString = UserInfo.share.selectedDate.string(withFormat: "yyyy-MM-dd(EE)")
+    var totalAmount: Int = 0
     
 }
 
