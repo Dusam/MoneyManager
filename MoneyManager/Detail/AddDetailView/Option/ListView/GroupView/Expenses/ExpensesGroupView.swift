@@ -48,8 +48,6 @@ struct ExpensesGroupView: View {
     
 }
 
-struct ExpensesGroupView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExpensesGroupView(selectedGroup: .constant(ExpensesGroup.food)).environmentObject(AddDetailViewModel())
-    }
+#Preview {
+    ExpensesGroupView(selectedGroup: .constant(IncomeGroup.general)).environmentObject(AddDetailViewModel(addDetailType: .add, detail: DetailModel()))
 }

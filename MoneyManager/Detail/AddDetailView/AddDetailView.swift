@@ -12,9 +12,11 @@ struct AddDetailView: View {
     enum AddDetailType {
         case add, edit
     }
+    
     @EnvironmentObject var appearance: AppAppearance
-    @ObservedObject var addDetailVM = AddDetailViewModel()
     @Environment(\.dismiss) var dismiss
+    
+    @StateObject var addDetailVM: AddDetailViewModel
     @State private var isShowDeleteAlert = false
     
     @Binding private var details: [DetailModel]
@@ -37,11 +39,9 @@ struct AddDetailView: View {
         self.addDetailType = addDetailType
         self._details = details
         self.detail = detail
-        addDetailVM.isHiddenCalculator = addDetailType == .edit
         
-        if addDetailType == .edit {
-            addDetailVM.setEditDetailModel(detail)
-        }
+        // 初始化 ViewModel
+        _addDetailVM = StateObject(wrappedValue: AddDetailViewModel(addDetailType: addDetailType, detail: detail))
     }
     
     var body: some View {
@@ -59,35 +59,10 @@ struct AddDetailView: View {
                     TransferListView()
                 }
                 HStack {
-                    Button {
-                        if addDetailType == .edit {
-                            addDetailVM.updateDetail()
-                        } else {
-                            addDetailVM.createDetail()
-                        }
-                        dismiss()
-                    } label: {
-                        VStack {
-                            Image(systemName: "checkmark.circle")
-                            Text(R.string.localizable.save())
-                        }
-                        .frame(maxWidth: .infinity)
-                        .background(.clear)
-                        .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
-                    }
+                    saveButton()
                     
                     if addDetailType == .edit {
-                        Button {
-                            isShowDeleteAlert.toggle()
-                        } label: {
-                            VStack {
-                                Image(systemName: "xmark.circle")
-                                Text(R.string.localizable.delete())
-                            }
-                            .frame(maxWidth: .infinity)
-                            .background(.clear)
-                            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
-                        }
+                        deleteButton()
                     }
                 }
                 .padding(.top, 10)
@@ -101,35 +76,16 @@ struct AddDetailView: View {
         }
         .toolbar {
             ToolbarItem(placement: .principal) {
-                Picker("", selection: $addDetailVM.billingType) {
-                    ForEach(BillingType.allCases, id: \.self) { type in
-                        Text(type.name)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .padding()
+                topSegmentedControl()
             }
-            
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Text("    ")
-                    .font(.system(.body))
-            }
-            
         }
         .alert(isPresented: $isShowDeleteAlert) {
-            Alert(title: Text(R.string.localizable.delete()),
-                  message: Text(R.string.localizable.confirmDelete("")),
-                  primaryButton: .destructive(Text(R.string.localizable.yes())) {
-                details.removeAll(detail)
-                addDetailVM.deleteDetail()
-                dismiss()
-            },
-                  secondaryButton: .cancel(Text(R.string.localizable.no())))
+            deleteAlert()
         }
-        .hideBackTitle()
         .environmentObject(addDetailVM)
         .onAppear {
             if addDetailType != .edit {
+                // 使用最後一次選擇的選項類型
                 switch addDetailVM.billingType {
                 case .expenses:
                     addDetailVM.detailGroupId = UserInfo.share.selectedData.expensesGroupId
@@ -146,8 +102,65 @@ struct AddDetailView: View {
     }
 }
 
-struct AddDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddDetailView().environmentObject(AppAppearance())
+extension AddDetailView {
+    @ViewBuilder
+    private func saveButton() -> some View {
+        Button {
+            if addDetailType == .edit {
+                addDetailVM.updateDetail()
+            } else {
+                addDetailVM.createDetail()
+            }
+            dismiss()
+        } label: {
+            VStack {
+                Image(systemName: "checkmark.circle")
+                Text(R.string.localizable.save())
+            }
+            .frame(maxWidth: .infinity)
+            .background(.clear)
+            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+        }
     }
+    
+    @ViewBuilder
+    private func deleteButton() -> some View {
+        Button {
+            isShowDeleteAlert.toggle()
+        } label: {
+            VStack {
+                Image(systemName: "xmark.circle")
+                Text(R.string.localizable.delete())
+            }
+            .frame(maxWidth: .infinity)
+            .background(.clear)
+            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+        }
+    }
+    
+    @ViewBuilder
+    private func topSegmentedControl() -> some View {
+        Picker("", selection: $addDetailVM.billingType) {
+            ForEach(BillingType.allCases, id: \.self) { type in
+                Text(type.name)
+            }
+        }
+        .pickerStyle(.segmented)
+        .frame(minWidth: UIScreen.main.bounds.width * 0.6)
+    }
+    
+    private func deleteAlert() -> Alert {
+        return Alert(title: Text(R.string.localizable.delete()),
+                     message: Text(R.string.localizable.confirmDelete("")),
+                     primaryButton: .destructive(Text(R.string.localizable.yes())) {
+            details.removeAll(detail)
+            addDetailVM.deleteDetail()
+            dismiss()
+        },
+                     secondaryButton: .cancel(Text(R.string.localizable.no())))
+    }
+}
+
+#Preview {
+    AddDetailView().environmentObject(AppAppearance())
 }

@@ -57,12 +57,9 @@ struct DetailView: View {
             })
         )
         .navigationTitle("\(userModel.name)")
-        .hideBackTitle()
         .onAppear {
             UserInfo.share.selectedUserId = userModel.id
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                detailVM.getDetail()
-            }
+            detailVM.getDetail()
         }
         .environmentObject(detailVM)
     }

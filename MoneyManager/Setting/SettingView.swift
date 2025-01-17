@@ -23,7 +23,6 @@ struct SettingView: View {
             Divider()
         }
         .navigationTitle(R.string.localizable.setting())
-        .hideBackTitle()
     }
     
 }

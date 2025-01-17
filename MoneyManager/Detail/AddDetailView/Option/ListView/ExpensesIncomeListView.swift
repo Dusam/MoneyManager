@@ -56,8 +56,6 @@ struct ExpensesIncomeListView: View {
     }
 }
 
-struct ExpensesIncomeListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ExpensesIncomeListView().environmentObject(AddDetailViewModel())
-    }
+#Preview {
+    ExpensesIncomeListView().environmentObject(AddDetailViewModel(addDetailType: .add, detail: DetailModel()))
 }

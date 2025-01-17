@@ -50,7 +50,6 @@ struct ChooseAccountView: View {
             
         }
         .navigationTitle(R.string.localizable.account() )
-        .hideBackTitle()
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(R.string.localizable.add(), destination: AddAccountView())
@@ -63,8 +62,7 @@ struct ChooseAccountView: View {
     }
 }
 
-struct ChooseAccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChooseAccountView()
-    }
+#Preview {
+    ChooseAccountView()
+        .environmentObject(AppAppearance())
 }

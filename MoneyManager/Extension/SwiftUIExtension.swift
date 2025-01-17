@@ -62,13 +62,6 @@ extension View {
             segmentAppearance.setTitleTextAttributes([.foregroundColor: UserInfo.share.themeColor.isLight ? UIColor.darkGray : UIColor.white], for: .normal)
         }
     }
-    
-    func hideBackTitle() -> some View {
-        self
-            .introspect(.navigationStack, on: .iOS(.v16, .v17, .v18), customize: { navigation in
-                navigation.navigationBar.topItem?.backButtonDisplayMode = .minimal
-            })
-    }
 }
 
 // MARK: Color
@@ -90,5 +83,14 @@ extension Color {
 extension Binding {
      func toUnwrapped<T>(defaultValue: T) -> Binding<T> where Value == Optional<T>  {
         Binding<T>(get: { self.wrappedValue ?? defaultValue }, set: { self.wrappedValue = $0 })
+    }
+}
+
+
+// 隱藏返回鍵的 title
+extension UINavigationController {
+    open override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        navigationBar.topItem?.backButtonDisplayMode = .minimal
     }
 }

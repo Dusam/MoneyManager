@@ -38,8 +38,6 @@ struct AddDetailNumberView: View {
     }
 }
 
-struct AddDetailNumberView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddDetailNumberView().environmentObject(AddDetailViewModel())
-    }
+#Preview {
+    AddDetailNumberView().environmentObject(AddDetailViewModel(addDetailType: .add, detail: DetailModel()))
 }

@@ -72,7 +72,6 @@ struct AddAccountView: View {
                 }
             }
         })
-        .hideBackTitle()
         .onTapGesture {
             addAccountVM.isHiddenCalculator = true
         }

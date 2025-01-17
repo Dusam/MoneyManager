@@ -86,7 +86,6 @@ struct ChartView: View {
                 chartVM.getDatas()
             }
         }
-        .hideBackTitle()
         .environmentObject(chartVM)
     }
 }

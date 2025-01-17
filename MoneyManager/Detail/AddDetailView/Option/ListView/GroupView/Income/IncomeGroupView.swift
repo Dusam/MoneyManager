@@ -47,8 +47,6 @@ struct IncomeGroupView: View {
     }
 }
 
-struct IncomeGroupView_Previews: PreviewProvider {
-    static var previews: some View {
-        IncomeGroupView(selectedGroup: .constant(IncomeGroup.general)).environmentObject(AddDetailViewModel())
-    }
+#Preview {
+    IncomeGroupView(selectedGroup: .constant(IncomeGroup.general)).environmentObject(AddDetailViewModel(addDetailType: .add, detail: DetailModel()))
 }

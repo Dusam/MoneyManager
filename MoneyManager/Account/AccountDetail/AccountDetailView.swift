@@ -38,7 +38,6 @@ struct AccountDetailView: View {
             }
         }
         .navigationTitle(R.string.localizable.account())
-        .hideBackTitle()
         .onAppear {
             accountDetailVM.getAccounts()
         }

@@ -129,18 +129,10 @@ extension RealmManager {
 
 // MARK: Detail Method
 extension RealmManager {
-//    func saveDetail(_ detailModel: Object) {
-//        if let realm = realm {
-//            realm.beginWrite()
-//            realm.add(detailModel, update: .modified)
-//            try! realm.commitWrite()
-//        }
-//    }
-    
     func readDetail(_ date: String, userID: ObjectId) -> [DetailModel] {
         if let realm = realm {
-            return Array(realm.objects(DetailModel.self).filter("date == %@ AND userId == %@", date, userID))
-//            return Array(realm.objects(DetailModel.self).filter("date == '\(date)'").filter("userId == %@", userID))
+            let results = realm.objects(DetailModel.self).filter("date == %@ AND userId == %@", date, userID)
+            return Array(DBTools.detachedObjects(results))
         }
         return []
     }
@@ -173,15 +165,6 @@ extension RealmManager {
         return []
     }
     
-//    func saveCommonMemo(memoModel: MemoModel, update: Bool = false) {
-//        realm.beginWrite()
-//        if update {
-//            memoModel.count += 1
-//        }
-//        realm.add(memoModel, update: .modified)
-//        try! realm.commitWrite()
-//    }
-    
     func getCommonMemos(_ userId: ObjectId, billingType: Int, groupId: String, memo: String) -> [MemoModel] {
         if memo.isEmpty {
             return Array(realm.objects(MemoModel.self)
@@ -189,7 +172,6 @@ extension RealmManager {
                 .sorted{ $0.count > $1.count}
         } else {
             return Array(realm.objects(MemoModel.self)
-//                .filter("userId == %@ AND billingType == %@ AND detailGroup == %@ AND memo == %@", userId, billingType, groupId, memo))
                 .filter("userId == %@ AND billingType == %@ AND detailGroup == %@", userId, billingType, groupId))
                 .filter {$0.memo.contains(memo)}
                 .sorted{ $0.count > $1.count}
@@ -200,14 +182,6 @@ extension RealmManager {
 
 // MARK: Account Method
 extension RealmManager {
-//    func saveAccount(_ accountlModel: AccountModel) {
-//        if let realm = realm {
-//            realm.beginWrite()
-//            realm.add(accountlModel, update: .modified)
-//            try! realm.commitWrite()
-//        }
-//    }
-    
     func updateAccountMoney(billingType: BillingType, amount: Int, accountId: ObjectId, toAccountId: ObjectId = ObjectId()) {
                 
         switch billingType {
@@ -309,7 +283,6 @@ extension RealmManager {
                     $0.userId == UserInfo.share.selectedUserId
                 }
             } else if let id = try? ObjectId(string: groupId) {
-                //                return Array(realm.objects(ExpensesGroupModel.self).filter("id == %@", id))
                 return Array(realm.objects(ExpensesGroupModel.self)).filter {
                     $0.userId == UserInfo.share.selectedUserId && $0.id == id
                 }
@@ -327,7 +300,6 @@ extension RealmManager {
                     $0.userId == UserInfo.share.selectedUserId
                 }
             } else {
-                //                return Array(realm.objects(ExpensesTypeModel.self).filter("expensesGroup == %@", groupId))
                 return Array(realm.objects(ExpensesTypeModel.self)).filter {
                     $0.userId == UserInfo.share.selectedUserId && $0.expensesGroup == groupId
                 }
@@ -345,7 +317,6 @@ extension RealmManager {
                     $0.userId == UserInfo.share.selectedUserId
                 }
             } else if let id = try? ObjectId(string: groupId) {
-                //                return Array(realm.objects(IncomeGroupModel.self).filter("id == %@", id))
                 return Array(realm.objects(IncomeGroupModel.self)).filter {
                     $0.userId == UserInfo.share.selectedUserId && $0.id == id
                 }
@@ -363,7 +334,6 @@ extension RealmManager {
                     $0.userId == UserInfo.share.selectedUserId
                 }
             } else {
-                //                return Array(realm.objects(IncomeTypeModel.self).filter("incomeGroup == %@", groupId))
                 return Array(realm.objects(IncomeTypeModel.self)).filter {
                     $0.userId == UserInfo.share.selectedUserId && $0.incomeGroup == groupId
                 }
@@ -381,7 +351,6 @@ extension RealmManager {
                     $0.userId == UserInfo.share.selectedUserId
                 }
             } else if let id = try? ObjectId(string: groupId) {
-                //                return Array(realm.objects(TransferGroupModel.self).filter("id == %@", id))
                 return Array(realm.objects(TransferGroupModel.self)).filter {
                     $0.userId == UserInfo.share.selectedUserId && $0.id == id
                 }
@@ -399,7 +368,6 @@ extension RealmManager {
                     $0.userId == UserInfo.share.selectedUserId
                 }
             } else {
-                //                return Array(realm.objects(TransferTypeModel.self).filter("transferGroup == %@", groupId))
                 return Array(realm.objects(TransferTypeModel.self)).filter {
                     $0.userId == UserInfo.share.selectedUserId && $0.transferGroup == groupId
                 }
@@ -407,5 +375,44 @@ extension RealmManager {
             
         }
         return []
+    }
+    
+    func deleteGroup(_ groupId: String) {
+        if let realm = realm {
+            let delete = realm.objects(DetailGroupModel.self).filter {
+                $0.id.stringValue == groupId
+            }
+            
+            let deleteTypes = realm.objects(DetailTypeModel.self).filter{
+                $0.groupId == groupId
+            }
+            
+            let deleteDetails = realm.objects(DetailModel.self).filter{
+                $0.detailGroup == groupId
+            }
+            
+            realm.beginWrite()
+            realm.delete(delete)
+            realm.delete(deleteTypes)
+            realm.delete(deleteDetails)
+            try! realm.commitWrite()
+        }
+    }
+    
+    func deleteType(_ groupId: String, typeId: String) {
+        if let realm = realm {
+            let delete = realm.objects(DetailTypeModel.self).filter{
+                $0.groupId == groupId && $0.id.stringValue == typeId
+            }
+            
+            let deleteDetails = realm.objects(DetailModel.self).filter{
+                $0.detailGroup == groupId && $0.detailType == typeId
+            }
+            
+            realm.beginWrite()
+            realm.delete(delete)
+            realm.delete(deleteDetails)
+            try! realm.commitWrite()
+        }
     }
 }

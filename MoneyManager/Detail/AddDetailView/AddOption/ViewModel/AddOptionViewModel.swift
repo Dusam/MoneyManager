@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import Observation
 
 enum AddOptionType {
     case addGroup
@@ -22,12 +23,13 @@ enum AddOptionType {
     }
 }
 
+@Observable
 class AddOptionViewModel: ObservableObject {
     
-    @Published var optionType: AddOptionType = .addGroup
-    @Published var name: String = ""
-    @Published var billType: BillingType = .expenses
-    @Published var groupId: String = ""
+    var optionType: AddOptionType = .addGroup
+    var name: String = ""
+    var billType: BillingType = .expenses
+    var groupId: String = ""
     
     
     func createGroupType() {
@@ -39,6 +41,8 @@ class AddOptionViewModel: ObservableObject {
             detailGroupModel.name = name
             detailGroupModel.userId = UserInfo.share.selectedUserId
             detailGroupModel.billType = billType.rawValue
+            
+            RealmManager.share.saveData(detailGroupModel)
             
         } else {
             

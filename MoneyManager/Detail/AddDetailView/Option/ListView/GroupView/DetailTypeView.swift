@@ -11,36 +11,49 @@ struct DetailTypeView: View {
     @EnvironmentObject var addDetailVM: AddDetailViewModel
     @Environment(\.dismiss) var dismiss
     
+    @Binding var isEditing: Bool
+    
     var body: some View {
         ScrollView {
             ForEach(addDetailVM.detailTypeModels, id: \.id) { type in
-                Button {
-                    addDetailVM.detailTypeId = type.id.stringValue
-                    dismiss()
-                } label: {
-                    Text(type.name)
-                        .foregroundColor(.black)
-                        .font(.system(size: 22))
-                        .padding([.top, .bottom], 20)
-                        .padding(.leading, 20)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .overlay(
-                            VStack {
-                                Divider().offset(x: 0, y: 29)
-                            }
-                        )
+                HStack {
+                    // 刪除按鈕，根據 isEditing 決定是否顯示
+                    if isEditing {
+                        Button(action: {
+                            addDetailVM.deleteType(typeId: type.id.stringValue)
+                        }) {
+                            Image(systemName: "trash")
+                                .foregroundColor(.white)
+                                .padding(10)
+                                .background(Color.red)
+                                .cornerRadius(5)
+                        }
+                        .scaleEffect(0.7)
+                    }
+                    
+                    Button {
+                        addDetailVM.detailTypeId = type.id.stringValue
+                        dismiss()
+                    } label: {
+                        Text(type.name)
+                            .foregroundColor(.black)
+                            .font(.system(size: 22))
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding([.top, .bottom, .leading], 20)
+                    }
                 }
-                .listRowInsets(EdgeInsets())
-                .listRowSeparator(.hidden)
+                .overlay(
+                    VStack {
+                        Divider().offset(x: 0, y: 29)
+                    }
+                )
             }
-            .listStyle(.plain)
         }
-        
+        .animation(.default, value: isEditing)
     }
 }
 
-struct DetailTypeView_Previews: PreviewProvider {
-    static var previews: some View {
-        DetailTypeView().environmentObject(AddDetailViewModel())
-    }
+#Preview {
+    DetailTypeView(isEditing: .constant(false))
+        .environmentObject(AddDetailViewModel(addDetailType: .add, detail: DetailModel()))
 }

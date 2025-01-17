@@ -87,8 +87,6 @@ struct TransferListView: View {
     }
 }
 
-struct TransferListView_Previews: PreviewProvider {
-    static var previews: some View {
-        TransferListView().environmentObject(AddDetailViewModel())
-    }
+#Preview {
+    TransferListView().environmentObject(AddDetailViewModel(addDetailType: .add, detail: DetailModel()))
 }

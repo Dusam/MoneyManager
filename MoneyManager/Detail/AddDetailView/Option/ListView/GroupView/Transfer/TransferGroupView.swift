@@ -46,8 +46,7 @@ struct TransferGroupView: View {
     }
 }
 
-struct TransferGroupView_Previews: PreviewProvider {
-    static var previews: some View {
-        TransferGroupView(selectedGroup: .constant(TransferGroup.transferMoney)).environmentObject(AddDetailViewModel())
-    }
+#Preview {
+    TransferGroupView(selectedGroup: .constant(TransferGroup.transferMoney))
+        .environmentObject(AddDetailViewModel(addDetailType: .add, detail: DetailModel()))
 }

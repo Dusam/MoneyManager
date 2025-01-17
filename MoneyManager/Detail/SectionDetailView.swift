@@ -44,7 +44,6 @@ struct SectionDetailView: View {
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
         .navigationBarTitle(title)
-        .hideBackTitle()
     }
 }
 

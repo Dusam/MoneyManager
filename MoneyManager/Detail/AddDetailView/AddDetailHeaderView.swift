@@ -47,8 +47,6 @@ struct AddDetailHeaderView: View {
     }
 }
 
-struct AddDetailHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddDetailHeaderView().environmentObject(AddDetailViewModel())
-    }
+#Preview {
+    AddDetailHeaderView().environmentObject(AddDetailViewModel(addDetailType: .add, detail: DetailModel()))
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class DBTools {
     static func detailTypeToString(detailModel: DetailModel) -> String {
@@ -25,5 +26,15 @@ class DBTools {
         typeTitle += " - \(RealmManager.share.getDetailType(typeId: detailTypeId).first?.name ?? "")"
         
         return typeTitle
+    }
+    
+    static func detachedObjects<T: Object>(_ results: Results<T>) -> [T] {
+        return results.map { original in
+            let copy = T()
+            for property in original.objectSchema.properties {
+                copy.setValue(original.value(forKey: property.name), forKey: property.name)
+            }
+            return copy
+        }
     }
 }

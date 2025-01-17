@@ -44,7 +44,6 @@ struct ChangeThemeView: View {
         .onDisappear {
             setSegmentColor(isShowColorPicker: false)
         }
-        .hideBackTitle()
     }
 }
 

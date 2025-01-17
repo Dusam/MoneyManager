@@ -290,8 +290,6 @@ struct CalculatorView: View {
     
 }
 
-struct CalculatorView_Previews: PreviewProvider {
-    static var previews: some View {
-        CalculatorView().environmentObject(AddDetailViewModel())
-    }
+#Preview {
+    CalculatorView().environmentObject(AddDetailViewModel(addDetailType: .add, detail: DetailModel()))
 }

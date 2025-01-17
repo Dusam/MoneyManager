@@ -69,8 +69,6 @@ struct MemoView: View {
     }
 }
 
-struct MemoView_Previews: PreviewProvider {
-    static var previews: some View {
-        MemoView().environmentObject(AddDetailViewModel())
-    }
+#Preview {
+    MemoView().environmentObject(AddDetailViewModel(addDetailType: .add, detail: DetailModel()))
 }

@@ -9,17 +9,35 @@ import Foundation
 import SwiftUI
 import RealmSwift
 import SamUtils
+import Observation
 
+@Observable
 class AddDetailViewModel: ObservableObject {
     
-    init() {
-        selectedData = UserInfo.share.selectedData
-        
-        detailGroupId = selectedData.expensesGroupId
-        detailTypeId = selectedData.expensesTypeId
+    init(addDetailType: AddDetailView.AddDetailType, detail: DetailModel) {
+        // 根據傳入的參數執行初始化邏輯
+        self.isHiddenCalculator = (addDetailType == .edit)
+        if addDetailType == .edit {
+            self.setEditDetailModel(detail)
+        } else {
+            selectedData = UserInfo.share.selectedData
+            
+            detailGroupId = selectedData.expensesGroupId
+            detailTypeId = selectedData.expensesTypeId
 
-        accountId = selectedData.accountId
-        transferToAccountId = selectedData.transferToAccountId
+            accountId = selectedData.accountId
+            transferToAccountId = selectedData.transferToAccountId
+            
+            if RealmManager.share.getDetailGroup(billType: billingType, groupId: detailGroupId).isEmpty {
+                detailGroupId = RealmManager.share.getDetailGroup(billType: billingType).first?.id.stringValue ?? ""
+            }
+            
+            if !RealmManager.share.getDetailType(detailGroupId, typeId: detailTypeId).isEmpty {
+                detailTypeId = RealmManager.share.getDetailType(detailGroupId).first?.id.stringValue ?? ""
+            }
+        }
+        
+        getDetailGroup()
     }
     
     private var selectedData = UserInfo.share.selectedData
@@ -31,8 +49,8 @@ class AddDetailViewModel: ObservableObject {
         }
     }
         
-    @Published var currentDateString = UserInfo.share.selectedDate.string(withFormat: "yyyy-MM-dd(EE)")
-    @Published var billingType: BillingType = .expenses {
+    var currentDateString = UserInfo.share.selectedDate.string(withFormat: "yyyy-MM-dd(EE)")
+    var billingType: BillingType = .expenses {
         didSet {
             switch billingType {
             case .expenses:
@@ -49,45 +67,44 @@ class AddDetailViewModel: ObservableObject {
     }
     
     // 計算機參數
-    @Published var isHiddenCalculator = false
-    @Published var isEditingTransferFee = false
-    @Published var valueString = "0"
-    @Published var transferFee = "0"
+    var isHiddenCalculator = true
+    var isEditingTransferFee = false
+    var valueString = "0"
+    var transferFee = "0"
     
     // 新增頁面參數
-    @Published var typeName: String = ""
-    @Published var detailGroupId: String = "" {
+    var typeName: String = ""
+    var detailGroupId: String = "" {
         didSet {
-            typeName = DBTools.detailTypeToString(billingType: billingType, detailGroupId: detailGroupId, detailTypeId: detailTypeId)
-            
             detailTypeModels = RealmManager.share.getDetailType(detailGroupId)
         }
     }
-    @Published var detailTypeId: String = "" {
+    var detailTypeId: String = "" {
         didSet {
             typeName = DBTools.detailTypeToString(billingType: billingType, detailGroupId: detailGroupId, detailTypeId: detailTypeId)
             storeSelectedType()
         }
     }
-    @Published var detailTypeModels: [DetailTypeModel] = []
+    var detailGroupsModels: [DetailGroupModel] = []
+    var detailTypeModels: [DetailTypeModel] = []
     
     // 新增列表參數
-    @Published var accountName: String = ""
-    @Published var accountId: String = "" {
+    var accountName: String = ""
+    var accountId: String = "" {
         didSet {
             getAccountName()
         }
     }
-    @Published var transferToAccountName: String = ""
-    @Published var transferToAccountId: String = "" {
+    var transferToAccountName: String = ""
+    var transferToAccountId: String = "" {
         didSet {
             getAccountName()
         }
     }
     
     // 備註參數
-    @Published var needRefershMemo: Bool = true
-    @Published var memo: String = "" {
+    var needRefershMemo: Bool = true
+    var memo: String = "" {
         didSet {
             needRefershMemo = true
             // 延遲0.1秒以達成不會點擊常用備註後只顯示完全符合字串的選項
@@ -96,7 +113,7 @@ class AddDetailViewModel: ObservableObject {
             }
         }
     }
-    @Published var commonMemos: [MemoModel] = []
+    var commonMemos: [MemoModel] = []
     
     private var detailModel: DetailModel = DetailModel()
     
@@ -326,5 +343,26 @@ extension AddDetailViewModel {
         if needRefershMemo {
             commonMemos = RealmManager.share.getCommonMemos(UserInfo.share.selectedUserId, billingType: billingType.rawValue, groupId: detailGroupId, memo: memo)
         }
+    }
+    
+    // 群組類型
+    func getDetailGroup() {
+        detailGroupsModels =  RealmManager.share.getDetailGroup(billType: billingType)
+    }
+    
+    func getDetailType() {
+        detailTypeModels = RealmManager.share.getDetailType(detailGroupId)
+    }
+    
+    func deleteGroup(groupId: String) {
+        RealmManager.share.deleteGroup(groupId)
+        // 重置已經選擇的選項
+        self.setEditDetailModel(self.detailModel)
+        getDetailGroup()
+    }
+    
+    func deleteType(typeId: String) {
+        RealmManager.share.deleteType(self.detailGroupId, typeId: typeId)
+        getDetailType()
     }
 }

@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct AddOptionView: View {
+    @EnvironmentObject var appearance: AppAppearance
+    @Environment(\.dismiss) var dismiss
     
     var optionType: AddOptionType = .addGroup
     var billingType: BillingType = .expenses
     private var groupId: String = ""
     
-    @ObservedObject private var addOptionVM: AddOptionViewModel = AddOptionViewModel()
+    @StateObject private var addOptionVM: AddOptionViewModel = AddOptionViewModel()
     
     init(_ optionType: AddOptionType, _ billingType: BillingType, _ groupId: String = "") {
         self.optionType = optionType
@@ -38,6 +40,18 @@ struct AddOptionView: View {
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .navigationTitle(optionType.title)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        addOptionVM.createGroupType()
+                        dismiss()
+                    } label: {
+                        Text(R.string.localizable.add())
+                            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+                    }
+
+                }
+            }
             .onAppear {
                 addOptionVM.optionType = optionType
                 addOptionVM.billType = billingType
@@ -48,8 +62,7 @@ struct AddOptionView: View {
     }
 }
 
-struct AddOptionView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddOptionView(.addType, .expenses)
-    }
+#Preview {
+    AddOptionView(.addType, .expenses)
+        .environmentObject(AppAppearance())
 }
