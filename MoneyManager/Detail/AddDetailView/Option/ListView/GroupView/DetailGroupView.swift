@@ -37,7 +37,7 @@ struct DetailGroupView: View {
                         Text(group.name)
                             .foregroundColor(.black)
                             .font(.system(size: 22))
-                            .padding([.top, .bottom, .leading], 20)
+                            .padding(15)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .background(addDetailVM.detailGroupId == group.id.stringValue ? Color(R.color.cellBackgroundColor()!) : .white)
                         

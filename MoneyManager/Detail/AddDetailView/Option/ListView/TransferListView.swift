@@ -22,7 +22,7 @@ struct TransferListView: View {
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
-            .padding(.bottom, 10)
+            .padding([.top, .bottom], 5)
             .listRowSeparator(.hidden)
             
             NavigationLink(destination:
@@ -36,7 +36,7 @@ struct TransferListView: View {
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
-            .padding(.bottom, 10)
+            .padding([.top, .bottom], 5)
             .listRowSeparator(.hidden)
             
             Button {
@@ -53,7 +53,7 @@ struct TransferListView: View {
                         .padding(.trailing, 15)
                 }
             }
-            .padding(.bottom, 10)
+            .padding([.top, .bottom], 5)
             .listRowSeparator(.hidden)
             
             NavigationLink(destination: ChooseTypeView().environmentObject(addDetailVM))   {
@@ -66,7 +66,7 @@ struct TransferListView: View {
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
-            .padding(.bottom, 10)
+            .padding([.top, .bottom], 5)
             .listRowSeparator(.hidden)
             
             NavigationLink(destination: MemoView().environmentObject(addDetailVM))   {
@@ -79,7 +79,7 @@ struct TransferListView: View {
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
-            .padding(.bottom, 10)
+            .padding([.top, .bottom], 5)
             .listRowSeparator(.hidden)
         }
         .listStyle(.plain)

@@ -39,7 +39,7 @@ struct DetailTypeView: View {
                             .foregroundColor(.black)
                             .font(.system(size: 22))
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding([.top, .bottom, .leading], 20)
+                            .padding(15)
                     }
                 }
                 .overlay(

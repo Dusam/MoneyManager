@@ -22,7 +22,7 @@ struct ExpensesIncomeListView: View {
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
-            .padding(.bottom, 10)
+            .padding([.top, .bottom], 5)
             .listRowSeparator(.hidden)
             
             NavigationLink(destination: ChooseAccountView().environmentObject(addDetailVM))   {
@@ -35,7 +35,7 @@ struct ExpensesIncomeListView: View {
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
-            .padding(.bottom, 10)
+            .padding([.top, .bottom], 5)
             .listRowSeparator(.hidden)
             
             NavigationLink(destination: MemoView().environmentObject(addDetailVM))   {
@@ -48,7 +48,7 @@ struct ExpensesIncomeListView: View {
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
             }
-            .padding(.bottom, 10)
+            .padding([.top, .bottom], 5)
             .listRowSeparator(.hidden)
         }
         .listStyle(.plain)

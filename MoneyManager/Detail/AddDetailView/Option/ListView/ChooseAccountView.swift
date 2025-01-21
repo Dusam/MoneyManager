@@ -37,7 +37,7 @@ struct ChooseAccountView: View {
                     Text(account.name)
                         .foregroundColor(.black)
                         .font(.system(size: 22))
-                        .padding([.top, .bottom, .leading], 20)
+                        .padding(15)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(.white)
                         .overlay(
