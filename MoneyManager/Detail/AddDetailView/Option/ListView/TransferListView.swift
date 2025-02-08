@@ -12,78 +12,69 @@ struct TransferListView: View {
     
     var body: some View {
         List {
-            NavigationLink(destination: ChooseAccountView().environmentObject(addDetailVM))   {
-                HStack {
-                    Text(R.string.localizable.from_title())
-                        .font(.system(size: 18))
-                    Text(addDetailVM.accountName)
-                        .font(.system(size: 18))
-                        .foregroundColor(addDetailVM.billingType.forgroundColor)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
-            }
-            .padding([.top, .bottom], 5)
-            .listRowSeparator(.hidden)
-            
-            NavigationLink(destination:
-                            ChooseAccountView(mode: .transfer).environmentObject(addDetailVM))   {
-                HStack {
-                    Text(R.string.localizable.to_title())
-                        .font(.system(size: 18))
-                    Text(addDetailVM.transferToAccountName)
-                        .font(.system(size: 18))
-                        .foregroundColor(addDetailVM.billingType.forgroundColor)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
-            }
-            .padding([.top, .bottom], 5)
-            .listRowSeparator(.hidden)
-            
-            Button {
-                addDetailVM.isHiddenCalculator = false
-                addDetailVM.isEditingTransferFee = true
-            } label: {
-                HStack {
-                    Text(R.string.localizable.handlingfee_title())
-                        .font(.system(size: 18))
-                    Text(addDetailVM.transferFee)
-                        .font(.system(size: 18))
-                        .foregroundColor(.red)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        .padding(.trailing, 15)
-                }
-            }
-            .padding([.top, .bottom], 5)
-            .listRowSeparator(.hidden)
-            
-            NavigationLink(destination: ChooseTypeView().environmentObject(addDetailVM))   {
-                HStack {
-                    Text(R.string.localizable.type_title())
-                        .font(.system(size: 18))
-                    Text(addDetailVM.typeName)
-                        .font(.system(size: 18))
-                        .foregroundColor(addDetailVM.billingType.forgroundColor)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
-            }
-            .padding([.top, .bottom], 5)
-            .listRowSeparator(.hidden)
-            
-            NavigationLink(destination: MemoView().environmentObject(addDetailVM))   {
-                HStack {
-                    Text(R.string.localizable.memo_title())
-                        .font(.system(size: 18))
-                    Text(addDetailVM.memo.replacing("\n", with: " "))
-                        .font(.system(size: 18))
-                        .foregroundColor(addDetailVM.billingType.forgroundColor)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
-            }
-            .padding([.top, .bottom], 5)
-            .listRowSeparator(.hidden)
+            chooseAccountView().listRowPaddingAndSeparatorHidden()
+            chooseTransferAccountView().listRowPaddingAndSeparatorHidden()
+            transferFeeView().listRowPaddingAndSeparatorHidden()
+            chooseTypeView().listRowPaddingAndSeparatorHidden()
+            memoView().listRowPaddingAndSeparatorHidden()
         }
         .listStyle(.plain)
         .scrollContentBackground(.hidden)
+        
+    }
+}
+
+extension TransferListView {
+    private func chooseAccountView() -> some View {
+        NavigationLink(destination: ChooseAccountView().environmentObject(addDetailVM))   {
+            navigationLinkLabel(title: R.string.localizable.from_title(),
+                                value: addDetailVM.accountName)
+        }
+    }
+    
+    private func chooseTransferAccountView() -> some View {
+        NavigationLink(destination:
+                        ChooseAccountView(mode: .transfer).environmentObject(addDetailVM))   {
+            navigationLinkLabel(title: R.string.localizable.to_title(),
+                                value: addDetailVM.transferToAccountName)
+        }
+    }
+    
+    private func transferFeeView() -> some View {
+        Button {
+            addDetailVM.isHiddenCalculator = false
+            addDetailVM.isEditingTransferFee = true
+        } label: {
+            navigationLinkLabel(title: R.string.localizable.handlingfee_title(),
+                                value: addDetailVM.transferFee)
+        }
+    }
+    
+    private func chooseTypeView() -> some View {
+        NavigationLink(destination: ChooseTypeView().environmentObject(addDetailVM))   {
+            navigationLinkLabel(title: R.string.localizable.type_title(),
+                                value: addDetailVM.typeName)
+        }
+    }
+    
+    private func memoView() -> some View {
+        NavigationLink(destination: MemoView().environmentObject(addDetailVM))   {
+            navigationLinkLabel(title: R.string.localizable.memo_title(),
+                                value: addDetailVM.memo.replacing("\n", with: " "))
+        }
+    }
+    
+    @ViewBuilder
+    private func navigationLinkLabel(title: String, value: String) -> some View {
+        HStack {
+            Text(title)
+                .font(.system(size: 18))
+            Text(value)
+                .font(.system(size: 18))
+                .foregroundColor(.red)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .padding(.trailing, 15)
+        }
     }
 }
 

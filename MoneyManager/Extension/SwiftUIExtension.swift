@@ -62,6 +62,12 @@ extension View {
             segmentAppearance.setTitleTextAttributes([.foregroundColor: UserInfo.share.themeColor.isLight ? UIColor.darkGray : UIColor.white], for: .normal)
         }
     }
+    
+    func listRowPaddingAndSeparatorHidden() -> some View {
+        self
+            .padding([.top, .bottom], 5)
+            .listRowSeparator(.hidden)
+    }
 }
 
 // MARK: Color

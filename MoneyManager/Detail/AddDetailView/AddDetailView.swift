@@ -79,9 +79,7 @@ struct AddDetailView: View {
                 topSegmentedControl()
             }
         }
-        .alert(isPresented: $isShowDeleteAlert) {
-            deleteAlert()
-        }
+        .alert(isPresented: $isShowDeleteAlert, content: deleteAlert) 
         .environmentObject(addDetailVM)
         .onAppear {
             if addDetailType != .edit {
@@ -103,7 +101,6 @@ struct AddDetailView: View {
 }
 
 extension AddDetailView {
-    @ViewBuilder
     private func saveButton() -> some View {
         Button {
             if addDetailType == .edit {
@@ -113,32 +110,31 @@ extension AddDetailView {
             }
             dismiss()
         } label: {
-            VStack {
-                Image(systemName: "checkmark.circle")
-                Text(R.string.localizable.save())
-            }
-            .frame(maxWidth: .infinity)
-            .background(.clear)
-            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+            bottomButtonLabel(imageName: "checkmark.circle",
+                              title: R.string.localizable.save())
         }
     }
     
-    @ViewBuilder
     private func deleteButton() -> some View {
         Button {
             isShowDeleteAlert.toggle()
         } label: {
-            VStack {
-                Image(systemName: "xmark.circle")
-                Text(R.string.localizable.delete())
-            }
-            .frame(maxWidth: .infinity)
-            .background(.clear)
-            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+            bottomButtonLabel(imageName: "xmark.circle",
+                              title: R.string.localizable.delete())
         }
     }
     
     @ViewBuilder
+    private func bottomButtonLabel(imageName: String, title: String) -> some View {
+        VStack {
+            Image(systemName: imageName)
+            Text(title)
+        }
+        .frame(maxWidth: .infinity)
+        .background(.clear)
+        .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+    }
+    
     private func topSegmentedControl() -> some View {
         Picker("", selection: $addDetailVM.billingType) {
             ForEach(BillingType.allCases, id: \.self) { type in

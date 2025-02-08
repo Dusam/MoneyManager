@@ -59,7 +59,9 @@ struct DetailView: View {
         .navigationTitle("\(userModel.name)")
         .onAppear {
             UserInfo.share.selectedUserId = userModel.id
-            detailVM.getDetail()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.detailVM.getDetail()
+            }
         }
         .environmentObject(detailVM)
     }
@@ -67,56 +69,43 @@ struct DetailView: View {
 
 // MARK: Tabbar Navigation
 extension DetailView {
-    @ViewBuilder
     private func accountNavigationLink() -> some View {
         NavigationLink(destination: AccountDetailView()) {
-            VStack {
-                Image(systemName: "house.fill")
-                Text(R.string.localizable.account())
-            }
-            .frame(maxWidth: .infinity)
-            .background(.clear)
-            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+            bottomLinkLabel(imageName: "house.fill",
+                            title: R.string.localizable.account())
         }
     }
     
-    @ViewBuilder
     private func addDetailNavigationLink() -> some View {
         NavigationLink(destination: AddDetailView()) {
-            VStack {
-                Image(systemName: "plus")
-                Text(R.string.localizable.add())
-            }
-            .frame(maxWidth: .infinity)
-            .background(.clear)
-            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+            bottomLinkLabel(imageName: "plus",
+                            title: R.string.localizable.add())
         }
     }
     
-    @ViewBuilder
     private func chartNavigationLink() -> some View {
         NavigationLink(destination: ChartView()) {
-            VStack {
-                Image(systemName: "chart.pie.fill")
-                Text(R.string.localizable.chart())
-            }
-            .frame(maxWidth: .infinity)
-            .background(.clear)
-            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+            bottomLinkLabel(imageName: "chart.pie.fill",
+                            title: R.string.localizable.chart())
+        }
+    }
+    
+    private func settingNavigationLink() -> some View {
+        NavigationLink(destination: SettingView()) {
+            bottomLinkLabel(imageName: "gearshape.fill",
+                            title: R.string.localizable.setting())
         }
     }
     
     @ViewBuilder
-    private func settingNavigationLink() -> some View {
-        NavigationLink(destination: SettingView()) {
-            VStack {
-                Image(systemName: "gearshape.fill")
-                Text(R.string.localizable.setting())
-            }
-            .frame(maxWidth: .infinity)
-            .background(.clear)
-            .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
+    private func bottomLinkLabel(imageName: String, title: String) -> some View {
+        VStack {
+            Image(systemName: imageName)
+            Text(title)
         }
+        .frame(maxWidth: .infinity)
+        .background(.clear)
+        .foregroundColor(appearance.themeColor.isLight ? Color(uiColor: UIColor.darkGray) : .white)
     }
 }
 

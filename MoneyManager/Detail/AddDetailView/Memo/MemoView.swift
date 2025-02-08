@@ -70,5 +70,7 @@ struct MemoView: View {
 }
 
 #Preview {
-    MemoView().environmentObject(AddDetailViewModel(addDetailType: .add, detail: DetailModel()))
+    MemoView()
+        .environmentObject(AppAppearance())
+        .environmentObject(AddDetailViewModel(addDetailType: .add, detail: DetailModel()))
 }
