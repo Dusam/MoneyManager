@@ -10,7 +10,7 @@ import Charts
 
 struct ChartView: View {
     @EnvironmentObject var appearance: AppAppearance
-    @ObservedObject var chartVM: ChartViewModel = ChartViewModel()
+    @StateObject var chartVM: ChartViewModel = ChartViewModel()
     
     var body: some View {
         VStack {
@@ -23,15 +23,7 @@ struct ChartView: View {
                 .font(.bold(.system(size: 20))())
                 .frame(maxWidth: .infinity)
                 .padding([.bottom], 10)
-                .overlay {
-                    VStack {
-                        Spacer()
-                        Divider()
-                            .background(.gray)
-                    }
-                    .padding([.leading, .trailing], 40)
-                    
-                }
+                .bottomLine(padding: 40)
             
             List(chartVM.listDatas, id: \.self) { data in
                 NavigationLink {
@@ -58,10 +50,10 @@ struct ChartView: View {
                             .tint(data.billingType.forgroundColor)
                             .scaleEffect(x: 1, y: 4, anchor: .bottom)
                     }
-                    
                 }
             }
             .listStyle(.plain)
+            
             
         }
         .toolbar {
@@ -72,14 +64,8 @@ struct ChartView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .padding()
+                .frame(minWidth: UIScreen.main.bounds.width * 0.65)
             }
-            
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Text("    ")
-                    .font(.system(.body))
-            }
-
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
@@ -90,8 +76,6 @@ struct ChartView: View {
     }
 }
 
-struct ChartView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChartView()
-    }
+#Preview {
+    ChartView()
 }

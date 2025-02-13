@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AccountDetailView: View {
     @EnvironmentObject var appearance: AppAppearance
-    @ObservedObject var accountDetailVM: AccountDetailViewModel = AccountDetailViewModel()
+    @StateObject var accountDetailVM: AccountDetailViewModel = AccountDetailViewModel()
     
     var body: some View {
         VStack {
@@ -44,9 +44,6 @@ struct AccountDetailView: View {
     }
 }
 
-
-struct AccountDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountDetailView().environmentObject(AppAppearance())
-    }
+#Preview {
+    AccountDetailView().environmentObject(AppAppearance())
 }

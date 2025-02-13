@@ -7,7 +7,9 @@
 
 import Foundation
 import Charts
+import Observation
 
+@Observable
 class ChartViewModel: ObservableObject {
     
     struct ChartListData: Hashable {
@@ -16,42 +18,43 @@ class ChartViewModel: ObservableObject {
         var percent: Double
     }
     
-    @Published var chartDatas: [PieChartDataEntry] = [PieChartDataEntry(value: 20, label: "收入"),
+    var chartDatas: [PieChartDataEntry] = [PieChartDataEntry(value: 20, label: "收入"),
                                                       PieChartDataEntry(value: 70, label: "支出"),
                                                       PieChartDataEntry(value: 10, label: "轉帳")]
-    @Published var listDatas: [ChartListData] = []
+    var listDatas: [ChartListData] = []
     
-    @Published var chartType: ChartType = .month {
+    var chartType: ChartType = .month {
         didSet {
             getDatas()
             setDateString()
         }
     }
     // +8 小時以符合台灣時區
+    @ObservationIgnored
     private var currentDate: Date = Date().adding(.hour, value: 8) {
         didSet {
             setDateString()
         }
     }
     
-    @Published var currentDateString = Date().string(withFormat: "yyyy-MM")
+    var currentDateString = Date().string(withFormat: "yyyy-MM")
     
-    private var startDate = Date()
-    private var endDate = Date()
+    @ObservationIgnored private var startDate = Date()
+    @ObservationIgnored private var endDate = Date()
     
     // 數據參數
-    @Published var total: Int = 0
-    @Published var incomeTotal: Int = 0
-    @Published var expensesTotal: Int = 0
-    @Published var transferTotal: Int = 0
+    var total: Int = 0
+    var incomeTotal: Int = 0
+    var expensesTotal: Int = 0
+    var transferTotal: Int = 0
     
-    @Published var incomePercent: Double = 0
-    @Published var expensesPercent: Double = 0
-    @Published var transferPercent: Double = 0
+    var incomePercent: Double = 0
+    var expensesPercent: Double = 0
+    var transferPercent: Double = 0
     
-    @Published var incomeSectionDatas: [SectionDetailModel] = []
-    @Published var expensesSectionDatas: [SectionDetailModel] = []
-    @Published var transferSectionDatas: [SectionDetailModel] = []
+    var incomeSectionDatas: [SectionDetailModel] = []
+    var expensesSectionDatas: [SectionDetailModel] = []
+    var transferSectionDatas: [SectionDetailModel] = []
    
     func setDateString() {
         switch chartType {

@@ -6,14 +6,16 @@
 //
 
 import Foundation
+import Observation
 
+@Observable
 class AccountDetailViewModel: ObservableObject {
-    @Published var totalAssets: Int = 0 
-    @Published var totalLiability: Int = 0
-    @Published var balance: Int = 0
+    var totalAssets: Int = 0
+    var totalLiability: Int = 0
+    var balance: Int = 0
     
-    @Published var includeTotalAccounts: [AccountModel] = []
-    @Published var notIncludeTotalAccounts: [AccountModel] = []
+    var includeTotalAccounts: [AccountModel] = []
+    var notIncludeTotalAccounts: [AccountModel] = []
 }
 
 extension AccountDetailViewModel {

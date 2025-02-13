@@ -11,7 +11,7 @@ struct AddAccountView: View {
     
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var appearance: AppAppearance
-    @ObservedObject var addAccountVM: AddAccountViewModel = AddAccountViewModel()
+    @StateObject var addAccountVM: AddAccountViewModel = AddAccountViewModel()
     
     @State private var showingConfirmation = false
         
@@ -81,8 +81,6 @@ struct AddAccountView: View {
     }
 }
 
-struct AddAccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddAccountView()
-    }
+#Preview {
+    AddAccountView().environmentObject(AppAppearance())
 }

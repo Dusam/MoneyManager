@@ -6,15 +6,18 @@
 //
 
 import Foundation
+import Observation
 
+@Observable
 class AddAccountViewModel: ObservableObject {
     
-    @Published var accountType: AccountType = .cash
-    @Published var accountName: String = ""
-    @Published var initMoney: String = "0"
-    @Published var isHiddenCalculator: Bool = true
-    @Published var includTotal: Bool = true
+    var accountType: AccountType = .cash
+    var accountName: String = ""
+    var initMoney: String = "0"
+    var isHiddenCalculator: Bool = true
+    var includTotal: Bool = true
     
+    @ObservationIgnored
     private var accountModel: AccountModel = AccountModel()
     
     

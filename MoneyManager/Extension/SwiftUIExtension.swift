@@ -68,6 +68,18 @@ extension View {
             .padding([.top, .bottom], 5)
             .listRowSeparator(.hidden)
     }
+    
+    func bottomLine(padding: CGFloat) -> some View {
+        self
+            .overlay {
+                VStack {
+                    Spacer()
+                    Divider()
+                        .background(.gray)
+                }
+                .padding([.leading, .trailing], padding)
+            }
+    }
 }
 
 // MARK: Color

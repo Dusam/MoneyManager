@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SingleAccountView: View {
     
-    @ObservedObject var singleAccountVM = SingleAccountViewModel()
+    @StateObject var singleAccountVM = SingleAccountViewModel()
     private var accountId: String = ""
     private var accountName: String = ""
     
@@ -24,21 +24,12 @@ struct SingleAccountView: View {
                 .padding(20)
             
             VStack {
-                HStack {
-                    Text(R.string.localizable.income())
-                    Spacer()
-                    Text("$\(singleAccountVM.incomeTotal)")
-                        .foregroundColor(.green)
-                }
-                .font(.system(.title3))
-                .padding(.bottom, 10)
-                HStack {
-                    Text(R.string.localizable.spend())
-                    Spacer()
-                    Text("$\(singleAccountVM.spendTotal)")
-                        .foregroundColor(.red)
-                }
-                .font(.system(.title3))
+                totalLabel(title: R.string.localizable.income(),
+                           value: singleAccountVM.incomeTotal,
+                           color: .green)
+                totalLabel(title: R.string.localizable.spend(),
+                           value: singleAccountVM.spendTotal,
+                           color: .red)
             }
             .padding([.leading, .trailing, .bottom], 20)
             
@@ -54,8 +45,19 @@ struct SingleAccountView: View {
     }
 }
 
-struct SingleAccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        SingleAccountView(accountId: "", accountName: "")
+extension SingleAccountView {
+    private func totalLabel(title: String, value: Int, color: Color) -> some View {
+        HStack {
+            Text(title)
+            Spacer()
+            Text("$\(value)")
+                .foregroundColor(color)
+        }
+        .font(.system(.title3))
+        .padding(.bottom, 10)
     }
+}
+
+#Preview {
+    SingleAccountView(accountId: "", accountName: "")
 }

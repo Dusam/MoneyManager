@@ -8,32 +8,34 @@
 import Foundation
 import SwiftUI
 import RealmSwift
+import Observation
 
 struct SectionDetailModel: Hashable {
     var date: String = ""
     var details: [DetailModel] = []
 }
 
-
+@Observable
 class SingleAccountViewModel: ObservableObject {
  
-    @Published var singleAccounts: [SectionDetailModel] = []
+    var singleAccounts: [SectionDetailModel] = []
     
+    @ObservationIgnored
     private var currentDate: Date = Date().adding(.hour, value: 8) {
         didSet {
             setDateString()
         }
     }
     
-    @Published var currentDateString = Date().string(withFormat: "yyyy-MM")
+    var currentDateString = Date().string(withFormat: "yyyy-MM")
     
-    @Published var incomeTotal: Int = 0
-    @Published var spendTotal: Int = 0
-    @Published var totalAmount: Int = 0
+    var incomeTotal: Int = 0
+    var spendTotal: Int = 0
+    var totalAmount: Int = 0
     
-    private var startDate = Date()
-    private var endDate = Date()
-    private var accountId: String = ""
+    @ObservationIgnored private var startDate = Date()
+    @ObservationIgnored private var endDate = Date()
+    @ObservationIgnored private var accountId: String = ""
     
     init() {
         setDateString()
